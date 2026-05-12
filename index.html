@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ENOS Limited | The Critical Friend</title>
+  <!--
+    Favicon — SVG for modern browsers; PNG fallback for older ones.
+    WEBFLOW: Upload favicon.png via Site Settings > Favicon.
+    The SVG file (favicon.svg) is in the same folder as this HTML.
+  -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png"     href="favicon.svg" sizes="any">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -760,6 +767,68 @@
       .about-cred:last-child:nth-child(odd) { grid-column: auto; }
       .ned-skills { gap: 6px; }
     }
+
+    /* ══════════════════════════════════════════════════════════
+       ENHANCED COMPONENTS — Webflow-ready
+       Each section below maps directly to Webflow placement:
+         CSS  → Site Settings > Custom Code > Head Code
+         HTML → Webflow Embed block inside the relevant section
+         JS   → Site Settings > Custom Code > Footer Code
+       ══════════════════════════════════════════════════════════ */
+
+    /* ── 1. HERO BACKGROUND BEAMS ──────────────────────────────
+       WEBFLOW: Place in Head Code (or Page Settings > Head Code).
+       The <canvas> element is added via an Embed block inside the
+       Hero section. JS goes in Footer Code.
+       ────────────────────────────────────────────────────────── */
+    #heroBeamsCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;            /* above hero-bg (auto), below content (z-index:2) */
+    }
+
+    /* ── 2. CARD SPOTLIGHT ─────────────────────────────────────
+       WEBFLOW: Place in Head Code. JS goes in Footer Code.
+       Works on any element with class="cog-card". The radial
+       gradient tracks --spotlight-x / --spotlight-y custom
+       properties set by the mousemove JS handler.
+       ────────────────────────────────────────────────────────── */
+    .cog-card {
+      --spotlight-x: 50%;
+      --spotlight-y: 50%;
+      overflow: hidden;
+    }
+    .cog-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        300px circle at var(--spotlight-x) var(--spotlight-y),
+        rgba(74, 111, 192, 0.20) 0%,
+        rgba(39,  70, 144, 0.07) 45%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .cog-card:hover::after { opacity: 1; }
+
+    /* Ensure card text/icons render above the spotlight layer */
+    .cog-card > * { position: relative; z-index: 2; }
+
+    /* ── 3. NUMBER TICKER ──────────────────────────────────────
+       WEBFLOW: No extra CSS needed — piggybacks on .stat-num.
+       JS goes in Footer Code. Add data-ticker-duration="2500"
+       attribute to any .stat-num element to override speed (ms).
+       ────────────────────────────────────────────────────────── */
+    .stat-num[data-ticker] {
+      font-variant-numeric: tabular-nums;  /* keeps width stable while counting */
+    }
   </style>
 </head>
 <body>
@@ -818,6 +887,14 @@
 <section class="hero" id="home">
   <div class="hero-bg"></div>
 
+  <!--
+    BACKGROUND BEAMS CANVAS
+    WEBFLOW: Delete this comment and add an Embed block inside your
+    Hero section containing just this <canvas> tag. The canvas is
+    driven entirely by the JS in Footer Code — no other configuration needed.
+  -->
+  <canvas id="heroBeamsCanvas" aria-hidden="true"></canvas>
+
   <!-- Decorative animated gear rings -->
   <svg class="hero-gear-bg" viewBox="0 0 620 620" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g class="spin">
@@ -849,7 +926,7 @@
 
   <div style="position:relative; z-index:2; width:100%;">
     <div class="hero-content">
-      <div class="label-tag">Independent Diagnostic Services</div>
+      <div class="label-tag">Independent Diagnostic and Consultancy</div>
 
       <h1>Is your transformation<br>marking its <em>own homework?</em></h1>
 
@@ -896,8 +973,7 @@
   <span class="sector-label">Sectors</span>
   <div class="sector-pill">Financial Services &amp; Banking</div>
   <div class="sector-pill">Energy &amp; Utilities</div>
-  <div class="sector-pill">Central Government</div>
-  <div class="sector-pill">Gaming &amp; Betting</div>
+<div class="sector-pill">Gaming &amp; Betting</div>
   <div class="sector-pill">Technology &amp; Digital</div>
   <div class="sector-pill">Education &amp; Public Sector</div>
 </div>
@@ -1209,7 +1285,7 @@
         <p class="testi-quote">What looked like 'mission impossible' soon became 'mission possible'. Geoff took on board feedback and set to work resetting the governance and boundaries for the vendor delivery teams. Working together we tweaked and improved the governance framework and ways of working that allowed the delivery teams to deliver, whilst keeping the correct levels of oversight and control to ensure stakeholders were comfortable that progress was being achieved.</p>
         <div class="testi-rule"></div>
         <div class="testi-name">Martin Price</div>
-        <div class="testi-company">BAE Systems Saudi Arabia</div>
+        <div class="testi-company">Leeds Building Society</div>
         <div class="testi-role">Project Manager · 2020</div>
       </div>
 
@@ -1383,7 +1459,7 @@
     const vPad   = window.scrollY > 60
       ? (mobile ? '10px' : '13px')
       : (mobile ? '14px' : mid ? '16px' : '20px');
-    nav.style.padding = vPad + ' ' + hPad;
+    nav.style.padding = `${vPad} ${hPad}`;
   }
   window.addEventListener('scroll', updateNavPad, { passive: true });
   window.addEventListener('resize', updateNavPad, { passive: true });
@@ -1432,6 +1508,253 @@
       isDragging = false;
     }, { passive: true });
   })();
+
+  /* ══════════════════════════════════════════════════════════
+     ENHANCED COMPONENTS — Webflow-ready vanilla JS
+     ──────────────────────────────────────────────────────────
+     WEBFLOW MIGRATION:
+       All three blocks below go in one of:
+         • Site Settings > Custom Code > Footer Code  (site-wide)
+         • Page Settings  > Custom Code > Footer Code (page-specific)
+       They are self-contained IIFEs — safe to copy individually.
+     ══════════════════════════════════════════════════════════ */
+
+
+  /* ── 1. HERO BACKGROUND BEAMS ────────────────────────────────
+     Animates gradient beam lines on a <canvas> layered behind the
+     hero content. Beams drift from the right/top (where the gear
+     decoration lives) toward the content area, reinforcing the
+     "diagnostic insight flowing in" visual metaphor.
+
+     WEBFLOW: Ensure a <canvas id="heroBeamsCanvas" aria-hidden="true">
+     Embed block exists inside your Hero section. The canvas CSS
+     (position: absolute; inset: 0; z-index: 1; pointer-events: none)
+     goes in Head Code. This JS block goes in Footer Code.
+
+     Config via data attributes on the canvas element:
+       data-beam-count="14"   — number of simultaneous beams
+       data-beam-fps="30"     — animation frame-rate cap (saves battery)
+  ─────────────────────────────────────────────────────────────── */
+  (function () {
+    var canvas = document.getElementById('heroBeamsCanvas');
+    if (!canvas) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var ctx       = canvas.getContext('2d');
+    var BEAM_COUNT = parseInt(canvas.dataset.beamCount || '14', 10);
+    var TARGET_FPS = parseInt(canvas.dataset.beamFps   || '30', 10);
+    var INTERVAL   = 1000 / TARGET_FPS;
+
+    /* Resize canvas to match the hero element */
+    function resize() {
+      var hero   = canvas.parentElement;
+      canvas.width  = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    /* ── Beam class ── */
+    function Beam(scattered) {
+      this.init(scattered);
+    }
+
+    Beam.prototype.init = function (scattered) {
+      var w = canvas.width, h = canvas.height;
+
+      /* Bias spawning toward top and right edges — where the gear sits */
+      var edge = scattered
+        ? Math.floor(Math.random() * 4)
+        : (Math.random() < 0.6 ? 1 /* right */ : 0 /* top */);
+
+      if (edge === 0) {           /* top */
+        this.x  = w * 0.25 + Math.random() * w * 0.75;
+        this.y  = -20;
+        this.vx = -0.15 - Math.random() * 0.25;
+        this.vy =  0.25 + Math.random() * 0.35;
+      } else if (edge === 1) {    /* right */
+        this.x  = w + 20;
+        this.y  = Math.random() * h * 0.8;
+        this.vx = -(0.25 + Math.random() * 0.40);
+        this.vy =  (Math.random() - 0.35) * 0.30;
+      } else if (edge === 2) {    /* bottom */
+        this.x  = Math.random() * w;
+        this.y  = h + 20;
+        this.vx = -0.1 - Math.random() * 0.2;
+        this.vy = -(0.25 + Math.random() * 0.30);
+      } else {                    /* left */
+        this.x  = -20;
+        this.y  = h * 0.2 + Math.random() * h * 0.6;
+        this.vx =  0.15 + Math.random() * 0.25;
+        this.vy =  (Math.random() - 0.5) * 0.30;
+      }
+
+      this.len    = 90  + Math.random() * 140;
+      this.lw     = 0.4 + Math.random() * 1.1;
+      this.maxOp  = 0.07 + Math.random() * 0.12;
+      this.op     = scattered ? Math.random() * this.maxOp : 0;
+      this.fading = scattered && Math.random() > 0.5;
+      /* Two blue tones from ENOS brand palette */
+      this.rgb    = Math.random() > 0.45 ? '74,111,192' : '39,70,144';
+    };
+
+    Beam.prototype.step = function () {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.fading) {
+        this.op -= 0.0012;
+        if (this.op <= 0) { this.init(false); return; }
+      } else {
+        this.op = Math.min(this.op + 0.0015, this.maxOp);
+        /* Begin fading once the beam reaches the left-centre area */
+        if (this.x < canvas.width * 0.18) this.fading = true;
+      }
+
+      /* Safety reset if beam wanders fully off-screen */
+      var pad = this.len + 50;
+      if (this.x < -pad || this.x > canvas.width  + pad ||
+          this.y < -pad || this.y > canvas.height + pad) {
+        this.init(false);
+      }
+    };
+
+    Beam.prototype.draw = function () {
+      var angle = Math.atan2(this.vy, this.vx);
+      var tx = this.x - Math.cos(angle) * this.len;
+      var ty = this.y - Math.sin(angle) * this.len;
+      var g  = ctx.createLinearGradient(tx, ty, this.x, this.y);
+      g.addColorStop(0,    'rgba(' + this.rgb + ',0)');
+      g.addColorStop(0.45, 'rgba(' + this.rgb + ',' + this.op + ')');
+      g.addColorStop(1,    'rgba(' + this.rgb + ',0)');
+      ctx.beginPath();
+      ctx.moveTo(tx, ty);
+      ctx.lineTo(this.x, this.y);
+      ctx.strokeStyle = g;
+      ctx.lineWidth   = this.lw;
+      ctx.stroke();
+    };
+
+    /* Spawn initial set, scattered at random positions */
+    var beams = [];
+    for (var i = 0; i < BEAM_COUNT; i++) beams.push(new Beam(true));
+
+    var raf, lastTime = 0;
+
+    function loop(ts) {
+      raf = requestAnimationFrame(loop);
+      if (ts - lastTime < INTERVAL) return;
+      lastTime = ts;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (var j = 0; j < beams.length; j++) { beams[j].step(); beams[j].draw(); }
+    }
+
+    /* Pause animation when tab is hidden — saves CPU / battery */
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { cancelAnimationFrame(raf); }
+      else                  { lastTime = 0; raf = requestAnimationFrame(loop); }
+    });
+
+    raf = requestAnimationFrame(loop);
+  }());
+
+
+  /* ── 2. CARD SPOTLIGHT ───────────────────────────────────────
+     A radial gradient "torch" that follows the cursor across each
+     cog card — each card tracks its own local mouse coordinates
+     via CSS custom properties (--spotlight-x / --spotlight-y).
+
+     WEBFLOW: The matching CSS (::after pseudo-element + custom
+     properties) goes in Head Code. This JS block goes in Footer
+     Code. Targets any element with class="cog-card" automatically,
+     so adding new cog cards in Webflow requires no JS changes.
+  ─────────────────────────────────────────────────────────────── */
+  (function () {
+    var cards = document.querySelectorAll('.cog-card');
+    if (!cards.length) return;
+
+    /* Skip on touch-only devices — no cursor to follow */
+    if (window.matchMedia('(hover: none)').matches) return;
+
+    cards.forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--spotlight-x', (e.clientX - r.left)  + 'px');
+        card.style.setProperty('--spotlight-y', (e.clientY - r.top)   + 'px');
+      });
+
+      /* Reset position on leave so the next hover starts clean */
+      card.addEventListener('mouseleave', function () {
+        card.style.setProperty('--spotlight-x', '50%');
+        card.style.setProperty('--spotlight-y', '50%');
+      });
+    });
+  }());
+
+
+  /* ── 3. NUMBER TICKER ────────────────────────────────────────
+     Counts stat numbers up from zero when scrolled into view.
+     Handles mixed formats: "30", "3.5m", "£100m+".
+     Fires once per element; respects prefers-reduced-motion.
+
+     WEBFLOW: This JS block goes in Footer Code. It targets any
+     element with class="stat-num" automatically. To customise
+     animation speed per element, add:
+       data-ticker-duration="2500"   (milliseconds; default 2200)
+     No HTML changes needed — the existing stat elements are used.
+  ─────────────────────────────────────────────────────────────── */
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var els = document.querySelectorAll('.stat-num');
+    if (!els.length) return;
+
+    /* Parse a display string into its parts, e.g. "£100m+" →
+       { prefix: "£", value: 100, suffix: "m+", decimals: 0 }  */
+    function parse(text) {
+      var m = text.trim().match(/^([^0-9]*)([0-9]+(?:\.[0-9]+)?)(.*)$/);
+      if (!m) return null;
+      var decimals = m[2].indexOf('.') !== -1 ? m[2].split('.')[1].length : 0;
+      return { prefix: m[1], value: parseFloat(m[2]), suffix: m[3], decimals: decimals };
+    }
+
+    /* Ease-out cubic — fast start, smooth landing */
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function animateTicker(el, parsed, duration) {
+      var startTime = null;
+      function tick(now) {
+        if (!startTime) startTime = now;
+        var raw      = Math.min((now - startTime) / duration, 1);
+        var progress = easeOut(raw);
+        el.textContent = parsed.prefix
+          + (progress * parsed.value).toFixed(parsed.decimals)
+          + parsed.suffix;
+        if (raw < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    var tickerIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el       = entry.target;
+        var parsed   = parse(el.dataset.tickerOriginal);
+        if (!parsed) return;
+        var duration = parseInt(el.dataset.tickerDuration || '2200', 10);
+        animateTicker(el, parsed, duration);
+        tickerIO.unobserve(el);  /* fire once only */
+      });
+    }, { threshold: 0.6 });
+
+    els.forEach(function (el) {
+      /* Snapshot the original text before the first tick overwrites it */
+      el.dataset.tickerOriginal = el.textContent.trim();
+      el.setAttribute('data-ticker', '');
+      tickerIO.observe(el);
+    });
+  }());
+
 </script>
 
 </body>
