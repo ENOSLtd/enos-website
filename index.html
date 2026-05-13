@@ -257,6 +257,67 @@
       line-height: 1.65; color: var(--white);
     }
 
+    /* ── PERSONA MASK REVEAL ─────────────── */
+    .personas-mask-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .personas-cover {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      background: var(--navy-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: crosshair;
+      -webkit-mask-image: radial-gradient(
+        circle var(--cover-r, 0px) at var(--cover-x, 50%) var(--cover-y, 50%),
+        transparent 0%, black 100%
+      );
+      mask-image: radial-gradient(
+        circle var(--cover-r, 0px) at var(--cover-x, 50%) var(--cover-y, 50%),
+        transparent 0%, black 100%
+      );
+    }
+    /* On touch-only devices, hide the cover so content is always visible */
+    @media (hover: none) {
+      .personas-cover { display: none; }
+    }
+    .cover-inner {
+      text-align: center;
+      padding: 40px 24px;
+      pointer-events: none;
+      user-select: none;
+    }
+    .cover-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.18em;
+      color: #7a9fd4; text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .cover-eyebrow::before,
+    .cover-eyebrow::after {
+      content: ''; display: block;
+      width: 28px; height: 1px; background: #7a9fd4;
+    }
+    .cover-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .cover-heading em { font-style: italic; color: #7a9fd4; }
+    .cover-sub {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     /* ── 6-COG MODEL ──────────────────────── */
     .cog-sec {
       background: var(--navy); position: relative; overflow: hidden;
@@ -989,24 +1050,35 @@
     <p class="sec-lead">Every major transformation has an executive who owns the outcome, a PMO lead who owns the execution, and a board that's supposed to own the oversight. ENOS provides the independent clarity that none of them can generate from the inside.</p>
   </div>
 
-  <div class="personas-grid">
-    <div class="persona-card reveal">
-      <div class="persona-role">The COO</div>
-      <div class="persona-name">David</div>
-      <p class="persona-pain">Your transformation portfolio carries significant commercial risk. You need the facts — fast. Not another reassuring status update from the team doing the work.</p>
-      <div class="persona-quote">"I need to know if this programme will actually deliver — or if I'm funding failure."</div>
+  <div class="personas-mask-wrap" id="personasMaskWrap">
+    <div class="personas-grid">
+      <div class="persona-card reveal">
+        <div class="persona-role">The COO</div>
+        <div class="persona-name">David</div>
+        <p class="persona-pain">Your transformation portfolio carries significant commercial risk. You need the facts — fast. Not another reassuring status update from the team doing the work.</p>
+        <div class="persona-quote">"I need to know if this programme will actually deliver — or if I'm funding failure."</div>
+      </div>
+      <div class="persona-card reveal">
+        <div class="persona-role">The PMO Lead</div>
+        <div class="persona-name">Sarah</div>
+        <p class="persona-pain">You're too close to the work to see it clearly. You need a trusted partner who can identify the hidden risks buried in team dynamics, governance gaps, and adoption failure.</p>
+        <div class="persona-quote">"I need an external eye that sees what we can't from the inside."</div>
+      </div>
+      <div class="persona-card reveal">
+        <div class="persona-role">The NED / Risk Committee Chair</div>
+        <div class="persona-name">Richard</div>
+        <p class="persona-pain">You have oversight responsibility for a major transformation programme but you're working entirely from the executive team's own reporting. You know you should be providing independent challenge — but you can't see behind the numbers.</p>
+        <div class="persona-quote">"I'm supposed to hold the board to account on this. But how do I do that when I'm only seeing what they choose to show me?"</div>
+      </div>
     </div>
-    <div class="persona-card reveal">
-      <div class="persona-role">The PMO Lead</div>
-      <div class="persona-name">Sarah</div>
-      <p class="persona-pain">You're too close to the work to see it clearly. You need a trusted partner who can identify the hidden risks buried in team dynamics, governance gaps, and adoption failure.</p>
-      <div class="persona-quote">"I need an external eye that sees what we can't from the inside."</div>
-    </div>
-    <div class="persona-card reveal">
-      <div class="persona-role">The NED / Risk Committee Chair</div>
-      <div class="persona-name">Richard</div>
-      <p class="persona-pain">You have oversight responsibility for a major transformation programme but you're working entirely from the executive team's own reporting. You know you should be providing independent challenge — but you can't see behind the numbers.</p>
-      <div class="persona-quote">"I'm supposed to hold the board to account on this. But how do I do that when I'm only seeing what they choose to show me?"</div>
+
+    <!-- Mask cover overlay — reveals persona cards as cursor moves -->
+    <div class="personas-cover" id="personasCover">
+      <div class="cover-inner">
+        <div class="cover-eyebrow">Who We Help</div>
+        <h3 class="cover-heading">Hover to discover<br><em>your</em> blind spot</h3>
+        <p class="cover-sub">Move your cursor to reveal</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1512,6 +1584,54 @@
     }, { passive: true });
   })();
 
+  /* ── PERSONA MASK REVEAL ──────────────────────────────────────
+     Circular "spotlight" that follows the cursor, punching a hole
+     in the cover overlay to reveal the persona cards beneath.
+     Uses CSS mask-image with a radial-gradient; radius is animated
+     via requestAnimationFrame for a smooth ease-in/ease-out feel.
+  ────────────────────────────────────────────────────────────── */
+  (function () {
+    var wrap  = document.getElementById('personasMaskWrap');
+    var cover = document.getElementById('personasCover');
+    if (!wrap || !cover) return;
+
+    var targetR  = 0;   /* radius we're animating toward */
+    var currentR = 0;   /* radius currently rendered      */
+    var raf      = null;
+    var RADIUS   = 220; /* px — size of the reveal circle  */
+    var EASE     = 0.10; /* lerp factor — lower = slower    */
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function update() {
+      currentR = lerp(currentR, targetR, EASE);
+      cover.style.setProperty('--cover-r', Math.round(currentR) + 'px');
+      if (Math.abs(currentR - targetR) > 0.5) {
+        raf = requestAnimationFrame(update);
+      } else {
+        currentR = targetR;
+        cover.style.setProperty('--cover-r', currentR + 'px');
+        raf = null;
+      }
+    }
+
+    function startAnim() {
+      if (!raf) raf = requestAnimationFrame(update);
+    }
+
+    wrap.addEventListener('mousemove', function (e) {
+      var rect = wrap.getBoundingClientRect();
+      cover.style.setProperty('--cover-x', (e.clientX - rect.left) + 'px');
+      cover.style.setProperty('--cover-y', (e.clientY - rect.top)  + 'px');
+      if (targetR !== RADIUS) { targetR = RADIUS; startAnim(); }
+    });
+
+    wrap.addEventListener('mouseleave', function () {
+      targetR = 0;
+      startAnim();
+    });
+  }());
+
   /* ══════════════════════════════════════════════════════════
      ENHANCED COMPONENTS — Webflow-ready vanilla JS
      ──────────────────────────────────────────────────────────
@@ -1703,7 +1823,7 @@
      WEBFLOW: This JS block goes in Footer Code. It targets any
      element with class="stat-num" automatically. To customise
      animation speed per element, add:
-       data-ticker-duration="2500"   (milliseconds; default 2200)
+       data-ticker-duration="2500"   (milliseconds; default 3200)
      No HTML changes needed — the existing stat elements are used.
   ─────────────────────────────────────────────────────────────── */
   (function () {
@@ -1744,7 +1864,7 @@
         var el       = entry.target;
         var parsed   = parse(el.dataset.tickerOriginal);
         if (!parsed) return;
-        var duration = parseInt(el.dataset.tickerDuration || '2200', 10);
+        var duration = parseInt(el.dataset.tickerDuration || '3200', 10);
         animateTicker(el, parsed, duration);
         tickerIO.unobserve(el);  /* fire once only */
       });
