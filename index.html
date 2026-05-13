@@ -271,14 +271,8 @@
       align-items: center;
       justify-content: center;
       cursor: crosshair;
-      -webkit-mask-image: radial-gradient(
-        circle var(--cover-r, 0px) at var(--cover-x, 50%) var(--cover-y, 50%),
-        transparent 0%, transparent 72%, black 100%
-      );
-      mask-image: radial-gradient(
-        circle var(--cover-r, 0px) at var(--cover-x, 50%) var(--cover-y, 50%),
-        transparent 0%, transparent 72%, black 100%
-      );
+      mask: url(#personaCoverMask);
+      -webkit-mask: url(#personaCoverMask);
     }
     /* On touch-only devices, hide the cover so content is always visible */
     @media (hover: none) {
@@ -1072,6 +1066,21 @@
       </div>
     </div>
 
+    <!-- SVG mask: white rect = cover visible; black gradient circle = cover hidden = cards revealed -->
+    <svg width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true">
+      <defs>
+        <radialGradient id="personaRevealGrad" gradientUnits="objectBoundingBox" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="black" stop-opacity="1"/>
+          <stop offset="72%"  stop-color="black" stop-opacity="1"/>
+          <stop offset="100%" stop-color="black" stop-opacity="0"/>
+        </radialGradient>
+        <mask id="personaCoverMask" maskUnits="userSpaceOnUse">
+          <rect x="0" y="0" width="10000" height="10000" fill="white"/>
+          <circle id="personaRevealCircle" cx="-9999" cy="-9999" r="0" fill="url(#personaRevealGrad)"/>
+        </mask>
+      </defs>
+    </svg>
+
     <!-- Mask cover overlay — reveals persona cards as cursor moves -->
     <div class="personas-cover" id="personasCover">
       <div class="cover-inner">
@@ -1591,39 +1600,49 @@
      via requestAnimationFrame for a smooth ease-in/ease-out feel.
   ────────────────────────────────────────────────────────────── */
   (function () {
-    var wrap  = document.getElementById('personasMaskWrap');
-    var cover = document.getElementById('personasCover');
-    if (!wrap || !cover) return;
+    var wrap   = document.getElementById('personasMaskWrap');
+    var circle = document.getElementById('personaRevealCircle');
+    if (!wrap || !circle) return;
 
-    var targetR  = 0;   /* radius we're animating toward */
-    var currentR = 0;   /* radius currently rendered      */
-    var raf      = null;
-    var RADIUS   = 264; /* px — size of the reveal circle  */
-    var EASE     = 0.10; /* lerp factor — lower = slower    */
+    var currentR = 0, targetR = 0;
+    var currentX = 0, targetX = 0;
+    var currentY = 0, targetY = 0;
+    var raf = null;
+    var RADIUS = 400; /* px — reveal circle size */
+    var EASE   = 0.10; /* lerp factor — lower = slower */
 
     function lerp(a, b, t) { return a + (b - a) * t; }
 
     function update() {
       currentR = lerp(currentR, targetR, EASE);
-      cover.style.setProperty('--cover-r', Math.round(currentR) + 'px');
-      if (Math.abs(currentR - targetR) > 0.5) {
-        raf = requestAnimationFrame(update);
-      } else {
-        currentR = targetR;
-        cover.style.setProperty('--cover-r', currentR + 'px');
+      currentX = lerp(currentX, targetX, EASE);
+      currentY = lerp(currentY, targetY, EASE);
+      circle.setAttribute('r',  Math.round(currentR));
+      circle.setAttribute('cx', Math.round(currentX));
+      circle.setAttribute('cy', Math.round(currentY));
+      var done = Math.abs(currentR - targetR) < 0.5
+              && Math.abs(currentX - targetX) < 0.5
+              && Math.abs(currentY - targetY) < 0.5;
+      if (done) {
+        circle.setAttribute('r',  Math.round(targetR));
+        circle.setAttribute('cx', Math.round(targetX));
+        circle.setAttribute('cy', Math.round(targetY));
         raf = null;
+      } else {
+        raf = requestAnimationFrame(update);
       }
     }
 
-    function startAnim() {
-      if (!raf) raf = requestAnimationFrame(update);
-    }
+    function startAnim() { if (!raf) raf = requestAnimationFrame(update); }
 
     wrap.addEventListener('mousemove', function (e) {
       var rect = wrap.getBoundingClientRect();
-      cover.style.setProperty('--cover-x', (e.clientX - rect.left) + 'px');
-      cover.style.setProperty('--cover-y', (e.clientY - rect.top)  + 'px');
-      if (targetR !== RADIUS) { targetR = RADIUS; startAnim(); }
+      targetX = e.clientX - rect.left;
+      targetY = e.clientY - rect.top;
+      /* Snap position on first entry so circle doesn't slide in from the corner */
+      if (targetR === 0) { currentX = targetX; currentY = targetY; }
+      targetR = RADIUS;
+      startAnim();
     });
 
     wrap.addEventListener('mouseleave', function () {
