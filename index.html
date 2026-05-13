@@ -262,54 +262,18 @@
       position: relative;
       overflow: hidden;
     }
-    .personas-cover {
+    .personas-cover-canvas {
       position: absolute;
       inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
       z-index: 4;
-      background: var(--navy-mid);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       cursor: crosshair;
-      mask: url(#personaCoverMask);
-      -webkit-mask: url(#personaCoverMask);
     }
     /* On touch-only devices, hide the cover so content is always visible */
     @media (hover: none) {
-      .personas-cover { display: none; }
-    }
-    .cover-inner {
-      text-align: center;
-      padding: 40px 24px;
-      pointer-events: none;
-      user-select: none;
-    }
-    .cover-eyebrow {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem; letter-spacing: 0.18em;
-      color: #7a9fd4; text-transform: uppercase;
-      margin-bottom: 20px;
-      display: flex; align-items: center; justify-content: center; gap: 12px;
-    }
-    .cover-eyebrow::before,
-    .cover-eyebrow::after {
-      content: ''; display: block;
-      width: 28px; height: 1px; background: #7a9fd4;
-    }
-    .cover-heading {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 20px;
-    }
-    .cover-heading em { font-style: italic; color: #7a9fd4; }
-    .cover-sub {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.5);
-      font-family: 'JetBrains Mono', monospace;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      .personas-cover-canvas { display: none; }
     }
 
     /* ── 6-COG MODEL ──────────────────────── */
@@ -1066,29 +1030,8 @@
       </div>
     </div>
 
-    <!-- SVG mask: white rect = cover visible; black gradient circle = cover hidden = cards revealed -->
-    <svg width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true">
-      <defs>
-        <radialGradient id="personaRevealGrad" gradientUnits="objectBoundingBox" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"   stop-color="black" stop-opacity="1"/>
-          <stop offset="72%"  stop-color="black" stop-opacity="1"/>
-          <stop offset="100%" stop-color="black" stop-opacity="0"/>
-        </radialGradient>
-        <mask id="personaCoverMask" maskUnits="userSpaceOnUse">
-          <rect x="0" y="0" width="10000" height="10000" fill="white"/>
-          <circle id="personaRevealCircle" cx="-9999" cy="-9999" r="0" fill="url(#personaRevealGrad)"/>
-        </mask>
-      </defs>
-    </svg>
-
-    <!-- Mask cover overlay — reveals persona cards as cursor moves -->
-    <div class="personas-cover" id="personasCover">
-      <div class="cover-inner">
-        <div class="cover-eyebrow">Who We Help</div>
-        <h3 class="cover-heading">Hover to discover<br><em>your</em> blind spot</h3>
-        <p class="cover-sub">Move your cursor to reveal</p>
-      </div>
-    </div>
+    <!-- Canvas cover: draws dark overlay + text, punches circular hole at cursor -->
+    <canvas id="personasCoverCanvas" class="personas-cover-canvas"></canvas>
   </div>
 </section>
 
@@ -1593,44 +1536,131 @@
     }, { passive: true });
   })();
 
-  /* ── PERSONA MASK REVEAL ──────────────────────────────────────
-     Circular "spotlight" that follows the cursor, punching a hole
-     in the cover overlay to reveal the persona cards beneath.
-     Uses CSS mask-image with a radial-gradient; radius is animated
-     via requestAnimationFrame for a smooth ease-in/ease-out feel.
+  /* ── PERSONA CANVAS REVEAL ────────────────────────────────────
+     Draws a dark overlay + centred text onto a <canvas>, then uses
+     Canvas 2D destination-out compositing to punch a soft circular
+     hole at the cursor position, revealing the persona cards below.
+     This is more reliable than CSS/SVG masking across all browsers.
   ────────────────────────────────────────────────────────────── */
   (function () {
     var wrap   = document.getElementById('personasMaskWrap');
-    var circle = document.getElementById('personaRevealCircle');
-    if (!wrap || !circle) return;
+    var canvas = document.getElementById('personasCoverCanvas');
+    if (!wrap || !canvas) return;
+    var ctx = canvas.getContext('2d');
 
     var currentR = 0, targetR = 0;
     var currentX = 0, targetX = 0;
     var currentY = 0, targetY = 0;
     var raf = null;
-    var RADIUS = 550; /* px — reveal circle size */
-    var EASE   = 0.10; /* lerp factor — lower = slower */
+    var RADIUS = 550;  /* px — reveal circle size          */
+    var EASE   = 0.10; /* lerp factor — lower = slower     */
+    var dpr    = window.devicePixelRatio || 1;
 
     function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function resize() {
+      var w = wrap.offsetWidth;
+      var h = wrap.offsetHeight;
+      canvas.width  = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width  = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.scale(dpr, dpr);
+    }
+
+    function draw(cx, cy, revealR) {
+      var w = wrap.offsetWidth;
+      var h = wrap.offsetHeight;
+
+      ctx.clearRect(0, 0, w, h);
+
+      /* ── 1. Dark background ── */
+      ctx.fillStyle = '#080e40';
+      ctx.fillRect(0, 0, w, h);
+
+      /* ── 2. Centred cover text (drawn before hole so it gets punched out too) ── */
+      var midX = w / 2;
+      var midY = h / 2;
+
+      /* Decorative side-lines + eyebrow */
+      ctx.strokeStyle = '#7a9fd4';
+      ctx.lineWidth   = 1;
+      var ew = 120; /* text approx half-width for line placement */
+      ctx.beginPath(); ctx.moveTo(midX - ew - 16, midY - 74); ctx.lineTo(midX - ew + 4, midY - 74); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(midX + ew - 4,  midY - 74); ctx.lineTo(midX + ew + 16, midY - 74); ctx.stroke();
+
+      ctx.fillStyle    = '#7a9fd4';
+      ctx.font         = '400 11px "JetBrains Mono", monospace';
+      ctx.textAlign    = 'center';
+      ctx.textBaseline = 'middle';
+      try { ctx.letterSpacing = '2.8px'; } catch(e) {}
+      ctx.fillText('WHO WE HELP', midX, midY - 74);
+
+      /* Heading line 1 */
+      try { ctx.letterSpacing = '0px'; } catch(e) {}
+      ctx.fillStyle = '#ffffff';
+      ctx.font      = '700 ' + Math.round(Math.min(w * 0.055, 48)) + 'px "Playfair Display", serif';
+      ctx.fillText('Hover to discover', midX, midY - 14);
+
+      /* Heading line 2: italic "your" in blue + "blind spot" in white */
+      var fs = Math.round(Math.min(w * 0.055, 48));
+      ctx.font = 'italic 700 ' + fs + 'px "Playfair Display", serif';
+      var yourW = ctx.measureText('your').width;
+      ctx.font = '700 ' + fs + 'px "Playfair Display", serif';
+      var restW = ctx.measureText(' blind spot').width;
+      var lineX = midX - (yourW + restW) / 2;
+      var lineY = midY + fs * 1.25;
+
+      ctx.font      = 'italic 700 ' + fs + 'px "Playfair Display", serif';
+      ctx.fillStyle = '#7a9fd4';
+      ctx.textAlign = 'left';
+      ctx.fillText('your', lineX, lineY);
+
+      ctx.font      = '700 ' + fs + 'px "Playfair Display", serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText(' blind spot', lineX + yourW, lineY);
+
+      /* Sub-label */
+      ctx.textAlign = 'center';
+      ctx.fillStyle = 'rgba(255,255,255,0.45)';
+      ctx.font      = '400 11px "JetBrains Mono", monospace';
+      try { ctx.letterSpacing = '2px'; } catch(e) {}
+      ctx.fillText('MOVE YOUR CURSOR TO REVEAL', midX, lineY + fs * 1.4);
+
+      /* ── 3. Punch circular hole through background + text ── */
+      if (revealR > 1) {
+        ctx.globalCompositeOperation = 'destination-out';
+
+        /* Solid inner disc (0 → 72 % of radius) */
+        var inner = revealR * 0.72;
+        ctx.beginPath();
+        ctx.arc(cx, cy, inner, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0,0,0,1)';
+        ctx.fill();
+
+        /* Feathered ring (72 % → 100 %) */
+        var edgeGrad = ctx.createRadialGradient(cx, cy, inner, cx, cy, revealR);
+        edgeGrad.addColorStop(0, 'rgba(0,0,0,1)');
+        edgeGrad.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.beginPath();
+        ctx.arc(cx, cy, revealR, 0, Math.PI * 2);
+        ctx.fillStyle = edgeGrad;
+        ctx.fill();
+
+        ctx.globalCompositeOperation = 'source-over';
+      }
+    }
 
     function update() {
       currentR = lerp(currentR, targetR, EASE);
       currentX = lerp(currentX, targetX, EASE);
       currentY = lerp(currentY, targetY, EASE);
-      circle.setAttribute('r',  Math.round(currentR));
-      circle.setAttribute('cx', Math.round(currentX));
-      circle.setAttribute('cy', Math.round(currentY));
-      var done = Math.abs(currentR - targetR) < 0.5
-              && Math.abs(currentX - targetX) < 0.5
-              && Math.abs(currentY - targetY) < 0.5;
-      if (done) {
-        circle.setAttribute('r',  Math.round(targetR));
-        circle.setAttribute('cx', Math.round(targetX));
-        circle.setAttribute('cy', Math.round(targetY));
-        raf = null;
-      } else {
-        raf = requestAnimationFrame(update);
-      }
+      draw(currentX, currentY, currentR);
+      var done = Math.abs(currentR - targetR) < 0.4
+              && Math.abs(currentX - targetX) < 0.4
+              && Math.abs(currentY - targetY) < 0.4;
+      if (done) { draw(targetX, targetY, targetR); raf = null; }
+      else       { raf = requestAnimationFrame(update); }
     }
 
     function startAnim() { if (!raf) raf = requestAnimationFrame(update); }
@@ -1639,7 +1669,6 @@
       var rect = wrap.getBoundingClientRect();
       targetX = e.clientX - rect.left;
       targetY = e.clientY - rect.top;
-      /* Snap position on first entry so circle doesn't slide in from the corner */
       if (targetR === 0) { currentX = targetX; currentY = targetY; }
       targetR = RADIUS;
       startAnim();
@@ -1649,6 +1678,13 @@
       targetR = 0;
       startAnim();
     });
+
+    window.addEventListener('resize', function () { resize(); draw(currentX, currentY, currentR); });
+
+    /* Wait for web fonts before first draw so text renders in Playfair Display */
+    function init() { resize(); draw(0, 0, 0); }
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(init); }
+    else { window.addEventListener('load', init); }
   }());
 
   /* ══════════════════════════════════════════════════════════
