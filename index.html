@@ -18,11 +18,17 @@
   <meta property="og:title"       content="ENOS Limited | Independent Transformation Programme Diagnostics">
   <meta property="og:description" content="Independent diagnostic assessments for stalled transformations. The Critical Friend for COOs, PMO Leads and NEDs — 30 years' experience across financial services and enterprise.">
   <meta property="og:site_name"   content="ENOS Limited">
+  <meta property="og:image"       content="https://enos.ltd.uk/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt"    content="ENOS Limited — Independent Transformation Programme Diagnostics">
 
   <!-- Twitter / X card -->
-  <meta name="twitter:card"        content="summary">
+  <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="ENOS Limited | Independent Transformation Programme Diagnostics">
   <meta name="twitter:description" content="Independent diagnostic assessments for stalled transformations. 30 years' experience across financial services and enterprise.">
+  <meta name="twitter:image"       content="https://enos.ltd.uk/og-image.png">
+  <meta name="twitter:image:alt"   content="ENOS Limited — Independent Transformation Programme Diagnostics">
 
   <!--
     Favicon — SVG for modern browsers; PNG fallback for older ones.
@@ -880,6 +886,17 @@
     .stat-num[data-ticker] {
       font-variant-numeric: tabular-nums;  /* keeps width stable while counting */
     }
+
+    /* ── SEO: visually hidden but readable by search engines & screen readers */
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
   </style>
 
   <!-- Structured Data — ProfessionalService schema -->
@@ -890,13 +907,26 @@
     "name": "ENOS Limited",
     "url": "https://enos.ltd.uk",
     "logo": "https://enos.ltd.uk/favicon.svg",
+    "image": "https://enos.ltd.uk/og-image.png",
+    "email": "gp@enos.ltd.uk",
     "description": "ENOS Limited provides independent transformation programme diagnostics and 360° Health Check assessments for organisations where change has stalled. We are the Critical Friend for COOs, PMO Leads, and Non-Executive Directors navigating complex digital transformation and regulatory change.",
     "founder": {
       "@type": "Person",
       "name": "Geoff Preston",
-      "jobTitle": "Director & Principal Consultant"
+      "jobTitle": "Director & Principal Consultant",
+      "sameAs": "https://www.linkedin.com/company/enos-limited"
     },
     "foundingDate": "2001",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "GB"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "gp@enos.ltd.uk",
+      "availableLanguage": "English"
+    },
     "serviceType": [
       "Transformation Programme Diagnostics",
       "360° Programme Health Check",
@@ -918,6 +948,56 @@
     ],
     "sameAs": [
       "https://www.linkedin.com/company/enos-limited"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data — FAQPage schema (enables rich FAQ snippets in search results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does a transformation programme diagnostic involve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ENOS conducts an independent 360° Health Check across six dimensions — Strategy, Prioritisation, Delivery, Governance, Adoption, and Benefit Realisation. We interview stakeholders, review programme documentation, and produce an impartial diagnostic report with prioritised recommendations. The engagement typically takes two to four weeks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who commissions a transformation programme health check?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our clients are typically COOs or executive sponsors who need independent assurance that a programme will deliver, PMO Leads who need an external perspective on hidden risks, and Non-Executive Directors or Risk Committee Chairs who need to provide credible independent challenge to the board on a major transformation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is ENOS different from a management consultancy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ENOS provides independent diagnostic assessments — we do not sell implementation services. This means our findings are impartial: we have no commercial interest in the outcome beyond giving you an accurate picture. We are a boutique firm with 30 years of hands-on programme delivery experience across financial services, energy, and enterprise."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What sectors does ENOS work in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ENOS has deep experience in financial services and banking, energy and utilities, gaming and betting, technology and digital, and education and public sector — with particular depth in regulated industries where governance and compliance risks are highest."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is NED & Board Advisory?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ENOS provides Non-Executive Director and board advisory services to organisations undergoing significant transformation. We bring independent challenge and senior programme expertise to board-level oversight, helping NEDs and risk committees ask the right questions and interpret programme reporting accurately."
+        }
+      }
     ]
   }
   </script>
@@ -1017,11 +1097,11 @@
 
   <div style="position:relative; z-index:2; width:100%;">
     <div class="hero-content">
-      <div class="label-tag">Independent Diagnostic and Consultancy</div>
+      <div class="label-tag">Independent Transformation Programme Diagnostics</div>
 
-      <h1>Is your transformation<br><em>marking its own homework?</em></h1>
+      <h1><span class="sr-only">Transformation Programme Diagnostics UK — </span>Is your transformation<br><em>marking its own homework?</em></h1>
 
-      <p class="hero-sub">ENOS Limited provides impartial, high-level diagnostic assessments for organisations where change has stalled — or where no-one inside can see what's actually broken. We are your Critical Friend.</p>
+      <p class="hero-sub">ENOS Limited provides impartial, independent transformation programme diagnostics for organisations where change has stalled — or where no-one inside can see what's actually broken. We are your Critical Friend.</p>
 
       <div class="hero-btns">
         <a href="#health-check" class="btn-primary">Request a 360° Health Check</a>
