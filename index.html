@@ -3,26 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ENOS Limited | Independent Diagnostics for Complex Change</title>
-  <meta name="description" content="ENOS Limited provides independent diagnostic assessments for organisations navigating complex transformation, AI deployment, and board-level risk. 30 years' experience. Boutique. Evidence-led.">
-  <link rel="canonical" href="https://enos.ltd.uk/">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="icon" type="image/png" href="favicon.svg" sizes="any">
+  <title>ENOS Limited | Independent Transformation Programme Diagnostics</title>
+  <meta name="description" content="ENOS Limited provides independent transformation programme diagnostics for organisations where change has stalled. The Critical Friend for COOs, PMO Leads and NEDs — 30 years' experience across financial services and enterprise.">
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://enos.ltd.uk">
-  <meta property="og:title" content="ENOS Limited | Independent Diagnostics for Complex Change">
-  <meta property="og:description" content="Independent diagnostic assessments for transformation and AI programmes. The Critical Friend for COOs, NEDs and Risk Committees.">
-  <meta property="og:site_name" content="ENOS Limited">
-  <meta property="og:image" content="https://enos.ltd.uk/og-image.png">
-
+  <!-- Google Search Console verification -->
   <meta name="google-site-verification" content="jMpW-U6pkldynddG4GTw6uy3ocQR9adZkR2qcZAx6zM">
 
+  <!-- Canonical -->
+  <link rel="canonical" href="https://enos.ltd.uk">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://enos.ltd.uk">
+  <meta property="og:title"       content="ENOS Limited | Independent Transformation Programme Diagnostics">
+  <meta property="og:description" content="Independent diagnostic assessments for stalled transformations. The Critical Friend for COOs, PMO Leads and NEDs — 30 years' experience across financial services and enterprise.">
+  <meta property="og:site_name"   content="ENOS Limited">
+  <meta property="og:image"       content="https://enos.ltd.uk/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt"    content="ENOS Limited — Independent Transformation Programme Diagnostics">
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="ENOS Limited | Independent Transformation Programme Diagnostics">
+  <meta name="twitter:description" content="Independent diagnostic assessments for stalled transformations. 30 years' experience across financial services and enterprise.">
+  <meta name="twitter:image"       content="https://enos.ltd.uk/og-image.png">
+  <meta name="twitter:image:alt"   content="ENOS Limited — Independent Transformation Programme Diagnostics">
+
+  <!--
+    Favicon — SVG for modern browsers; PNG fallback for older ones.
+    WEBFLOW: Upload favicon.png via Site Settings > Favicon.
+    The SVG file (favicon.svg) is in the same folder as this HTML.
+  -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png"     href="favicon.svg" sizes="any">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -33,8 +50,6 @@
       --blue:       #274690;
       --blue-mid:   #3254a8;
       --blue-light: #4a6fc0;
-      --teal:       #1a7a6e;
-      --teal-light: #2aa898;
       --white:      #ffffff;
       --w70:  rgba(255,255,255,0.70);
       --w40:  rgba(255,255,255,0.40);
@@ -44,6 +59,7 @@
     }
 
     html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Outfit', sans-serif;
       background: var(--navy);
@@ -51,20 +67,23 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
+
     h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.12; }
 
-    /* ── NAV ── */
+    /* ── NAV ──────────────────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 20px 64px;
-      background: rgba(5,10,48,0.92);
+      background: rgba(5, 10, 48, 0.88);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--w15);
       transition: padding 0.3s;
     }
-    nav.scrolled { padding: 12px 64px; }
-    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
     .nav-logo svg { width: 38px; height: 38px; }
     .nav-logo-text {
       font-family: 'Playfair Display', serif;
@@ -72,10 +91,10 @@
       color: var(--white); letter-spacing: 0.04em;
     }
     .nav-logo-text span { color: var(--blue-light); }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a {
       color: var(--w70); text-decoration: none;
-      font-size: 0.85rem; font-weight: 500;
+      font-size: 0.875rem; font-weight: 500;
       letter-spacing: 0.08em; text-transform: uppercase;
       transition: color 0.2s;
     }
@@ -90,12 +109,8 @@
       transition: background 0.2s, transform 0.2s;
     }
     .nav-cta:hover { background: var(--blue-mid); transform: translateY(-1px); }
-    @media(max-width:900px){
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-    }
 
-    /* ── HERO ── */
+    /* ── HERO ─────────────────────────────── */
     .hero {
       min-height: 100vh;
       display: flex; align-items: center;
@@ -105,8 +120,8 @@
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse at 70% 35%, rgba(39,70,144,0.30) 0%, transparent 55%),
-        radial-gradient(ellipse at 15% 75%, rgba(26,122,110,0.12) 0%, transparent 45%),
+        radial-gradient(ellipse at 72% 40%, rgba(39,70,144,0.28) 0%, transparent 55%),
+        radial-gradient(ellipse at 8%  80%, rgba(39,70,144,0.14) 0%, transparent 45%),
         var(--navy);
     }
     .hero-bg::before {
@@ -117,427 +132,1960 @@
         linear-gradient(90deg, var(--w04) 1px, transparent 1px);
       background-size: 64px 64px;
     }
-    .hero-content { position: relative; z-index: 2; max-width: 700px; }
+    .hero-gear-bg {
+      position: absolute; right: -80px; top: 50%;
+      transform: translateY(-50%);
+      width: 620px; height: 620px;
+      opacity: 0.09; pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 680px; width: 100%; }
     .label-tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem; letter-spacing: 0.18em;
+      font-size: 0.78rem; letter-spacing: 0.18em;
       color: #7a9fd4; text-transform: uppercase;
       display: flex; align-items: center; gap: 12px;
       margin-bottom: 26px;
     }
     .label-tag::before {
       content: ''; display: block;
-      width: 32px; height: 1px; background: #7a9fd4;
+      width: 28px; height: 1px; background: #7a9fd4;
     }
+    @keyframes blurFadeIn {
+      from { opacity: 0; filter: blur(8px); transform: translateY(-10px); }
+      to   { opacity: 1; filter: blur(0);   transform: translateY(0); }
+    }
+
     .hero h1 {
-      font-size: clamp(2.6rem, 5.5vw, 4rem);
-      font-weight: 900; letter-spacing: -0.02em;
-      margin-bottom: 28px;
+      font-size: clamp(2.8rem, 5.2vw, 4.6rem);
+      font-weight: 900; margin-bottom: 28px;
     }
-    .hero h1 em { font-style: italic; color: var(--blue-light); }
+    .hero h1 em {
+      animation: blurFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+      display: inline-block; /* needed for transform to apply to inline element */
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero h1 em { animation: none; }
+    }
+    .hero h1 em { font-style: italic; color: #7a9fd4; }
     .hero-sub {
-      font-size: 1.15rem; color: var(--w70); font-weight: 300;
-      max-width: 540px; margin-bottom: 44px; line-height: 1.75;
+      font-size: 1.15rem; font-weight: 400;
+      color: rgba(255,255,255,0.85); line-height: 1.85;
+      max-width: 560px; margin-bottom: 44px;
     }
-    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 56px; }
+    .hero-btns { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
     .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
       background: var(--blue); color: var(--white);
-      padding: 14px 28px; border-radius: 2px;
-      font-size: 0.9rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 15px 32px; border-radius: 2px;
+      font-size: 0.92rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
       text-decoration: none; border: 1px solid var(--blue-mid);
-      transition: background 0.2s, transform 0.2s;
+      transition: background 0.2s, transform 0.2s; display: inline-block;
     }
-    .btn-primary:hover { background: var(--blue-mid); transform: translateY(-1px); }
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: var(--white);
-      padding: 14px 28px; border-radius: 2px;
-      font-size: 0.9rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
-      text-decoration: none; border: 1px solid var(--w40);
-      transition: border-color 0.2s, background 0.2s;
+    .btn-primary:hover { background: var(--blue-mid); transform: translateY(-2px); }
+    .btn-ghost {
+      color: rgba(255,255,255,0.85); padding: 15px 28px;
+      font-size: 0.92rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+      transition: color 0.2s, border-color 0.2s;
     }
-    .btn-secondary:hover { border-color: var(--white); background: var(--w08); }
+    .btn-ghost:hover { color: var(--white); border-color: var(--white); }
     .hero-stats {
-      display: flex; gap: 48px; flex-wrap: wrap;
-      padding-top: 40px; border-top: 1px solid var(--w15);
+      position: relative; z-index: 2;
+      display: flex; gap: 0;
+      margin-top: 72px; padding-top: 40px;
+      border-top: 1px solid var(--w15);
+      max-width: 680px;
+    }
+    .hero-stats > div {
+      flex: 1;
+      padding-right: 40px;
+      border-right: 1px solid var(--w15);
+      margin-right: 40px;
+    }
+    .hero-stats > div:last-child {
+      border-right: none;
+      margin-right: 0;
+      padding-right: 0;
     }
     .stat-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 2rem; font-weight: 500;
-      color: var(--white); line-height: 1;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem; font-weight: 700;
+      line-height: 1; margin-bottom: 6px;
     }
-    .stat-label { font-size: 0.78rem; color: var(--w40); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
-
-    /* ── SECTIONS ── */
-    section { padding: 100px 64px; }
-    @media(max-width:768px){ section { padding: 64px 24px; } }
-    .section-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem; letter-spacing: 0.18em;
-      color: #7a9fd4; text-transform: uppercase; margin-bottom: 16px;
-    }
-    .section-label.teal { color: var(--teal-light); }
-    .section-title { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; margin-bottom: 20px; }
-    .section-intro { font-size: 1.05rem; color: var(--w70); font-weight: 300; max-width: 640px; line-height: 1.8; margin-bottom: 56px; }
-    .divider { border: none; border-top: 1px solid var(--w15); }
-
-    /* ── WHO WE ARE ── */
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
-    }
-    @media(max-width:900px){ .about-grid { grid-template-columns: 1fr; gap: 40px; } }
-    .about-body p { font-size: 1.0rem; color: var(--w70); line-height: 1.85; margin-bottom: 20px; }
-    .about-body p:last-child { margin-bottom: 0; }
-    .about-credentials {
-      display: flex; flex-direction: column; gap: 16px;
-    }
-    .credential-item {
-      display: flex; align-items: flex-start; gap: 16px;
-      padding: 20px; background: var(--w04); border: 1px solid var(--w15);
-    }
-    .credential-icon {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem; color: var(--blue-light);
-      letter-spacing: 0.08em; text-transform: uppercase;
-      background: var(--w08); border: 1px solid var(--w15);
-      padding: 6px 10px; white-space: nowrap; flex-shrink: 0;
-    }
-    .credential-item p { font-size: 0.88rem; color: var(--w70); line-height: 1.6; }
-
-    /* ── SERVICES ── */
-    .services-section { background: var(--navy-light); }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
-    }
-    @media(max-width:900px){ .services-grid { grid-template-columns: 1fr; } }
-    .service-card {
-      display: flex; flex-direction: column;
-      background: var(--w04); border: 1px solid var(--w15);
-      text-decoration: none; color: var(--white);
-      transition: border-color 0.2s, background 0.2s, transform 0.2s;
-    }
-    .service-card:hover { border-color: var(--blue); background: var(--w08); transform: translateY(-2px); }
-    .service-card.teal-hover:hover { border-color: var(--teal); }
-    .service-card-body { padding: 36px 32px; flex: 1; }
-    .service-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem; color: var(--blue-light);
-      letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px;
-    }
-    .service-tag.teal { color: var(--teal-light); }
-    .service-card h3 {
-      font-size: 1.3rem; font-weight: 700; margin-bottom: 14px; line-height: 1.25;
-    }
-    .service-card p { font-size: 0.88rem; color: var(--w70); line-height: 1.7; }
-    .service-card-footer {
-      padding: 18px 32px;
-      border-top: 1px solid var(--w15);
-      display: flex; align-items: center; justify-content: space-between;
-      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-    }
-    .service-card-footer .arrow { transition: transform 0.2s; }
-    .service-card:hover .service-card-footer .arrow { transform: translateX(4px); }
-    .service-badge {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem; color: var(--teal-light);
-      background: rgba(26,122,110,0.12); border: 1px solid rgba(42,168,152,0.3);
-      padding: 3px 8px; letter-spacing: 0.08em; text-transform: uppercase;
+    .stat-label {
+      font-size: 0.9rem; color: rgba(255,255,255,0.8);
+      line-height: 1.55; max-width: 140px;
     }
 
-    /* ── TESTIMONIALS ── */
-    .testimonials-section { background: var(--navy-mid); }
-    .testi-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+    /* ── CREDENTIALS STRIP ────────────────── */
+    .cred-strip {
+      background: #030820;
+      border-top: 1px solid var(--w08);
+      border-bottom: 1px solid var(--w08);
+      padding: 20px 64px;
+      display: flex; gap: 40px; align-items: center;
+      overflow-x: auto;
     }
-    @media(max-width:900px){ .testi-grid { grid-template-columns: 1fr; } }
+    .cred-item { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+    .cred-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--blue-light); flex-shrink: 0;
+    }
+    .cred-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.8); text-transform: uppercase;
+    }
+
+    /* ── SECTION BASE ─────────────────────── */
+    .sec { padding: 100px 64px; }
+    .sec-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.18em;
+      color: #7a9fd4; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 18px;
+    }
+    .sec-label::before {
+      content: ''; display: block;
+      width: 22px; height: 1px; background: #7a9fd4;
+    }
+    .sec-title { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; margin-bottom: 16px; }
+    .sec-lead { font-size: 1.05rem; font-weight: 400; color: rgba(255,255,255,0.85); line-height: 1.85; max-width: 580px; }
+    .two-col-header {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: end; margin-bottom: 56px;
+    }
+    .rule { width: 44px; height: 2px; background: var(--blue); margin: 24px 0; }
+
+    /* ── PERSONAS ─────────────────────────── */
+    .personas-sec {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--w08);
+      border-bottom: 1px solid var(--w08);
+    }
+    .personas-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .persona-card {
+      background: var(--w08); padding: 44px 36px;
+      position: relative; transition: background 0.3s;
+    }
+    .persona-card:hover { background: rgba(39,70,144,0.22); }
+    .persona-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: var(--blue);
+    }
+    .persona-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.16em;
+      color: #7a9fd4; text-transform: uppercase; margin-bottom: 8px;
+    }
+    .persona-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem; font-weight: 700; margin-bottom: 18px;
+    }
+    .persona-pain { font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 1.8; margin-bottom: 22px; }
+    .persona-quote {
+      font-size: 0.95rem; font-weight: 500;
+      padding: 16px 18px;
+      background: var(--w08);
+      border-left: 3px solid var(--blue);
+      line-height: 1.65; color: var(--white);
+    }
+
+    /* ── PERSONA MASK REVEAL ─────────────── */
+    .personas-mask-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .personas-cover-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 4;
+      cursor: crosshair;
+    }
+    /* On touch-only devices, hide the cover so content is always visible */
+    @media (hover: none) {
+      .personas-cover-canvas { display: none; }
+    }
+
+    /* ── 6-COG MODEL ──────────────────────── */
+    .cog-sec {
+      background: var(--navy); position: relative; overflow: hidden;
+    }
+    .cog-sec::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, rgba(39,70,144,0.1) 0%, transparent 65%);
+    }
+    .cog-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2px; position: relative; z-index: 2;
+    }
+    .cog-card {
+      background: var(--w08); padding: 36px 32px;
+      position: relative; transition: all 0.3s;
+      border: 1px solid transparent;
+    }
+    .cog-card:hover {
+      background: rgba(39,70,144,0.24);
+      border-color: rgba(39,70,144,0.5);
+      transform: translateY(-4px);
+    }
+    .cog-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.65); margin-bottom: 14px;
+    }
+    .cog-icon { color: #7a9fd4; margin-bottom: 14px; display: block; }
+    .cog-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;
+    }
+    .cog-desc { font-size: 0.95rem; color: rgba(255,255,255,0.85); line-height: 1.75; }
+
+    /* ── HEALTH CHECK ─────────────────────── */
+    .hc-sec {
+      background: var(--blue); position: relative; overflow: hidden;
+    }
+    .hc-sec::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(140deg, rgba(5,10,48,0.65) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 15%, rgba(255,255,255,0.06) 0%, transparent 45%);
+    }
+    .hc-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 100px; align-items: center;
+    }
+    .hc-panel {
+      background: rgba(5,10,48,0.65);
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 48px;
+    }
+    .process-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.75); text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .p-step {
+      display: flex; gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.09);
+    }
+    .p-step:last-child { border-bottom: none; padding-bottom: 0; }
+    .p-step-n {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; color: rgba(255,255,255,0.65);
+      min-width: 26px; margin-top: 3px;
+    }
+    .p-step-title { font-weight: 600; font-size: 1rem; margin-bottom: 6px; }
+    .p-step-desc { font-size: 0.92rem; color: rgba(255,255,255,0.82); line-height: 1.7; }
+    .hc-left .sec-lead { color: rgba(255,255,255,0.9); }
+    .hc-left .sub-note { font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 36px; }
+    .btn-ghost-light {
+      color: rgba(255,255,255,0.95);
+      padding: 15px 32px; border-radius: 2px;
+      font-size: 0.92rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.5);
+      transition: all 0.2s; display: inline-block;
+    }
+    .btn-ghost-light:hover {
+      background: rgba(255,255,255,0.15);
+      color: var(--white); transform: translateY(-2px);
+    }
+
+    /* ── TESTIMONIAL CAROUSEL ─────────────── */
+    .testi-sec {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--w08);
+      border-bottom: 1px solid var(--w08);
+      overflow: hidden;
+    }
+    .testi-header { text-align: center; margin-bottom: 56px; }
+    .testi-header h2 { font-size: clamp(1.8rem, 2.8vw, 2.5rem); }
+    .testi-header p { color: rgba(255,255,255,0.85); font-size: 1rem; margin-top: 12px; }
+
+    .carousel-wrap {
+      position: relative;
+      overflow: hidden;
+      max-width: min(720px, 90%);
+      margin: 0 auto;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+      will-change: transform;
+    }
     .testi-card {
-      padding: 32px 28px; background: var(--w04); border: 1px solid var(--w15);
+      background: var(--w08);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 52px 56px;
+      width: 100%;
+      flex-shrink: 0;
+      flex-grow: 0;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .testi-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: var(--blue);
+    }
+    .testi-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; color: var(--blue);
+      line-height: 1; margin-bottom: 12px; display: block;
+    }
+    .testi-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 400; font-style: italic;
+      line-height: 1.8; margin-bottom: 28px; color: rgba(255,255,255,0.88);
+    }
+    .testi-rule { width: 32px; height: 1px; background: var(--blue); margin-bottom: 18px; }
+    .testi-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.15em;
+      color: #7a9fd4; text-transform: uppercase;
+    }
+    .testi-role { font-size: 0.85rem; color: rgba(255,255,255,0.65); margin-top: 4px; }
+    .testi-company { font-size: 0.9rem; color: rgba(255,255,255,0.88); margin-top: 2px; font-weight: 500; }
+
+    .carousel-controls {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; margin-top: 40px;
+    }
+    .carousel-btn {
+      width: 44px; height: 44px; border-radius: 2px;
+      background: var(--w08); border: 1px solid var(--w15);
+      color: var(--white); font-size: 1.1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .carousel-btn:hover { background: var(--blue); border-color: var(--blue); }
+    .carousel-dots { display: flex; gap: 8px; align-items: center; }
+    .carousel-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.3); cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+    }
+    .carousel-dot.active { background: #7a9fd4; transform: scale(1.5); }
+
+    /* ── HAMBURGER / MOBILE NAV ──────────── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: 1px solid var(--w15);
+      border-radius: 2px;
+      padding: 8px 7px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .nav-hamburger span {
+      display: block;
+      height: 1.5px;
+      background: var(--white);
+      border-radius: 1px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(5, 10, 48, 0.99);
+      backdrop-filter: blur(20px);
+      z-index: 98;
+      padding: 90px 32px 40px;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      color: var(--w70);
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--w08);
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover, .mobile-nav a:focus { color: var(--white); }
+    .mobile-nav a.mnav-cta {
+      margin-top: 28px;
+      text-align: center;
+      background: var(--blue);
+      border: 1px solid var(--blue-mid);
+      border-radius: 2px;
+      color: var(--white);
+      padding: 16px 24px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+    .mobile-nav a.mnav-cta:hover { background: var(--blue-mid); }
+
+    /* ── SECTOR STRIP ─────────────────────── */
+    .sector-strip {
+      background: var(--navy);
+      border-top: 1px solid var(--w08);
+      border-bottom: 1px solid var(--w08);
+      padding: 32px 64px;
+      display: flex; align-items: center; gap: 16px;
+      flex-wrap: wrap;
+    }
+    .sector-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.45); text-transform: uppercase;
+      margin-right: 8px; white-space: nowrap;
+    }
+    .sector-pill {
+      font-size: 0.82rem; font-weight: 500;
+      padding: 7px 16px;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.82);
+      white-space: nowrap;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .sector-pill:hover { border-color: var(--blue-light); color: var(--white); }
+
+    /* ── PROJECT RESCUE ───────────────────── */
+    .rescue-sec {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--w08);
+      border-bottom: 1px solid var(--w08);
+    }
+    .rescue-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2px; margin-top: 52px;
+    }
+    .rescue-card {
+      background: var(--w08); padding: 36px 32px;
+      position: relative;
+      border: 1px solid transparent;
+      transition: all 0.3s;
+    }
+    .rescue-card:hover {
+      background: rgba(39,70,144,0.2);
+      border-color: rgba(39,70,144,0.4);
+      transform: translateY(-4px);
+    }
+    .rescue-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: var(--blue);
+    }
+    .rescue-client {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; letter-spacing: 0.15em;
+      color: #7a9fd4; text-transform: uppercase; margin-bottom: 6px;
+    }
+    .rescue-sector {
+      font-size: 0.78rem; color: rgba(255,255,255,0.5);
+      margin-bottom: 22px;
+    }
+    .rescue-stat {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 700;
+      line-height: 1; margin-bottom: 6px; color: var(--white);
+    }
+    .rescue-stat-label {
+      font-size: 0.82rem; color: rgba(255,255,255,0.65);
+      margin-bottom: 20px; line-height: 1.5;
+    }
+    .rescue-desc {
+      font-size: 0.92rem; color: rgba(255,255,255,0.82);
+      line-height: 1.75; border-top: 1px solid var(--w15);
+      padding-top: 18px;
+    }
+
+    /* ── NED / BOARD ADVISORY ─────────────── */
+    .ned-sec {
+      background: var(--navy);
+      border-top: 1px solid var(--w08);
+      position: relative; overflow: hidden;
+    }
+    .ned-sec::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(39,70,144,0.12) 0%, transparent 60%);
+    }
+    .ned-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 100px; align-items: center;
+    }
+    .ned-roles {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .ned-role-card {
+      background: var(--w08); padding: 24px 28px;
+      border-left: 3px solid var(--blue);
+      transition: background 0.2s;
+    }
+    .ned-role-card:hover { background: rgba(39,70,144,0.2); }
+    .ned-role-org {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.14em;
+      color: #7a9fd4; text-transform: uppercase; margin-bottom: 4px;
+    }
+    .ned-role-title {
+      font-size: 0.95rem; font-weight: 600; margin-bottom: 4px;
+    }
+    .ned-role-detail {
+      font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.6;
+    }
+    .ned-skills {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px;
+    }
+    .ned-skill {
+      font-size: 0.78rem; padding: 5px 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ── INTERMEDIATE: tablet / narrow desktop ──── */
+    @media (max-width: 1100px) {
+      nav { padding: 16px 36px; }
+      .nav-links { gap: 22px; }
+      .hero, .sec { padding: 80px 36px; }
+      .about-sec { padding: 80px 36px; }
+      .cta-sec { padding: 100px 36px; }
+      .sector-strip, .cred-strip { padding: 20px 36px; }
+      footer { padding: 40px 36px; }
+      .hc-inner, .ned-inner { gap: 60px; }
+      .two-col-header { gap: 40px; }
+    }
+
+    .about-sec {
+      background: var(--navy);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 100px; align-items: center;
+    }
+    .about-creds {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 36px;
+    }
+    .about-cred:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+    .about-cred {
+      padding: 16px 18px;
+      background: var(--w08);
       border-left: 2px solid var(--blue);
     }
-    .testi-quote { font-size: 0.93rem; line-height: 1.75; color: var(--w70); font-style: italic; margin-bottom: 24px; }
-    .testi-quote::before { content: '\201C'; color: var(--blue-light); font-size: 1.4rem; line-height: 0; vertical-align: -0.4rem; margin-right: 4px; }
-    .testi-name { font-weight: 600; font-size: 0.88rem; }
-    .testi-role { font-size: 0.78rem; color: var(--w40); margin-top: 3px; }
-
-    /* ── SECTORS ── */
-    .sector-strip {
-      display: flex; flex-wrap: wrap; gap: 10px;
-      margin-top: 8px;
-    }
-    .sector-badge {
+    .cred-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem; color: var(--w40);
-      border: 1px solid var(--w15);
-      padding: 6px 14px; letter-spacing: 0.1em; text-transform: uppercase;
+      font-size: 0.72rem; letter-spacing: 0.12em;
+      color: #7a9fd4; text-transform: uppercase; margin-bottom: 5px;
     }
+    .cred-val { font-size: 0.95rem; font-weight: 500; color: var(--white); }
+    .about-body { font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 1.9; margin-bottom: 16px; }
 
-    /* ── CONTACT ── */
-    .contact-section {
-      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
-      border-top: 1px solid var(--w15);
+    /* ── CTA ──────────────────────────────── */
+    .cta-sec {
+      background: var(--navy-mid);
+      text-align: center; padding: 120px 64px;
+      border-top: 1px solid var(--w08);
+      position: relative; overflow: hidden;
     }
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    .cta-sec::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(39,70,144,0.22) 0%, transparent 60%);
     }
-    @media(max-width:900px){ .contact-grid { grid-template-columns: 1fr; gap: 48px; } }
-    .contact-grid h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 20px; }
-    .contact-grid p { font-size: 1.05rem; color: var(--w70); line-height: 1.7; margin-bottom: 32px; }
-    .contact-details { display: flex; flex-direction: column; gap: 16px; }
-    .contact-item { display: flex; align-items: flex-start; gap: 16px; }
-    .contact-label {
+    .cta-inner { position: relative; z-index: 2; max-width: 620px; margin: 0 auto; }
+    .cta-sec h2 { font-size: clamp(1.9rem, 3vw, 2.8rem); margin-bottom: 18px; }
+    .cta-sec p { color: rgba(255,255,255,0.85); font-size: 1.05rem; line-height: 1.8; margin-bottom: 44px; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .cta-contact {
+      margin-top: 44px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem; color: var(--blue-light);
-      letter-spacing: 0.12em; text-transform: uppercase;
-      padding-top: 2px; min-width: 64px;
+      font-size: 0.8rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.7);
     }
-    .contact-value { font-size: 0.93rem; color: var(--w70); }
-    .contact-value a { color: var(--white); text-decoration: none; transition: color 0.2s; }
-    .contact-value a:hover { color: var(--blue-light); }
+    .cta-contact a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+    .cta-contact a:hover { color: var(--white); }
 
-    /* ── FOOTER ── */
+    /* ── FOOTER ───────────────────────────── */
     footer {
-      padding: 40px 64px; border-top: 1px solid var(--w15);
-      display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
+      background: #030820;
+      padding: 44px 64px;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--w08);
+      flex-wrap: wrap; gap: 24px;
     }
-    .footer-left { font-size: 0.8rem; color: var(--w40); }
-    .footer-right { display: flex; gap: 24px; }
-    .footer-link { font-size: 0.8rem; color: var(--w40); text-decoration: none; transition: color 0.2s; }
-    .footer-link:hover { color: var(--white); }
-    @media(max-width:768px){ footer { padding: 32px 24px; flex-direction: column; } }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700;
+    }
+    .footer-sub { font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-top: 3px; }
+    .footer-nav { display: flex; gap: 28px; list-style: none; }
+    .footer-nav a {
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 0.88rem; transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--white); }
+    .footer-legal {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; color: rgba(255,255,255,0.55);
+      letter-spacing: 0.05em; line-height: 1.8; text-align: right;
+    }
 
-    /* Reveal */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s, transform 0.5s; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
+    /* ── ANIMATIONS ───────────────────────── */
+    @keyframes spin-slow    { to { transform: rotate(360deg);  } }
+    @keyframes spin-slow-r  { to { transform: rotate(-360deg); } }
+    .spin   { animation: spin-slow   35s linear infinite; transform-origin: center; }
+    .spin-r { animation: spin-slow-r 28s linear infinite; transform-origin: center; }
+
+    .reveal {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal:nth-child(2) { transition-delay: 0.1s; }
+    .reveal:nth-child(3) { transition-delay: 0.2s; }
+    .reveal:nth-child(4) { transition-delay: 0.3s; }
+    .reveal:nth-child(5) { transition-delay: 0.4s; }
+    .reveal:nth-child(6) { transition-delay: 0.5s; }
+
+    /* ── MOBILE: ≤ 900px ─────────────────────────── */
+    @media (max-width: 900px) {
+      /* Nav */
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+
+      /* Sections */
+      .hero, .sec { padding: 72px 20px; }
+      .about-sec { padding: 72px 20px; }
+      .cta-sec { padding: 72px 20px; }
+      .cred-strip { padding: 16px 20px; gap: 24px; }
+      .sector-strip { padding: 20px 20px; }
+      footer { padding: 36px 20px; flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer-legal { text-align: left; }
+      .footer-nav { flex-wrap: wrap; gap: 16px; }
+
+      /* Layouts → single column */
+      .two-col-header { grid-template-columns: 1fr; gap: 20px; margin-bottom: 36px; }
+      .hc-inner { grid-template-columns: 1fr; gap: 36px; }
+      .about-sec { grid-template-columns: 1fr; gap: 36px; }
+      .personas-grid { grid-template-columns: 1fr; gap: 2px; }
+      .cog-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
+      .rescue-grid { grid-template-columns: 1fr; gap: 2px; }
+      .ned-inner { grid-template-columns: 1fr; gap: 36px; }
+
+      /* Hero */
+      .hero-gear-bg { display: none; }
+      .hero-stats { flex-direction: row; gap: 0; margin-top: 48px; padding-top: 28px; flex-wrap: wrap; }
+      .hero-stats > div { flex: 1 1 50%; min-width: 120px; padding-right: 16px; margin-bottom: 16px; }
+      .stat-num { font-size: 2rem; }
+
+      /* Carousel */
+      .carousel-wrap { max-width: 100%; }
+      .testi-card { padding: 36px 28px; }
+      .testi-mark { font-size: 2.5rem; }
+      .testi-quote { font-size: 0.95rem; }
+
+      /* Health check panel */
+      .hc-panel { padding: 32px 24px; }
+
+      /* Personas */
+      .persona-card { padding: 32px 24px; }
+    }
+
+    /* ── SMALL MOBILE: ≤ 480px ───────────────────── */
+    @media (max-width: 480px) {
+      .cog-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
+      .hero-stats { flex-direction: column; gap: 20px; }
+      .hero-stats > div { flex: none; width: auto; padding-right: 0; margin-bottom: 0; }
+      .cta-btns { flex-direction: column; align-items: stretch; }
+      .cta-btns a { text-align: center; }
+      .about-creds { grid-template-columns: 1fr; }
+      .about-cred:last-child:nth-child(odd) { grid-column: auto; }
+      .ned-skills { gap: 6px; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       ENHANCED COMPONENTS — Webflow-ready
+       Each section below maps directly to Webflow placement:
+         CSS  → Site Settings > Custom Code > Head Code
+         HTML → Webflow Embed block inside the relevant section
+         JS   → Site Settings > Custom Code > Footer Code
+       ══════════════════════════════════════════════════════════ */
+
+    /* ── 1. HERO BACKGROUND BEAMS ──────────────────────────────
+       WEBFLOW: Place in Head Code (or Page Settings > Head Code).
+       The <canvas> element is added via an Embed block inside the
+       Hero section. JS goes in Footer Code.
+       ────────────────────────────────────────────────────────── */
+    #heroBeamsCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;            /* above hero-bg (auto), below content (z-index:2) */
+    }
+
+    /* ── 2. CARD SPOTLIGHT ─────────────────────────────────────
+       WEBFLOW: Place in Head Code. JS goes in Footer Code.
+       Works on any element with class="cog-card". The radial
+       gradient tracks --spotlight-x / --spotlight-y custom
+       properties set by the mousemove JS handler.
+       ────────────────────────────────────────────────────────── */
+    .cog-card {
+      --spotlight-x: 50%;
+      --spotlight-y: 50%;
+      overflow: hidden;
+    }
+    .cog-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        300px circle at var(--spotlight-x) var(--spotlight-y),
+        rgba(74, 111, 192, 0.20) 0%,
+        rgba(39,  70, 144, 0.07) 45%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .cog-card:hover::after { opacity: 1; }
+
+    /* Ensure card text/icons render above the spotlight layer */
+    .cog-card > * { position: relative; z-index: 2; }
+
+    /* ── 3. NUMBER TICKER ──────────────────────────────────────
+       WEBFLOW: No extra CSS needed — piggybacks on .stat-num.
+       JS goes in Footer Code. Add data-ticker-duration="2500"
+       attribute to any .stat-num element to override speed (ms).
+       ────────────────────────────────────────────────────────── */
+    .stat-num[data-ticker] {
+      font-variant-numeric: tabular-nums;  /* keeps width stable while counting */
+    }
+
+    /* ── SEO: visually hidden but readable by search engines & screen readers */
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
   </style>
+
+  <!-- Structured Data — ProfessionalService schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "ENOS Limited",
+    "url": "https://enos.ltd.uk",
+    "logo": "https://enos.ltd.uk/favicon.svg",
+    "image": "https://enos.ltd.uk/og-image.png",
+    "email": "gp@enos.ltd.uk",
+    "description": "ENOS Limited provides independent transformation programme diagnostics and 360° Health Check assessments for organisations where change has stalled. We are the Critical Friend for COOs, PMO Leads, and Non-Executive Directors navigating complex digital transformation and regulatory change.",
+    "founder": {
+      "@type": "Person",
+      "name": "Geoff Preston",
+      "jobTitle": "Director & Principal Consultant",
+      "sameAs": "https://www.linkedin.com/company/enos-limited"
+    },
+    "foundingDate": "2001",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "GB"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "gp@enos.ltd.uk",
+      "availableLanguage": "English"
+    },
+    "serviceType": [
+      "Transformation Programme Diagnostics",
+      "360° Programme Health Check",
+      "Project Rescue",
+      "NED & Board Advisory",
+      "Independent Programme Governance"
+    ],
+    "areaServed": {
+      "@type": "Country",
+      "name": "United Kingdom"
+    },
+    "knowsAbout": [
+      "Digital Transformation",
+      "Programme Management",
+      "Change Management",
+      "Financial Services",
+      "Data Governance",
+      "Regulatory Risk"
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/enos-limited"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data — FAQPage schema (enables rich FAQ snippets in search results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does a transformation programme diagnostic involve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ENOS conducts an independent 360° Health Check across six dimensions — Strategy, Prioritisation, Delivery, Governance, Adoption, and Benefit Realisation. We interview stakeholders, review programme documentation, and produce an impartial diagnostic report with prioritised recommendations. The engagement typically takes two to four weeks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who commissions a transformation programme health check?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our clients are typically COOs or executive sponsors who need independent assurance that a programme will deliver, PMO Leads who need an external perspective on hidden risks, and Non-Executive Directors or Risk Committee Chairs who need to provide credible independent challenge to the board on a major transformation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is ENOS different from a management consultancy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ENOS provides independent diagnostic assessments — we do not sell implementation services. This means our findings are impartial: we have no commercial interest in the outcome beyond giving you an accurate picture. We are a boutique firm with 30 years of hands-on programme delivery experience across financial services, energy, and enterprise."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What sectors does ENOS work in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ENOS has deep experience in financial services and banking, energy and utilities, gaming and betting, technology and digital, and education and public sector — with particular depth in regulated industries where governance and compliance risks are highest."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is NED & Board Advisory?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ENOS provides Non-Executive Director and board advisory services to organisations undergoing significant transformation. We bring independent challenge and senior programme expertise to board-level oversight, helping NEDs and risk committees ask the right questions and interpret programme reporting accurately."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav id="main-nav">
-    <a href="/" class="nav-logo">
-      <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="19" cy="19" r="18" stroke="#274690" stroke-width="1.5"/>
-        <path d="M10 14h18M10 19h12M10 24h18" stroke="#4a6fc0" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-      <span class="nav-logo-text">ENOS <span>Limited</span></span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="mailto:gp@enos.ltd.uk?subject=Discovery%20Call%20Request" class="nav-cta">Book a Discovery Call</a>
-  </nav>
+<!-- ════════════════════ NAV ════════════════════ -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- gear teeth -->
+      <path d="M40 4 L44 14 L36 14 Z
+               M67 13 L64 23 L58 17 Z
+               M76 40 L66 44 L66 36 Z
+               M67 67 L57 64 L63 58 Z
+               M40 76 L36 66 L44 66 Z
+               M13 67 L16 57 L22 63 Z
+               M4 40 L14 36 L14 44 Z
+               M13 13 L23 16 L17 22 Z"
+            fill="#274690" opacity="0.9"/>
+      <circle cx="40" cy="40" r="30" fill="#050a30" stroke="#274690" stroke-width="1.5"/>
+      <circle cx="40" cy="40" r="20" fill="none" stroke="#274690" stroke-width="1" opacity="0.5"/>
+      <text x="40" y="48" text-anchor="middle"
+            font-family="Playfair Display, Georgia, serif"
+            font-size="22" font-weight="700" fill="#ffffff">E</text>
+    </svg>
+    <span class="nav-logo-text">ENOS <span>Limited</span></span>
+  </a>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
+  <ul class="nav-links">
+    <li><a href="#who-we-help">Who We Help</a></li>
+    <li><a href="#methodology">Methodology</a></li>
+    <li><a href="#project-rescue">Project Rescue</a></li>
+    <li><a href="#health-check">Health Check</a></li>
+    <li><a href="#ned">Board Advisory</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+
+  <a href="https://zcal.co/enosltd/discovery" class="nav-cta" target="_blank" rel="noopener">Book Discovery Call</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══════════════ MOBILE NAV OVERLAY ═══════════════ -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <a href="#who-we-help" class="mnav-link">Who We Help</a>
+  <a href="#methodology" class="mnav-link">Methodology</a>
+  <a href="#project-rescue" class="mnav-link">Project Rescue</a>
+  <a href="#health-check" class="mnav-link">Health Check</a>
+  <a href="#ned" class="mnav-link">Board Advisory</a>
+  <a href="#about" class="mnav-link">About</a>
+  <a href="https://zcal.co/enosltd/discovery" class="mnav-cta" target="_blank" rel="noopener">Book Discovery Call</a>
+</nav>
+
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+
+  <!--
+    BACKGROUND BEAMS CANVAS
+    WEBFLOW: Delete this comment and add an Embed block inside your
+    Hero section containing just this <canvas> tag. The canvas is
+    driven entirely by the JS in Footer Code — no other configuration needed.
+  -->
+  <canvas id="heroBeamsCanvas" aria-hidden="true"></canvas>
+
+  <!-- Decorative animated gear rings -->
+  <svg class="hero-gear-bg" viewBox="0 0 620 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g class="spin">
+      <circle cx="280" cy="280" r="230" stroke="white" stroke-width="1.5" stroke-dasharray="8 16"/>
+      <circle cx="280" cy="280" r="185" stroke="white" stroke-width="1"/>
+    </g>
+    <g class="spin-r">
+      <circle cx="280" cy="280" r="130" stroke="white" stroke-width="1.5" stroke-dasharray="6 12"/>
+    </g>
+    <circle cx="280" cy="280" r="60" fill="white" fill-opacity="0.04" stroke="white" stroke-width="1.5"/>
+    <!-- Gear teeth on outer ring -->
+    <g class="spin" style="transform-origin:280px 280px">
+      <rect x="276" y="42" width="8" height="18" rx="2" fill="white" opacity="0.6"/>
+      <rect x="276" y="42" width="8" height="18" rx="2" fill="white" opacity="0.6" transform="rotate(45 280 280)"/>
+      <rect x="276" y="42" width="8" height="18" rx="2" fill="white" opacity="0.6" transform="rotate(90 280 280)"/>
+      <rect x="276" y="42" width="8" height="18" rx="2" fill="white" opacity="0.6" transform="rotate(135 280 280)"/>
+      <rect x="276" y="42" width="8" height="18" rx="2" fill="white" opacity="0.6" transform="rotate(180 280 280)"/>
+      <rect x="276" y="42" width="8" height="18" rx="2" fill="white" opacity="0.6" transform="rotate(225 280 280)"/>
+      <rect x="276" y="42" width="8" height="18" rx="2" fill="white" opacity="0.6" transform="rotate(270 280 280)"/>
+      <rect x="276" y="42" width="8" height="18" rx="2" fill="white" opacity="0.6" transform="rotate(315 280 280)"/>
+    </g>
+    <!-- Second smaller gear -->
+    <g class="spin-r" style="transform-origin:460px 400px">
+      <circle cx="460" cy="400" r="90" stroke="white" stroke-width="1" stroke-dasharray="5 10"/>
+      <circle cx="460" cy="400" r="50" stroke="white" stroke-width="1" opacity="0.4"/>
+      <circle cx="460" cy="400" r="20" fill="white" fill-opacity="0.05" stroke="white" stroke-width="1"/>
+    </g>
+  </svg>
+
+  <div style="position:relative; z-index:2; width:100%;">
     <div class="hero-content">
-      <p class="label-tag">ENOS Limited · Founded 2001</p>
-      <h1>The independent eye<br>when the stakes are high.<br><em>And the stakes are always high.</em></h1>
-      <p class="hero-sub">We provide independent diagnostic assessments for organisations navigating complex transformation, AI deployment, and board-level risk.  No vested interest.  No internal politics.  Just evidence.</p>
-      <div class="hero-ctas">
-        <a href="#services" class="btn-primary">Explore Our Services</a>
-        <a href="mailto:gp@enos.ltd.uk?subject=Discovery%20Call%20Request" class="btn-secondary">Book a Discovery Call</a>
-      </div>
-      <div class="hero-stats">
-        <div>
-          <div class="stat-num">30 yrs</div>
-          <div class="stat-label">Delivering complex change</div>
-        </div>
-        <div>
-          <div class="stat-num">3.5m</div>
-          <div class="stat-label">Customer accounts migrated</div>
-        </div>
-        <div>
-          <div class="stat-num">£100m+</div>
-          <div class="stat-label">Programme scale managed</div>
-        </div>
+      <div class="label-tag">Independent Transformation Programme Diagnostics</div>
+
+      <h1><span class="sr-only">Transformation Programme Diagnostics UK — </span>Is your transformation<br><em>marking its own homework?</em></h1>
+
+      <p class="hero-sub">ENOS Limited provides impartial, independent transformation programme diagnostics for organisations where change has stalled — or where no-one inside can see what's actually broken. We are your Critical Friend.</p>
+
+      <div class="hero-btns">
+        <a href="#health-check" class="btn-primary">Request a 360° Health Check</a>
+        <a href="#methodology" class="btn-ghost">See the Methodology →</a>
       </div>
     </div>
-  </section>
 
-  <hr class="divider">
-
-  <!-- WHO WE ARE -->
-  <section id="about">
-    <p class="section-label reveal">Who We Are</p>
-    <h2 class="section-title reveal">The Critical Friend.<br>For 25 years.</h2>
-    <div class="about-grid">
-      <div class="about-body reveal">
-        <p>ENOS Limited was founded in 2001 by Geoff Porritt — a transformation programme specialist with 30+ years of hands-on experience across financial services, retail, public sector, and enterprise technology.</p>
-        <p>ENOS doesn't build the programmes.  We assess them.  That independence is the point.  When you're too close to a programme — or too invested in it — you stop seeing what's actually going on.  We provide the external view that internal teams, however talented, cannot give themselves.</p>
-        <p>The work is diagnostic.  The output is evidence.  And the evidence is designed to be placed in front of a board, an audit committee, or a regulator without further translation.</p>
-        <div class="sector-strip" style="margin-top:28px">
-          <span class="sector-badge">Financial Services</span>
-          <span class="sector-badge">Retail &amp; Gaming</span>
-          <span class="sector-badge">Energy</span>
-          <span class="sector-badge">Public Sector</span>
-          <span class="sector-badge">Enterprise Technology</span>
-          <span class="sector-badge">Education</span>
-        </div>
-      </div>
-      <div class="about-credentials reveal">
-        <div class="credential-item">
-          <span class="credential-icon">GC Index</span>
-          <p>Certified GC Index Practitioner — understanding how individuals and teams drive change.</p>
-        </div>
-        <div class="credential-item">
-          <span class="credential-icon">PRINCE2</span>
-          <p>PRINCE2 Practitioner — structured programme and project management methodology.</p>
-        </div>
-        <div class="credential-item">
-          <span class="credential-icon">ILM 6</span>
-          <p>ILM Level 6 in Leadership &amp; Management — supporting board-level advisory and governance roles.</p>
-        </div>
-        <div class="credential-item">
-          <span class="credential-icon">NED</span>
-          <p>Active board roles: Trustee, Create Learning Multi Academy Trust (2024–present) · Governor, two primary schools (2024–present).</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- SERVICES -->
-  <section id="services" class="services-section">
-    <p class="section-label reveal">What We Do</p>
-    <h2 class="section-title reveal">Three ways to work with ENOS</h2>
-    <p class="section-intro reveal">Each service starts from the same place: an independent assessment that gives you evidence you can act on.  The question is which programme needs the scrutiny.</p>
-    <div class="services-grid">
-
-      <!-- 360 Programme Health Check -->
-      <a href="prog-health/" class="service-card reveal">
-        <div class="service-card-body">
-          <p class="service-tag">360° Programme &amp; Project Health Check</p>
-          <h3>Is your transformation marking its own homework?</h3>
-          <p>An independent diagnostic across the six critical dimensions of your programme — Strategy, Prioritisation, Delivery, Governance, Adoption, and Benefit Realisation.  Delivered as a scored Authority Asset.</p>
-        </div>
-        <div class="service-card-footer">
-          <span>Learn More</span>
-          <span class="arrow">→</span>
-        </div>
-      </a>
-
-      <!-- AI Health Check -->
-      <a href="ai-health/" class="service-card teal-hover reveal reveal-delay-1">
-        <div class="service-card-body">
-          <p class="service-tag teal">360° AI Health Check</p>
-          <h3>Is your AI programme ready for board scrutiny?</h3>
-          <p>The same independent rigour — applied to AI strategy, governance, data, ethics, and value realisation.  Written for non-technical leaders.  Designed for board and audit committee use.</p>
-          <span class="service-badge" style="display:inline-block;margin-top:16px">New — June 2026</span>
-        </div>
-        <div class="service-card-footer">
-          <span>Learn More</span>
-          <span class="arrow">→</span>
-        </div>
-      </a>
-
-      <!-- NED & Board Advisory -->
-      <a href="mailto:gp@enos.ltd.uk?subject=NED%20and%20Board%20Advisory%20Enquiry" class="service-card reveal reveal-delay-2">
-        <div class="service-card-body">
-          <p class="service-tag">NED &amp; Board Advisory</p>
-          <h3>Independent challenge from someone who has been in the engine room</h3>
-          <p>Board-level advisory and non-executive director roles — bringing 30 years of programme delivery experience into governance.  ILM Level 6 certified.  Active board roles in education and multi-academy trust governance.</p>
-        </div>
-        <div class="service-card-footer">
-          <span>Get in Touch</span>
-          <span class="arrow">→</span>
-        </div>
-      </a>
-
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials-section">
-    <p class="section-label reveal">What People Say</p>
-    <h2 class="section-title reveal">Independent voices</h2>
-    <div class="testi-grid">
-
-      <div class="testi-card reveal">
-        <p class="testi-quote">Geoff has an exceptional ability to get to the root cause of a problem quickly.  He doesn't just report what's wrong — he provides the evidence and the path forward in a way that leadership can act on immediately.</p>
-        <p class="testi-name">Iain McCormack</p>
-        <p class="testi-role">Head of Projects &amp; Change, Betfred · 2022</p>
-      </div>
-
-      <div class="testi-card reveal reveal-delay-1">
-        <p class="testi-quote">What set Geoff apart was his ability to hold the mirror up to a complex programme without alienating the team.  The Health Check gave us clarity we simply didn't have before — and the board took notice.</p>
-        <p class="testi-name">Tom Romer</p>
-        <p class="testi-role">Chief Architect, DXC Technology (LBS account) · 2020</p>
-      </div>
-
-      <div class="testi-card reveal reveal-delay-2">
-        <p class="testi-quote">Geoff's ability to translate complex programme dynamics into board-level insight is rare.  He operates with calm confidence in high-pressure environments and consistently delivers when it matters most.</p>
-        <p class="testi-name">Ferdaus Asef</p>
-        <p class="testi-role">Lead Project Manager, SEFE Energy GmbH · 2026</p>
-      </div>
-
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact-section">
-    <div class="contact-grid">
+    <div class="hero-stats">
       <div>
-        <p class="section-label reveal">Get in Touch</p>
-        <h2 class="reveal">The first conversation is always free.</h2>
-        <p class="reveal">A 45-minute Discovery Call to understand your programme, your concerns, and whether an independent diagnostic would be the right next step.  No commitment.  No sales pitch.</p>
-        <a href="mailto:gp@enos.ltd.uk?subject=Discovery%20Call%20Request" class="btn-primary reveal">Book a Discovery Call</a>
+        <div class="stat-num">30</div>
+        <div class="stat-label">years delivering complex change across regulated industries</div>
       </div>
-      <div class="contact-details reveal">
-        <div class="contact-item">
-          <span class="contact-label">Email</span>
-          <span class="contact-value"><a href="mailto:gp@enos.ltd.uk">gp@enos.ltd.uk</a></span>
-        </div>
-        <div class="contact-item">
-          <span class="contact-label">Phone</span>
-          <span class="contact-value"><a href="tel:+447946314316">+44 (0) 7946 314 316</a></span>
-        </div>
-        <div class="contact-item">
-          <span class="contact-label">LinkedIn</span>
-          <span class="contact-value"><a href="https://linkedin.com/in/geoffporritt/" target="_blank">linkedin.com/in/geoffporritt</a></span>
-        </div>
-        <div class="contact-item">
-          <span class="contact-label">Company</span>
-          <span class="contact-value">ENOS Limited<br>GB4240098 · VAT 775 5977 60</span>
-        </div>
+      <div>
+        <div class="stat-num">3.5m</div>
+        <div class="stat-label">customer accounts successfully migrated in a single programme</div>
+      </div>
+      <div>
+        <div class="stat-num">£100m+</div>
+        <div class="stat-label">programme scale managed across financial services and enterprise</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-left">
-      <div>© 2025 ENOS Limited · Company No. GB4240098 · VAT 775 5977 60</div>
-    </div>
-    <div class="footer-right">
-      <a href="prog-health/" class="footer-link">Programme Health Check</a>
-      <a href="ai-health/" class="footer-link">AI Health Check</a>
-      <a href="https://linkedin.com/in/geoffporritt/" target="_blank" class="footer-link">LinkedIn</a>
-    </div>
-  </footer>
 
-  <script>
-    window.addEventListener('scroll', function() {
-      document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
+<!-- ════════════ CREDENTIALS STRIP ════════════════ -->
+<div class="cred-strip">
+  <div class="cred-item"><div class="cred-dot"></div><span class="cred-text">Accredited GC Index Practitioner</span></div>
+  <div class="cred-item"><div class="cred-dot"></div><span class="cred-text">ILM L.6 Certified NED</span></div>
+  <div class="cred-item"><div class="cred-dot"></div><span class="cred-text">MSP · PRINCE2 · PRINCE2 Agile</span></div>
+  <div class="cred-item"><div class="cred-dot"></div><span class="cred-text">MIT Digital Transformation</span></div>
+  <div class="cred-item"><div class="cred-dot"></div><span class="cred-text">Powered by Coda.io</span></div>
+  <div class="cred-item"><div class="cred-dot"></div><span class="cred-text">Independent &amp; Impartial</span></div>
+  <div class="cred-item"><div class="cred-dot"></div><span class="cred-text">Director &amp; Principal Consultant since 2001</span></div>
+</div>
+
+
+<!-- ════════════════ SECTOR STRIP ═════════════════ -->
+<div class="sector-strip">
+  <span class="sector-label">Sectors</span>
+  <div class="sector-pill">Financial Services &amp; Banking</div>
+  <div class="sector-pill">Energy &amp; Utilities</div>
+<div class="sector-pill">Gaming &amp; Betting</div>
+  <div class="sector-pill">Technology &amp; Digital</div>
+  <div class="sector-pill">Education &amp; Public Sector</div>
+</div>
+
+
+<!-- ════════════════ WHO WE HELP ══════════════════ -->
+<section class="sec personas-sec" id="who-we-help">
+  <div class="two-col-header">
+    <div>
+      <div class="sec-label">Who We Help</div>
+      <h2 class="sec-title">Three roles.<br>One independent diagnostic.</h2>
+    </div>
+    <p class="sec-lead">Every major transformation has an executive who owns the outcome, a PMO lead who owns the execution, and a board that's supposed to own the oversight. ENOS provides the independent clarity that none of them can generate from the inside.</p>
+  </div>
+
+  <div class="personas-mask-wrap" id="personasMaskWrap">
+    <div class="personas-grid">
+      <div class="persona-card reveal">
+        <div class="persona-role">The COO</div>
+        <div class="persona-name">David</div>
+        <p class="persona-pain">Your transformation portfolio carries significant commercial risk. You need the facts — fast. Not another reassuring status update from the team doing the work.</p>
+        <div class="persona-quote">"I need to know if this programme will actually deliver — or if I'm funding failure."</div>
+      </div>
+      <div class="persona-card reveal">
+        <div class="persona-role">The PMO Lead</div>
+        <div class="persona-name">Sarah</div>
+        <p class="persona-pain">You're too close to the work to see it clearly. You need a trusted partner who can identify the hidden risks buried in team dynamics, governance gaps, and adoption failure.</p>
+        <div class="persona-quote">"I need an external eye that sees what we can't from the inside."</div>
+      </div>
+      <div class="persona-card reveal">
+        <div class="persona-role">The NED / Risk Committee Chair</div>
+        <div class="persona-name">Richard</div>
+        <p class="persona-pain">You have oversight responsibility for a major transformation programme but you're working entirely from the executive team's own reporting. You know you should be providing independent challenge — but you can't see behind the numbers.</p>
+        <div class="persona-quote">"I'm supposed to hold the board to account on this. But how do I do that when I'm only seeing what they choose to show me?"</div>
+      </div>
+    </div>
+
+    <!-- Canvas cover: draws dark overlay + text, punches circular hole at cursor -->
+    <canvas id="personasCoverCanvas" class="personas-cover-canvas"></canvas>
+  </div>
+</section>
+
+
+<!-- ════════════════ 6-COG MODEL ══════════════════ -->
+<section class="sec cog-sec" id="methodology">
+  <div class="two-col-header" style="position:relative;z-index:2;">
+    <div>
+      <div class="sec-label">The ENOS Methodology</div>
+      <h2 class="sec-title">The 6-Cog<br>Programme Diagnostic</h2>
+    </div>
+    <p class="sec-lead">Every transformation has six interlocking gears. When even one is misaligned, the whole machine slows. Our Health Check scores each cog and identifies exactly where friction is costing you.</p>
+  </div>
+
+  <div class="cog-grid">
+
+    <div class="cog-card reveal">
+      <div class="cog-num">COG 01</div>
+      <svg class="cog-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2L14.5 8H21L15.5 12L17.5 18L12 14L6.5 18L8.5 12L3 8H9.5L12 2Z"/>
+      </svg>
+      <div class="cog-title">Strategy</div>
+      <p class="cog-desc">Is your direction clear, communicated, and translated into actionable capability needs? Or is the vision disconnected from delivery reality?</p>
+    </div>
+
+    <div class="cog-card reveal">
+      <div class="cog-num">COG 02</div>
+      <svg class="cog-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3 4h18v2.5H3V4zm0 6.75h18v2.5H3v-2.5zm0 6.75h18V20H3v-2.5z"/>
+      </svg>
+      <div class="cog-title">Prioritisation</div>
+      <p class="cog-desc">Are your initiatives coordinated to avoid duplication and misalignment? Or are teams pulling in competing directions, draining resource and momentum?</p>
+    </div>
+
+    <div class="cog-card reveal">
+      <div class="cog-num">COG 03</div>
+      <svg class="cog-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+      </svg>
+      <div class="cog-title">Delivery</div>
+      <p class="cog-desc">Is change being executed with the rigour, pace, and quality the programme demands? Or is delivery erratic and accountability unclear?</p>
+    </div>
+
+    <div class="cog-card reveal">
+      <div class="cog-num">COG 04</div>
+      <svg class="cog-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4.18l5 2.22V11c0 3.33-2.17 6.48-5 7.72-2.83-1.24-5-4.39-5-7.72V7.4l5-2.22z"/>
+      </svg>
+      <div class="cog-title">Governance</div>
+      <p class="cog-desc">Is there independent oversight ensuring the programme is honest about its status? Or is the team marking their own homework — and no-one is checking?</p>
+    </div>
+
+    <div class="cog-card reveal">
+      <div class="cog-num">COG 05</div>
+      <svg class="cog-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05C16.19 13.86 17 15 17 16.5V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+      </svg>
+      <div class="cog-title">Adoption</div>
+      <p class="cog-desc">Is the People Gear turning? Are your teams genuinely on board, or is silent resistance eroding the programme from within?</p>
+    </div>
+
+    <div class="cog-card reveal">
+      <div class="cog-num">COG 06</div>
+      <svg class="cog-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M5 9.2h3V19H5V9.2zM10.6 5h2.8v14h-2.8V5zm5.6 8H19v6h-2.8v-6z"/>
+      </svg>
+      <div class="cog-title">Benefit Realisation</div>
+      <p class="cog-desc">Is your strategy delivering the ROI it promised? Are benefits being tracked, owned, and realised — or simply assumed and forgotten?</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════ PROJECT RESCUE ══════════════════ -->
+<section class="sec rescue-sec" id="project-rescue">
+  <div class="two-col-header">
+    <div>
+      <div class="sec-label">Proven Track Record</div>
+      <h2 class="sec-title">Programme rescue.<br>When it's already off the rails.</h2>
+    </div>
+    <p class="sec-lead">The most common call we receive is from an organisation that already knows something is wrong — but can't see clearly enough from the inside to fix it. Project Rescue is what we do best. Here's the evidence.</p>
+  </div>
+
+  <div class="rescue-grid">
+
+    <div class="rescue-card reveal">
+      <div class="rescue-client">Leeds Building Society</div>
+      <div class="rescue-sector">Core Banking · Mortgage Platform Integration · £5m budget · 30 reports</div>
+      <div class="rescue-stat">8 weeks</div>
+      <div class="rescue-stat-label">behind schedule on arrival</div>
+      <p class="rescue-desc">Inherited a programme in deficit and at risk of commercial penalties. Rebuilt a damaged third-party relationship from adversarial to collaborative, restructured delivery governance, and transitioned from waterfall to agile mid-flight. Delivered on time — first among all suppliers. Described by the client as a 'real game changer' for their primary sales channel.</p>
+    </div>
+
+    <div class="rescue-card reveal">
+      <div class="rescue-client">Betfred / Sharp Gaming</div>
+      <div class="rescue-sector">Core Digital Platform Replacement · Customer Migration · 3.5m accounts</div>
+      <div class="rescue-stat">3.5m</div>
+      <div class="rescue-stat-label">customer accounts successfully migrated</div>
+      <p class="rescue-desc">Engaged to bring order to a programme where business and technology were running in parallel without sufficient visibility of how the two threads interconnected. Built the governance model, closed the dependency gaps, and owned the live migration events end-to-end. Consolidated parallel activity streams into a single sequenced programme — significantly reducing risk and achieving lower-than-projected service disruption.</p>
+    </div>
+
+    <div class="rescue-card reveal">
+      <div class="rescue-client">The Co-operative Bank</div>
+      <div class="rescue-sector">Regulatory Redress · 250,000 mortgage accounts · £100m programme</div>
+      <div class="rescue-stat">6 months</div>
+      <div class="rescue-stat-label">cut from delivery timeline</div>
+      <p class="rescue-desc">Led three regulatory compliance workstreams across Risk, Legal, Fraud, IT Security and Customer Service within a major redress programme. Won CTO and Portfolio Director approval for a revised delivery approach that cut six months from the original timeline — without compromising regulatory standards or customer outcomes.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════ 360° HEALTH CHECK ══════════════ -->
+<section class="sec hc-sec" id="health-check">
+  <div class="hc-inner">
+    <div class="hc-left">
+      <div class="sec-label" style="color:rgba(255,255,255,0.55);">The Flagship Service</div>
+      <h2 class="sec-title" style="font-size:clamp(2rem,3vw,2.8rem);">The 360°<br>Health Check</h2>
+      <div class="rule" style="background:rgba(255,255,255,0.4);"></div>
+      <p class="sec-lead" style="color:rgba(255,255,255,0.78); margin-bottom:20px;">A comprehensive, independently delivered diagnostic of your transformation programme. We score each of the six cogs and produce an Authority Asset — a clear, board-ready report on exactly where you stand.</p>
+      <p class="sub-note">Powered by Coda.io and the GC Index, the Health Check cuts through internal noise to give leadership a truthful, structured view of programme health — and what recovery will actually take.</p>
+      <a href="#contact" class="btn-ghost-light">Request Your Health Check →</a>
+    </div>
+
+    <div class="hc-panel">
+      <div class="process-label">Diagnostic Process</div>
+
+      <div class="p-step">
+        <div class="p-step-n">01</div>
+        <div>
+          <div class="p-step-title">Pre-Discovery Questionnaire</div>
+          <div class="p-step-desc">Qualifying the pain and gathering baseline data before we engage — so every minute of our time together is high value.</div>
+        </div>
+      </div>
+
+      <div class="p-step">
+        <div class="p-step-n">02</div>
+        <div>
+          <div class="p-step-title">Discovery Call</div>
+          <div class="p-step-desc">An in-depth consultation to scope the Health Check and agree the diagnostic parameters with key stakeholders.</div>
+        </div>
+      </div>
+
+      <div class="p-step">
+        <div class="p-step-n">03</div>
+        <div>
+          <div class="p-step-title">Active Fieldwork</div>
+          <div class="p-step-desc">Structured interviews, documentation review, and GC Index profiling across the programme team and leadership.</div>
+        </div>
+      </div>
+
+      <div class="p-step">
+        <div class="p-step-n">04</div>
+        <div>
+          <div class="p-step-title">The Authority Asset</div>
+          <div class="p-step-desc">A scored, board-ready diagnostic PDF across all six cogs — your definitive programme health record.</div>
+        </div>
+      </div>
+
+      <div class="p-step">
+        <div class="p-step-n">05</div>
+        <div>
+          <div class="p-step-title">Stakeholder Debrief</div>
+          <div class="p-step-desc">Presenting findings to leadership. Honest, impartial, and structured around the decisions you need to make next.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════ NED & BOARD ADVISORY ═════════════ -->
+<section class="sec ned-sec" id="ned">
+  <div class="ned-inner">
+    <div>
+      <div class="sec-label">Board Advisory</div>
+      <h2 class="sec-title">Independent governance<br>at board level.</h2>
+      <div class="rule"></div>
+      <p class="about-body">As an ILM Level 6 Certified Non-Executive Director (Ofqual-regulated), Geoff provides independent challenge, structured oversight, and expert governance to boards navigating digital transformation, data governance, and regulatory risk.</p>
+      <p class="about-body">Particularly relevant to Risk, Technology, and Finance committees — bringing 30 years of senior delivery leadership to bear at board level, where the questions matter most.</p>
+      <div class="ned-skills">
+        <span class="ned-skill">Corporate Governance</span>
+        <span class="ned-skill">Risk Oversight</span>
+        <span class="ned-skill">Digital &amp; Technology Strategy</span>
+        <span class="ned-skill">Regulatory Compliance</span>
+        <span class="ned-skill">Data Governance</span>
+        <span class="ned-skill">Programme Governance</span>
+        <span class="ned-skill">Financial Acumen</span>
+        <span class="ned-skill">Change Leadership</span>
+      </div>
+      <a href="ned.html" style="display:inline-block; margin-top:28px; font-family:'JetBrains Mono',monospace; font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; color:#7a9fd4; text-decoration:none; border-bottom:1px solid rgba(122,159,212,0.4); padding-bottom:2px; transition:color 0.2s, border-color 0.2s;" onmouseover="this.style.color='#ffffff';this.style.borderColor='rgba(255,255,255,0.6)'" onmouseout="this.style.color='#7a9fd4';this.style.borderColor='rgba(122,159,212,0.4)'">Full Board Advisory Details →</a>
+    </div>
+
+    <div class="ned-roles">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.16em; color:#7a9fd4; text-transform:uppercase; margin-bottom:16px;">Active Board Roles</div>
+
+      <div class="ned-role-card">
+        <div class="ned-role-org">Create Learning Multi Academy Trust · Northwich</div>
+        <div class="ned-role-title">Trustee · 2024 – Present</div>
+        <div class="ned-role-detail">Quality of Education Committee. Contributing governance oversight during merger with a secondary multi-academy trust. Mediated a fractious leadership dispute, restoring constructive working relations.</div>
+      </div>
+
+      <div class="ned-role-card">
+        <div class="ned-role-org">Oakfield Community Primary School · Widnes</div>
+        <div class="ned-role-title">Co-opted Governor · 2024 – Present</div>
+        <div class="ned-role-detail">Finance Committee — structured budget review, challenge and advice to the Headteacher on financial planning and resource allocation.</div>
+      </div>
+
+      <div class="ned-role-card">
+        <div class="ned-role-org">Halebank CE Primary School · Widnes</div>
+        <div class="ned-role-title">Co-opted Governor · 2024 – Present</div>
+        <div class="ned-role-detail">Finance Committee — identified early indicators of a structural budget deficit, enabling timely preventative measures and materially reducing financial risk.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ TESTIMONIALS ═════════════════ -->
+<section class="sec testi-sec" id="testimonials">
+
+  <div class="testi-header">
+    <div class="sec-label" style="justify-content:center;">Client Recommendations</div>
+    <h2>What clients say about working with ENOS</h2>
+    <p>22 recommendations across 30 years — from FTSE-listed banks to government departments and fast-growth SMEs.</p>
+  </div>
+
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="carouselTrack">
+
+      <!-- 1 -->
+      <div class="testi-card">
+        <span class="testi-mark">"</span>
+        <p class="testi-quote">Geoff demonstrated great courage and confidence by joining a complex programme environment with many unknowns and uncertainties. He approaches challenges in a calm, factual, and self-assured manner, is an excellent listener, and communicates clearly. He is particularly strong in stakeholder management and remains professional under pressure, continuously contributing constructive and pragmatic ideas.</p>
+        <div class="testi-rule"></div>
+        <div class="testi-name">Ferdaus Asef</div>
+        <div class="testi-company">SEFE Energy GmbH</div>
+        <div class="testi-role">Lead Project Manager · 2026</div>
+      </div>
+
+      <!-- 2 -->
+      <div class="testi-card">
+        <span class="testi-mark">"</span>
+        <p class="testi-quote">Geoff's strategic thinking and design enabled iterative success across the programme delivering business value immediately. He has strong leadership and communication skills — engaging different audiences at the right level to enable a clear vision. Geoff is highly trusted and reliable, managing risks and issues with a calm pragmatic approach. I hope I get the opportunity to work with Geoff again — and would highly recommend him.</p>
+        <div class="testi-rule"></div>
+        <div class="testi-name">Pamela Clarke</div>
+        <div class="testi-company">SEFE Energy GmbH</div>
+        <div class="testi-role">Senior Business Analyst · 2025</div>
+      </div>
+
+      <!-- 3 -->
+      <div class="testi-card">
+        <span class="testi-mark">"</span>
+        <p class="testi-quote">While Geoff came to our organisation to fill a project manager role, what we got was a strong leader who has left success in his trail. He offers more than a safe set of hands — he has a real passion for his job and making improvements to the organisations he represents. He is confident and willing to challenge the status quo, providing sensible and pragmatic solutions to business needs. I can thoroughly recommend Geoff.</p>
+        <div class="testi-rule"></div>
+        <div class="testi-name">Tom Romer</div>
+        <div class="testi-company">DXC Technology</div>
+        <div class="testi-role">Chief Architect · Leeds Building Society account · 2020</div>
+      </div>
+
+      <!-- 4 -->
+      <div class="testi-card">
+        <span class="testi-mark">"</span>
+        <p class="testi-quote">I brought Geoff back in to lead our flagship project — at the time twelve weeks behind schedule — and within three months he had moved it back on schedule. He embraced and embedded tools to manage the project and chose parts of Agile methodology, interweaving it with Waterfall where compatible. The result was the project hitting agreed milestones and delighting the customer in supporting the principal initiative of the CEO.</p>
+        <div class="testi-rule"></div>
+        <div class="testi-name">Karl Lucas</div>
+        <div class="testi-company">DXC Technology</div>
+        <div class="testi-role">Head of Live Service · Leeds Building Society account · 2020</div>
+      </div>
+
+      <!-- 5 -->
+      <div class="testi-card">
+        <span class="testi-mark">"</span>
+        <p class="testi-quote">What looked like 'mission impossible' soon became 'mission possible'. Geoff took on board feedback and set to work resetting the governance and boundaries for the vendor delivery teams. Working together we tweaked and improved the governance framework and ways of working that allowed the delivery teams to deliver, whilst keeping the correct levels of oversight and control to ensure stakeholders were comfortable that progress was being achieved.</p>
+        <div class="testi-rule"></div>
+        <div class="testi-name">Martin Price</div>
+        <div class="testi-company">Leeds Building Society</div>
+        <div class="testi-role">Project Manager · 2020</div>
+      </div>
+
+      <!-- 6 -->
+      <div class="testi-card">
+        <span class="testi-mark">"</span>
+        <p class="testi-quote">Geoff appears to have the proverbial sixth sense for anticipating, identifying and managing risks to programme delivery. His direct stakeholder management and communications empower his teams while championing pragmatism for complex change. Seasoned in working with colleagues at Director or C-Level across Waterfall and Agile methodologies with multi-million £ budgets. I could always rely on him for practical advice and clear direction.</p>
+        <div class="testi-rule"></div>
+        <div class="testi-name">Peter Molduano</div>
+        <div class="testi-company">DXC Technology</div>
+        <div class="testi-role">GDPR Consultant · Leeds Building Society account · 2019</div>
+      </div>
+
+      <!-- 7 -->
+      <div class="testi-card">
+        <span class="testi-mark">"</span>
+        <p class="testi-quote">Geoff has been amazing in his support of our Programme. Quick to get to grips with the situation, understanding the people and then getting us all aligned on a common plan — all done in a totally calm manner that makes it a pleasure to work with him. Would work with Geoff anytime.</p>
+        <div class="testi-rule"></div>
+        <div class="testi-name">Iain McCormack</div>
+        <div class="testi-company">Betfred</div>
+        <div class="testi-role">Head of Projects &amp; Change · 2022</div>
+      </div>
+
+      <!-- 8 -->
+      <div class="testi-card">
+        <span class="testi-mark">"</span>
+        <p class="testi-quote">Geoff is extremely credible and highly professional, and the quality of his delivery is first rate. He takes full responsibility for his work, and he quickly becomes a technical subject matter expert. I was extremely comfortable having Geoff managing his workload and ensuring that critical milestones would be hit. An asset to any team or project.</p>
+        <div class="testi-rule"></div>
+        <div class="testi-name">Matt Bess</div>
+        <div class="testi-company">Lloyds Bank / TSB</div>
+        <div class="testi-role">Head of Business Banking · 2016</div>
+      </div>
+
+    </div><!-- /track -->
+  </div><!-- /wrap -->
+
+  <div class="carousel-controls">
+    <button class="carousel-btn" id="prevBtn" aria-label="Previous">&#8592;</button>
+    <div class="carousel-dots" id="carouselDots"></div>
+    <button class="carousel-btn" id="nextBtn" aria-label="Next">&#8594;</button>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════ ABOUT ══════════════════════ -->
+<section class="sec about-sec" id="about">
+  <div>
+    <div class="sec-label">About ENOS</div>
+    <h2 class="sec-title">The Critical Friend you didn't know you needed.</h2>
+    <div class="rule"></div>
+    <p class="about-body">Geoff can walk into a board meeting, explain where a complex technology programme stands in plain English, and walk out with alignment — then go straight back to managing the team, the plan, and the stakeholders who matter. That combination is what drives successful delivery, and it is what he has done consistently for over 30 years.</p>
+    <p class="about-body">ENOS Limited was founded in 2001 to bring that capability to organisations as an independent, impartial force. Where other consultants tell you what you want to hear, ENOS tells you what you need to know.</p>
+    <p class="about-body" style="margin-bottom:0;">Comfortable across PE-backed businesses, regulated environments, and multi-site operations — from fast-growth SMEs to £100m enterprise programmes.</p>
+  </div>
+
+  <div>
+    <div class="about-creds">
+      <div class="about-cred"><div class="cred-label">Founded</div><div class="cred-val">ENOS Limited · 2001</div></div>
+      <div class="about-cred"><div class="cred-label">Experience</div><div class="cred-val">30 Years</div></div>
+      <div class="about-cred"><div class="cred-label">Governance</div><div class="cred-val">ILM L.6 Certified NED</div></div>
+      <div class="about-cred"><div class="cred-label">Practitioner</div><div class="cred-val">Accredited GC Index</div></div>
+      <div class="about-cred"><div class="cred-label">Methodology</div><div class="cred-val">MSP · PRINCE2 · PRINCE2 Agile</div></div>
+      <div class="about-cred"><div class="cred-label">Education</div><div class="cred-val">MIT · Copenhagen Business School</div></div>
+      <div class="about-cred"><div class="cred-label">Platform</div><div class="cred-val">Coda.io Powered</div></div>
+      <div class="about-cred"><div class="cred-label">Degree</div><div class="cred-val">BSc (Hons) Business Information Systems</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════ CTA ══════════════════════ -->
+<section class="cta-sec" id="contact">
+  <div class="cta-inner">
+    <div class="sec-label" style="justify-content:center;">Start the Conversation</div>
+    <h2>Ready to find out what's actually stalling your transformation?</h2>
+    <p>Book a no-obligation Discovery Call. We'll qualify your situation and tell you honestly whether a 360° Health Check is the right next step — no sales pressure, no day-rate agenda.</p>
+    <div class="cta-btns">
+      <a href="https://zcal.co/enosltd/discovery" class="btn-primary" target="_blank" rel="noopener">Book a Discovery Call</a>
+      <a href="mailto:gp@enos.ltd.uk" class="btn-ghost">Email Geoff Directly</a>
+    </div>
+    <div class="cta-contact">
+      <a href="tel:+447946314316">+44 (0) 7946 314 316</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:gp@enos.ltd.uk">gp@enos.ltd.uk</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/geoffporritt/" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <div>
+    <div class="footer-brand">ENOS Limited</div>
+    <div class="footer-sub">The Critical Friend</div>
+  </div>
+
+  <ul class="footer-nav">
+    <li><a href="#who-we-help">Who We Help</a></li>
+    <li><a href="#health-check">Health Check</a></li>
+    <li><a href="consultancy.html">Consultancy</a></li>
+    <li><a href="ned.html">Board Advisory</a></li>
+    <li>GC Index</li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <div class="footer-legal">
+    ©2026 ENOS Limited<br>
+    Company Reg. GB4240098 · VAT 775 5977 60
+  </div>
+</footer>
+
+
+<script>
+  // ── Carousel ──────────────────────────────────
+  const track    = document.getElementById('carouselTrack');
+  const prevBtn  = document.getElementById('prevBtn');
+  const nextBtn  = document.getElementById('nextBtn');
+  const dotsWrap = document.getElementById('carouselDots');
+  const cards    = Array.from(track.querySelectorAll('.testi-card'));
+  const total    = cards.length;
+  let current    = 0;
+  let autoTimer;
+
+  function buildDots() {
+    dotsWrap.innerHTML = '';
+    cards.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'carousel-dot' + (i === current ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      d.addEventListener('click', () => { goTo(i); resetAuto(); });
+      dotsWrap.appendChild(d);
+    });
+  }
+
+  function goTo(idx) {
+    current = (idx + total) % total;
+    // Each card is exactly 100% wide — shift by that percentage
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+    prevBtn.disabled = false;
+    nextBtn.disabled = false;
+  }
+
+  function resetAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 6000);
+  }
+
+  prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+  nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+
+  buildDots();
+  resetAuto();
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Nav shrink on scroll — respects mobile padding
+  const nav = document.getElementById('nav');
+  function updateNavPad() {
+    const mobile = window.innerWidth <= 900;
+    const mid    = window.innerWidth <= 1100 && !mobile;
+    const hPad   = mobile ? '20px' : mid ? '36px' : '64px';
+    const vPad   = window.scrollY > 60
+      ? (mobile ? '10px' : '13px')
+      : (mobile ? '14px' : mid ? '16px' : '20px');
+    nav.style.padding = `${vPad} ${hPad}`;
+  }
+  window.addEventListener('scroll', updateNavPad, { passive: true });
+  window.addEventListener('resize', updateNavPad, { passive: true });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('navHamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  function closeMobileNav() {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  // Close on any nav link click
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeMobileNav);
+  });
+  // Close on resize to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) closeMobileNav();
+  }, { passive: true });
+
+  // Carousel: touch/swipe support
+  (function() {
+    const wrap = document.querySelector('.carousel-wrap');
+    let startX = 0, startY = 0, isDragging = false;
+    wrap.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      isDragging = true;
+    }, { passive: true });
+    wrap.addEventListener('touchend', e => {
+      if (!isDragging) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      const dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        if (dx < 0) { goTo(current + 1); resetAuto(); }
+        else         { goTo(current - 1); resetAuto(); }
+      }
+      isDragging = false;
+    }, { passive: true });
+  })();
+
+  /* ── PERSONA CANVAS REVEAL ────────────────────────────────────
+     Draws a dark overlay + centred text onto a <canvas>, then uses
+     Canvas 2D destination-out compositing to punch a soft circular
+     hole at the cursor position, revealing the persona cards below.
+     This is more reliable than CSS/SVG masking across all browsers.
+  ────────────────────────────────────────────────────────────── */
+  (function () {
+    var wrap   = document.getElementById('personasMaskWrap');
+    var canvas = document.getElementById('personasCoverCanvas');
+    if (!wrap || !canvas) return;
+    var ctx = canvas.getContext('2d');
+
+    var currentR = 0, targetR = 0;
+    var currentX = 0, targetX = 0;
+    var currentY = 0, targetY = 0;
+    var raf = null;
+    var RADIUS = 550;  /* px — reveal circle size          */
+    var EASE   = 0.10; /* lerp factor — lower = slower     */
+    var dpr    = window.devicePixelRatio || 1;
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function resize() {
+      var w = wrap.offsetWidth;
+      var h = wrap.offsetHeight;
+      canvas.width  = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width  = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.scale(dpr, dpr);
+    }
+
+    function draw(cx, cy, revealR) {
+      var w = wrap.offsetWidth;
+      var h = wrap.offsetHeight;
+
+      ctx.clearRect(0, 0, w, h);
+
+      /* ── 1. Dark background ── */
+      ctx.fillStyle = '#080e40';
+      ctx.fillRect(0, 0, w, h);
+
+      /* ── 2. Centred cover text (drawn before hole so it gets punched out too) ── */
+      var midX = w / 2;
+      var midY = h / 2;
+
+      /* Decorative side-lines + eyebrow */
+      ctx.strokeStyle = '#7a9fd4';
+      ctx.lineWidth   = 1;
+      var ew = 120; /* text approx half-width for line placement */
+      ctx.beginPath(); ctx.moveTo(midX - ew - 16, midY - 74); ctx.lineTo(midX - ew + 4, midY - 74); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(midX + ew - 4,  midY - 74); ctx.lineTo(midX + ew + 16, midY - 74); ctx.stroke();
+
+      ctx.fillStyle    = '#7a9fd4';
+      ctx.font         = '400 11px "JetBrains Mono", monospace';
+      ctx.textAlign    = 'center';
+      ctx.textBaseline = 'middle';
+      try { ctx.letterSpacing = '2.8px'; } catch(e) {}
+      ctx.fillText('WHO WE HELP', midX, midY - 74);
+
+      /* Heading line 1 */
+      try { ctx.letterSpacing = '0px'; } catch(e) {}
+      ctx.fillStyle = '#ffffff';
+      ctx.font      = '700 ' + Math.round(Math.min(w * 0.055, 48)) + 'px "Playfair Display", serif';
+      ctx.fillText('Hover to discover', midX, midY - 14);
+
+      /* Heading line 2: italic "your" in blue + "blind spot" in white */
+      var fs = Math.round(Math.min(w * 0.055, 48));
+      ctx.font = 'italic 700 ' + fs + 'px "Playfair Display", serif';
+      var yourW = ctx.measureText('your').width;
+      ctx.font = '700 ' + fs + 'px "Playfair Display", serif';
+      var restW = ctx.measureText(' blind spot').width;
+      var lineX = midX - (yourW + restW) / 2;
+      var lineY = midY + fs * 1.25;
+
+      ctx.font      = 'italic 700 ' + fs + 'px "Playfair Display", serif';
+      ctx.fillStyle = '#7a9fd4';
+      ctx.textAlign = 'left';
+      ctx.fillText('your', lineX, lineY);
+
+      ctx.font      = '700 ' + fs + 'px "Playfair Display", serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText(' blind spot', lineX + yourW, lineY);
+
+      /* Sub-label */
+      ctx.textAlign = 'center';
+      ctx.fillStyle = 'rgba(255,255,255,0.45)';
+      ctx.font      = '400 11px "JetBrains Mono", monospace';
+      try { ctx.letterSpacing = '2px'; } catch(e) {}
+      ctx.fillText('MOVE YOUR CURSOR TO REVEAL', midX, lineY + fs * 1.4);
+
+      /* ── 3. Punch circular hole through background + text ── */
+      if (revealR > 1) {
+        ctx.globalCompositeOperation = 'destination-out';
+
+        /* Solid inner disc (0 → 72 % of radius) */
+        var inner = revealR * 0.72;
+        ctx.beginPath();
+        ctx.arc(cx, cy, inner, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0,0,0,1)';
+        ctx.fill();
+
+        /* Feathered ring (72 % → 100 %) */
+        var edgeGrad = ctx.createRadialGradient(cx, cy, inner, cx, cy, revealR);
+        edgeGrad.addColorStop(0, 'rgba(0,0,0,1)');
+        edgeGrad.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.beginPath();
+        ctx.arc(cx, cy, revealR, 0, Math.PI * 2);
+        ctx.fillStyle = edgeGrad;
+        ctx.fill();
+
+        ctx.globalCompositeOperation = 'source-over';
+      }
+    }
+
+    function update() {
+      currentR = lerp(currentR, targetR, EASE);
+      currentX = lerp(currentX, targetX, EASE);
+      currentY = lerp(currentY, targetY, EASE);
+      draw(currentX, currentY, currentR);
+      var done = Math.abs(currentR - targetR) < 0.4
+              && Math.abs(currentX - targetX) < 0.4
+              && Math.abs(currentY - targetY) < 0.4;
+      if (done) { draw(targetX, targetY, targetR); raf = null; }
+      else       { raf = requestAnimationFrame(update); }
+    }
+
+    function startAnim() { if (!raf) raf = requestAnimationFrame(update); }
+
+    wrap.addEventListener('mousemove', function (e) {
+      var rect = wrap.getBoundingClientRect();
+      targetX = e.clientX - rect.left;
+      targetY = e.clientY - rect.top;
+      if (targetR === 0) { currentX = targetX; currentY = targetY; }
+      targetR = RADIUS;
+      startAnim();
     });
 
-    var reveals = document.querySelectorAll('.reveal');
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    reveals.forEach(function(el) { io.observe(el); });
-  </script>
+    wrap.addEventListener('mouseleave', function () {
+      targetR = 0;
+      startAnim();
+    });
+
+    window.addEventListener('resize', function () { resize(); draw(currentX, currentY, currentR); });
+
+    /* Wait for web fonts before first draw so text renders in Playfair Display */
+    function init() { resize(); draw(0, 0, 0); }
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(init); }
+    else { window.addEventListener('load', init); }
+  }());
+
+  /* ══════════════════════════════════════════════════════════
+     ENHANCED COMPONENTS — Webflow-ready vanilla JS
+     ──────────────────────────────────────────────────────────
+     WEBFLOW MIGRATION:
+       All three blocks below go in one of:
+         • Site Settings > Custom Code > Footer Code  (site-wide)
+         • Page Settings  > Custom Code > Footer Code (page-specific)
+       They are self-contained IIFEs — safe to copy individually.
+     ══════════════════════════════════════════════════════════ */
+
+
+  /* ── 1. HERO BACKGROUND BEAMS ────────────────────────────────
+     Animates gradient beam lines on a <canvas> layered behind the
+     hero content. Beams drift from the right/top (where the gear
+     decoration lives) toward the content area, reinforcing the
+     "diagnostic insight flowing in" visual metaphor.
+
+     WEBFLOW: Ensure a <canvas id="heroBeamsCanvas" aria-hidden="true">
+     Embed block exists inside your Hero section. The canvas CSS
+     (position: absolute; inset: 0; z-index: 1; pointer-events: none)
+     goes in Head Code. This JS block goes in Footer Code.
+
+     Config via data attributes on the canvas element:
+       data-beam-count="14"   — number of simultaneous beams
+       data-beam-fps="30"     — animation frame-rate cap (saves battery)
+  ─────────────────────────────────────────────────────────────── */
+  (function () {
+    var canvas = document.getElementById('heroBeamsCanvas');
+    if (!canvas) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var ctx       = canvas.getContext('2d');
+    var BEAM_COUNT = parseInt(canvas.dataset.beamCount || '14', 10);
+    var TARGET_FPS = parseInt(canvas.dataset.beamFps   || '30', 10);
+    var INTERVAL   = 1000 / TARGET_FPS;
+
+    /* Resize canvas to match the hero element */
+    function resize() {
+      var hero   = canvas.parentElement;
+      canvas.width  = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    /* ── Beam class ── */
+    function Beam(scattered) {
+      this.init(scattered);
+    }
+
+    Beam.prototype.init = function (scattered) {
+      var w = canvas.width, h = canvas.height;
+
+      /* Bias spawning toward top and right edges — where the gear sits */
+      var edge = scattered
+        ? Math.floor(Math.random() * 4)
+        : (Math.random() < 0.6 ? 1 /* right */ : 0 /* top */);
+
+      if (edge === 0) {           /* top */
+        this.x  = w * 0.25 + Math.random() * w * 0.75;
+        this.y  = -20;
+        this.vx = -0.15 - Math.random() * 0.25;
+        this.vy =  0.25 + Math.random() * 0.35;
+      } else if (edge === 1) {    /* right */
+        this.x  = w + 20;
+        this.y  = Math.random() * h * 0.8;
+        this.vx = -(0.25 + Math.random() * 0.40);
+        this.vy =  (Math.random() - 0.35) * 0.30;
+      } else if (edge === 2) {    /* bottom */
+        this.x  = Math.random() * w;
+        this.y  = h + 20;
+        this.vx = -0.1 - Math.random() * 0.2;
+        this.vy = -(0.25 + Math.random() * 0.30);
+      } else {                    /* left */
+        this.x  = -20;
+        this.y  = h * 0.2 + Math.random() * h * 0.6;
+        this.vx =  0.15 + Math.random() * 0.25;
+        this.vy =  (Math.random() - 0.5) * 0.30;
+      }
+
+      this.len    = 90  + Math.random() * 140;
+      this.lw     = 0.4 + Math.random() * 1.1;
+      this.maxOp  = 0.07 + Math.random() * 0.12;
+      this.op     = scattered ? Math.random() * this.maxOp : 0;
+      this.fading = scattered && Math.random() > 0.5;
+      /* Two blue tones from ENOS brand palette */
+      this.rgb    = Math.random() > 0.45 ? '74,111,192' : '39,70,144';
+    };
+
+    Beam.prototype.step = function () {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.fading) {
+        this.op -= 0.0012;
+        if (this.op <= 0) { this.init(false); return; }
+      } else {
+        this.op = Math.min(this.op + 0.0015, this.maxOp);
+        /* Begin fading once the beam reaches the left-centre area */
+        if (this.x < canvas.width * 0.18) this.fading = true;
+      }
+
+      /* Safety reset if beam wanders fully off-screen */
+      var pad = this.len + 50;
+      if (this.x < -pad || this.x > canvas.width  + pad ||
+          this.y < -pad || this.y > canvas.height + pad) {
+        this.init(false);
+      }
+    };
+
+    Beam.prototype.draw = function () {
+      var angle = Math.atan2(this.vy, this.vx);
+      var tx = this.x - Math.cos(angle) * this.len;
+      var ty = this.y - Math.sin(angle) * this.len;
+      var g  = ctx.createLinearGradient(tx, ty, this.x, this.y);
+      g.addColorStop(0,    'rgba(' + this.rgb + ',0)');
+      g.addColorStop(0.45, 'rgba(' + this.rgb + ',' + this.op + ')');
+      g.addColorStop(1,    'rgba(' + this.rgb + ',0)');
+      ctx.beginPath();
+      ctx.moveTo(tx, ty);
+      ctx.lineTo(this.x, this.y);
+      ctx.strokeStyle = g;
+      ctx.lineWidth   = this.lw;
+      ctx.stroke();
+    };
+
+    /* Spawn initial set, scattered at random positions */
+    var beams = [];
+    for (var i = 0; i < BEAM_COUNT; i++) beams.push(new Beam(true));
+
+    var raf, lastTime = 0;
+
+    function loop(ts) {
+      raf = requestAnimationFrame(loop);
+      if (ts - lastTime < INTERVAL) return;
+      lastTime = ts;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (var j = 0; j < beams.length; j++) { beams[j].step(); beams[j].draw(); }
+    }
+
+    /* Pause animation when tab is hidden — saves CPU / battery */
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { cancelAnimationFrame(raf); }
+      else                  { lastTime = 0; raf = requestAnimationFrame(loop); }
+    });
+
+    raf = requestAnimationFrame(loop);
+  }());
+
+
+  /* ── 2. CARD SPOTLIGHT ───────────────────────────────────────
+     A radial gradient "torch" that follows the cursor across each
+     cog card — each card tracks its own local mouse coordinates
+     via CSS custom properties (--spotlight-x / --spotlight-y).
+
+     WEBFLOW: The matching CSS (::after pseudo-element + custom
+     properties) goes in Head Code. This JS block goes in Footer
+     Code. Targets any element with class="cog-card" automatically,
+     so adding new cog cards in Webflow requires no JS changes.
+  ─────────────────────────────────────────────────────────────── */
+  (function () {
+    var cards = document.querySelectorAll('.cog-card');
+    if (!cards.length) return;
+
+    /* Skip on touch-only devices — no cursor to follow */
+    if (window.matchMedia('(hover: none)').matches) return;
+
+    cards.forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--spotlight-x', (e.clientX - r.left)  + 'px');
+        card.style.setProperty('--spotlight-y', (e.clientY - r.top)   + 'px');
+      });
+
+      /* Reset position on leave so the next hover starts clean */
+      card.addEventListener('mouseleave', function () {
+        card.style.setProperty('--spotlight-x', '50%');
+        card.style.setProperty('--spotlight-y', '50%');
+      });
+    });
+  }());
+
+
+  /* ── 3. NUMBER TICKER ────────────────────────────────────────
+     Counts stat numbers up from zero when scrolled into view.
+     Handles mixed formats: "30", "3.5m", "£100m+".
+     Fires once per element; respects prefers-reduced-motion.
+
+     WEBFLOW: This JS block goes in Footer Code. It targets any
+     element with class="stat-num" automatically. To customise
+     animation speed per element, add:
+       data-ticker-duration="2500"   (milliseconds; default 3200)
+     No HTML changes needed — the existing stat elements are used.
+  ─────────────────────────────────────────────────────────────── */
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var els = document.querySelectorAll('.stat-num');
+    if (!els.length) return;
+
+    /* Parse a display string into its parts, e.g. "£100m+" →
+       { prefix: "£", value: 100, suffix: "m+", decimals: 0 }  */
+    function parse(text) {
+      var m = text.trim().match(/^([^0-9]*)([0-9]+(?:\.[0-9]+)?)(.*)$/);
+      if (!m) return null;
+      var decimals = m[2].indexOf('.') !== -1 ? m[2].split('.')[1].length : 0;
+      return { prefix: m[1], value: parseFloat(m[2]), suffix: m[3], decimals: decimals };
+    }
+
+    /* Ease-out cubic — fast start, smooth landing */
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function animateTicker(el, parsed, duration) {
+      var startTime = null;
+      function tick(now) {
+        if (!startTime) startTime = now;
+        var raw      = Math.min((now - startTime) / duration, 1);
+        var progress = easeOut(raw);
+        el.textContent = parsed.prefix
+          + (progress * parsed.value).toFixed(parsed.decimals)
+          + parsed.suffix;
+        if (raw < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    var tickerIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el       = entry.target;
+        var parsed   = parse(el.dataset.tickerOriginal);
+        if (!parsed) return;
+        var duration = parseInt(el.dataset.tickerDuration || '2500', 10);
+        animateTicker(el, parsed, duration);
+        tickerIO.unobserve(el);  /* fire once only */
+      });
+    }, { threshold: 0.6 });
+
+    els.forEach(function (el) {
+      /* Snapshot the original text before the first tick overwrites it */
+      el.dataset.tickerOriginal = el.textContent.trim();
+      el.setAttribute('data-ticker', '');
+      tickerIO.observe(el);
+    });
+  }());
+
+</script>
 
 </body>
 </html>
