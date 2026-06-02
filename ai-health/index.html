@@ -733,29 +733,28 @@
       if (e.key === 'Escape') closeModal();
     });
 
-    // Intercept Bigin form submit → show download ONLY after validation passes.
-    // The submit event fires even when validation fails, so we must wrap the
-    // validator and gate the success state on its return value.
+    // Show the download state only after Bigin confirms a successful POST.
+    // The hidden iframe receives the response; its load event fires ONLY when
+    // validation passed and the POST went through. Cleaner than wrapping the
+    // validator (Bigin's external script can mess with its return value).
     window.addEventListener('load', function() {
-      if (typeof window.validateForm335987000000794001 !== 'function' &&
-          typeof checkMandatory335987000000794001 === 'function') {
-        window.validateForm335987000000794001 = checkMandatory335987000000794001;
-      }
-      var originalValidate = window.validateForm335987000000794001;
-      if (typeof originalValidate !== 'function') return;
+      var iframe = document.getElementById('hidden335987000000794001Frame');
+      var biginForm = document.getElementById('BiginWebToRecordForm335987000000794001');
+      if (!iframe || !biginForm) return;
 
-      window.validateForm335987000000794001 = function() {
-        var passed = originalValidate.apply(this, arguments);
-        if (passed) {
-          setTimeout(function() {
-            document.getElementById('modal-form-state').style.display = 'none';
-            document.getElementById('modal-download-state').style.display = 'block';
-            var frame = document.getElementById('hidden335987000000794001Frame');
-            if (frame) frame.style.cssText += ';display:none!important';
-          }, 1500);
-        }
-        return passed;
-      };
+      var hasSubmitted = false;
+      biginForm.addEventListener('submit', function() {
+        hasSubmitted = true;
+      });
+
+      iframe.addEventListener('load', function() {
+        if (!hasSubmitted) return;
+        setTimeout(function() {
+          document.getElementById('modal-form-state').style.display = 'none';
+          document.getElementById('modal-download-state').style.display = 'block';
+          iframe.style.cssText += ';display:none!important';
+        }, 300);
+      });
     });
 
     var reveals = document.querySelectorAll('.reveal');
