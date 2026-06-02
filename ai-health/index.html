@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>360° AI Health Check | ENOS Limited</title>
+  <meta name="description" content="An independent diagnostic of your organisation's AI strategy and deployment — across governance, data, ethics, capability, and value realisation. Is your AI programme marking its own homework?">
+  <link rel="canonical" href="https://enos.ltd.uk/ai-health/">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" href="../favicon.svg" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #050a30;
+      --navy-mid:   #080e40;
+      --navy-light: #0d1555;
+      --blue:       #274690;
+      --blue-mid:   #3254a8;
+      --blue-light: #4a6fc0;
+      --teal:       #1a7a6e;
+      --teal-light: #2aa898;
+      --white:      #ffffff;
+      --w70:  rgba(255,255,255,0.70);
+      --w40:  rgba(255,255,255,0.40);
+      --w15:  rgba(255,255,255,0.15);
+      --w08:  rgba(255,255,255,0.08);
+      --w04:  rgba(255,255,255,0.04);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.12; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 64px;
+      background: rgba(5,10,48,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--w15);
+      transition: padding 0.3s;
+    }
+    nav.scrolled { padding: 12px 64px; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo svg { width: 34px; height: 34px; }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--white); letter-spacing: 0.04em;
+    }
+    .nav-logo-text span { color: var(--blue-light); }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-back {
+      color: var(--w70); text-decoration: none;
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--blue); color: var(--white);
+      padding: 9px 20px; border-radius: 2px;
+      font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--blue-mid);
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--blue-mid); }
+    @media(max-width:768px){
+      nav { padding: 16px 24px; }
+      .nav-back { display: none; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 140px 64px 100px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 72% 40%, rgba(26,122,110,0.22) 0%, transparent 55%),
+        radial-gradient(ellipse at 8% 80%, rgba(39,70,144,0.18) 0%, transparent 45%),
+        var(--navy);
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--w04) 1px, transparent 1px),
+        linear-gradient(90deg, var(--w04) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 700px; }
+    .label-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.18em;
+      color: var(--teal-light); text-transform: uppercase;
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 24px;
+    }
+    .label-tag::before {
+      content: ''; display: block;
+      width: 32px; height: 1px;
+      background: var(--teal-light);
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+    .hero h1 em { font-style: italic; color: var(--teal-light); }
+    .hero-sub {
+      font-size: 1.15rem; color: var(--w70); font-weight: 300;
+      max-width: 540px; margin-bottom: 44px;
+      line-height: 1.7;
+    }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--blue); color: var(--white);
+      padding: 14px 28px; border-radius: 2px;
+      font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none; border: none; cursor: pointer;
+      border: 1px solid var(--blue-mid);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--blue-mid); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--white);
+      padding: 14px 28px; border-radius: 2px;
+      font-size: 0.9rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none; cursor: pointer;
+      border: 1px solid var(--w40);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--white); background: var(--w08); }
+
+    /* ── BOARD BRIEFING BANNER ── */
+    .briefing-banner {
+      background: linear-gradient(135deg, var(--teal) 0%, #0e5a51 100%);
+      padding: 28px 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .briefing-banner-text h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem; font-weight: 600;
+      color: var(--white); margin-bottom: 4px;
+    }
+    .briefing-banner-text p { font-size: 0.9rem; color: rgba(255,255,255,0.75); }
+    .btn-briefing-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--teal);
+      padding: 12px 24px; border-radius: 2px;
+      font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none; border: none; cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .btn-briefing-cta:hover { opacity: 0.88; }
+    @media(max-width:768px) {
+      .briefing-banner { padding: 24px; flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ── WHY NOW ── */
+    section { padding: 100px 64px; }
+    @media(max-width:768px){ section { padding: 64px 24px; } }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; letter-spacing: 0.18em;
+      color: var(--teal-light); text-transform: uppercase; margin-bottom: 16px;
+    }
+    .section-title { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; margin-bottom: 20px; }
+    .section-intro { font-size: 1.05rem; color: var(--w70); font-weight: 300; max-width: 600px; line-height: 1.8; margin-bottom: 56px; }
+    .divider { border: none; border-top: 1px solid var(--w15); }
+
+    .why-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 24px;
+    }
+    @media(max-width:768px){ .why-grid { grid-template-columns: 1fr; } }
+    .why-card {
+      padding: 32px; background: var(--w04);
+      border: 1px solid var(--w15);
+      border-left: 2px solid var(--teal);
+      transition: background 0.2s;
+    }
+    .why-card:hover { background: var(--w08); }
+    .why-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+    .why-card p { font-size: 0.88rem; color: var(--w70); line-height: 1.7; }
+
+    /* ── DIMENSIONS GRID ── */
+    .dim-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+      border: 1px solid var(--w15);
+    }
+    @media(max-width:900px){ .dim-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:600px){ .dim-grid { grid-template-columns: 1fr; } }
+    .dim-card {
+      padding: 36px 32px; background: var(--w04);
+      border: 1px solid var(--w15);
+      transition: background 0.2s;
+    }
+    .dim-card:hover { background: var(--w08); }
+    .dim-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; color: var(--teal-light);
+      letter-spacing: 0.1em; margin-bottom: 14px;
+    }
+    .dim-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
+    .dim-desc { font-size: 0.88rem; color: var(--w70); line-height: 1.7; }
+
+    /* ── PROCESS ── */
+    .process-section { background: var(--navy-light); }
+    .process-steps { display: grid; grid-template-columns: repeat(5,1fr); gap: 0; }
+    @media(max-width:900px){ .process-steps { grid-template-columns: 1fr; } }
+    .step {
+      padding: 36px 28px; border-right: 1px solid var(--w15); position: relative;
+    }
+    .step:last-child { border-right: none; }
+    @media(max-width:900px){ .step { border-right: none; border-bottom: 1px solid var(--w15); } .step:last-child { border-bottom: none; } }
+    .step-num { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 500; color: var(--w15); line-height: 1; margin-bottom: 16px; }
+    .step-title { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--white); margin-bottom: 10px; }
+    .step-desc { font-size: 0.83rem; color: var(--w70); line-height: 1.65; }
+
+    /* ── WHO IS IT FOR ── */
+    .persona-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+    }
+    @media(max-width:900px){ .persona-grid { grid-template-columns: 1fr; } }
+    .persona-card {
+      padding: 32px 28px; background: var(--w04);
+      border: 1px solid var(--w15);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .persona-card:hover { border-color: var(--teal); background: var(--w08); }
+    .persona-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; color: var(--teal-light);
+      letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px;
+    }
+    .persona-card h3 { font-size: 1.1rem; margin-bottom: 12px; }
+    .persona-card p { font-size: 0.88rem; color: var(--w70); line-height: 1.7; }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      text-align: center;
+      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+      border-top: 1px solid var(--w15);
+    }
+    .final-cta h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 20px; }
+    .final-cta p { font-size: 1.05rem; color: var(--w70); max-width: 520px; margin: 0 auto 40px; }
+    .final-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 64px; border-top: 1px solid var(--w15);
+      display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
+    }
+    .footer-left { font-size: 0.8rem; color: var(--w40); }
+    .footer-right { display: flex; gap: 24px; }
+    .footer-link { font-size: 0.8rem; color: var(--w40); text-decoration: none; transition: color 0.2s; }
+    .footer-link:hover { color: var(--white); }
+    @media(max-width:768px){ footer { padding: 32px 24px; flex-direction: column; } }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(5,10,48,0.92);
+      backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal-container {
+      background: var(--navy-light); border: 1px solid var(--w15);
+      border-radius: 4px; width: 100%; max-width: 560px;
+      max-height: 90vh; overflow-y: auto; position: relative;
+      transform: translateY(20px); transition: transform 0.25s;
+    }
+    .modal-overlay.open .modal-container { transform: translateY(0); }
+    .modal-header { padding: 32px 36px 0; display: flex; justify-content: space-between; align-items: flex-start; }
+    .modal-header h3 { font-size: 1.5rem; font-weight: 700; line-height: 1.2; }
+    .modal-close { background: none; border: none; cursor: pointer; color: var(--w40); font-size: 1.8rem; line-height: 1; padding: 0; margin-left: 16px; flex-shrink: 0; transition: color 0.2s; }
+    .modal-close:hover { color: var(--white); }
+    .modal-sub { padding: 12px 36px 0; font-size: 0.9rem; color: var(--w70); line-height: 1.6; }
+    .modal-body { padding: 24px 36px 36px; }
+
+    /* Bigin overrides */
+    #hidden335987000000794001Frame { display: none !important; }
+    .wf-parent { background-color: transparent !important; padding: 0 !important; }
+    .wf-wrapper { background: transparent !important; border: none !important; box-shadow: none !important; color: var(--white) !important; max-width: 100% !important; }
+    .wf-form-component { padding: 0 !important; font-family: 'Outfit', sans-serif !important; }
+    .wf-header { display: none !important; }
+    .wf-label { color: var(--w70) !important; font-size: 0.85rem !important; padding: 7px 0 !important; }
+    .wf-field-input, .wf-field-dropdown { background: var(--w08) !important; border: 1px solid var(--w15) !important; color: var(--white) !important; border-radius: 2px !important; }
+    .wf-field-mandatory .wf-field-inner::before { background-color: var(--teal-light) !important; }
+    .wf-btn { background: var(--blue) !important; color: var(--white) !important; border: 1px solid var(--blue-mid) !important; border-radius: 2px !important; font-family: 'Outfit', sans-serif !important; font-weight: 600 !important; letter-spacing: 0.06em !important; text-transform: uppercase !important; padding: 12px 28px !important; font-size: 0.85rem !important; }
+    .wf-btn:disabled { opacity: 0.5 !important; }
+    .wf-spam-content-box { border-top-color: var(--w15) !important; }
+    .wf-spam-content-box-inner { background: var(--w04) !important; color: var(--w40) !important; font-size: 0.75rem !important; }
+    .wform-btn-wrap { margin-top: 28px !important; }
+    .dropdown-menu { background: var(--navy-light) !important; border-color: var(--w15) !important; }
+    .option:hover { background: var(--w08) !important; }
+    .dropdown-input { background: var(--w08) !important; color: var(--white) !important; border-color: var(--w15) !important; }
+    .wform-poweredby-container { display: none !important; }
+
+    /* Download state */
+    .download-state { text-align: center; padding: 20px 0; }
+    .download-state .checkmark { width: 64px; height: 64px; background: rgba(26,122,110,0.2); border: 2px solid var(--teal-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 1.8rem; }
+    .download-state h3 { font-size: 1.6rem; margin-bottom: 12px; }
+    .download-state p { color: var(--w70); font-size: 0.95rem; margin-bottom: 32px; line-height: 1.6; }
+    .btn-pdf-download { display: inline-flex; align-items: center; gap: 10px; background: var(--blue); color: var(--white); padding: 16px 32px; border-radius: 2px; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--blue-mid); transition: background 0.2s; }
+    .btn-pdf-download:hover { background: var(--blue-mid); }
+    .download-note { font-size: 0.78rem; color: var(--w40); margin-top: 16px; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s, transform 0.5s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="../" class="nav-logo">
+      <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="19" cy="19" r="18" stroke="#274690" stroke-width="1.5"/>
+        <path d="M10 14h18M10 19h12M10 24h18" stroke="#4a6fc0" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="nav-logo-text">ENOS <span>Limited</span></span>
+    </a>
+    <div class="nav-right">
+      <a href="../" class="nav-back">← All Services</a>
+      <a href="mailto:gp@enos.ltd.uk?subject=AI%20Health%20Check%20Enquiry" class="nav-cta">Book a Discovery Call</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="label-tag">360° AI Health Check</p>
+      <h1>Is your AI programme<br><em>marking its own homework?</em></h1>
+      <p class="hero-sub">An independent diagnostic across the six dimensions of responsible, effective AI deployment. We test whether your AI strategy is genuinely board-ready — or just strategically worded.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="openModal()">↓ Get the Board Briefing Paper</button>
+        <a href="mailto:gp@enos.ltd.uk?subject=AI%20Health%20Check%20Enquiry" class="btn-secondary">Book a Discovery Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOARD BRIEFING BANNER -->
+  <div class="briefing-banner">
+    <div class="briefing-banner-text">
+      <h3>The Board Briefing Paper — June 2026</h3>
+      <p>What every board needs to ask about AI deployment before the next audit cycle.  Written for non-technical leaders.</p>
+    </div>
+    <button class="btn-briefing-cta" onclick="openModal()">↓ Get the Board Paper</button>
+  </div>
+
+  <!-- WHY THIS MATTERS NOW -->
+  <section id="why-now">
+    <p class="section-label reveal">The Problem</p>
+    <h2 class="section-title reveal">AI is moving faster than governance</h2>
+    <p class="section-intro reveal">Most organisations are deploying AI faster than they are governing it.  The people building it have the loudest voice.  The board is relying on the same team to assess the risk.  That is the definition of marking your own homework.</p>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <h3>The board can't see what it doesn't know to ask</h3>
+        <p>AI failures are not usually technical failures.  They are governance failures — unclear ownership, untested assumptions, unmonitored outputs.  The questions that matter are rarely the ones being asked in the boardroom.</p>
+      </div>
+      <div class="why-card reveal">
+        <h3>Internal AI teams have an incentive to reassure</h3>
+        <p>The people building your AI capability are invested in its success.  That is not cynicism — it is human nature.  An external, independent diagnostic gives the board evidence it can trust, not evidence it has been given.</p>
+      </div>
+      <div class="why-card reveal">
+        <h3>Regulatory pressure is arriving fast</h3>
+        <p>The EU AI Act, UK AI governance frameworks, and sector-specific rules are shaping the compliance landscape at pace.  An independent Health Check gives you a documented baseline — and a defensible position.</p>
+      </div>
+      <div class="why-card reveal">
+        <h3>Value realisation is still the exception</h3>
+        <p>Most AI pilots deliver promising demos.  Fewer deliver measurable business value at scale.  We test whether your AI programme has a credible path from proof-of-concept to sustained organisational benefit.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- 6 DIMENSIONS -->
+  <section id="dimensions">
+    <p class="section-label reveal">The Diagnostic</p>
+    <h2 class="section-title reveal">Six Dimensions of AI Health</h2>
+    <p class="section-intro reveal">The same diagnostic rigour as our Programme Health Check — applied to the specific challenges of AI strategy, deployment, and governance.</p>
+    <div class="dim-grid">
+
+      <div class="dim-card reveal">
+        <p class="dim-num">DIM 01</p>
+        <h3 class="dim-title">Strategy &amp; Intent</h3>
+        <p class="dim-desc">Is your AI strategy solving a real problem, or chasing a trend?  We test whether there is a coherent link between AI investment and organisational strategy — and whether the board has genuinely signed off on the direction.</p>
+      </div>
+
+      <div class="dim-card reveal">
+        <p class="dim-num">DIM 02</p>
+        <h3 class="dim-title">Data Foundation</h3>
+        <p class="dim-desc">AI is only as good as the data it runs on.  We assess data quality, lineage, accessibility, and the governance around how data is sourced, stored, and used — including third-party and training data.</p>
+      </div>
+
+      <div class="dim-card reveal">
+        <p class="dim-num">DIM 03</p>
+        <h3 class="dim-title">Ethics &amp; Bias</h3>
+        <p class="dim-desc">Are your AI outputs fair, explainable, and legally defensible?  We examine whether bias testing is genuine, whether outputs are auditable, and whether the organisation is prepared to be held accountable for AI decisions.</p>
+      </div>
+
+      <div class="dim-card reveal">
+        <p class="dim-num">DIM 04</p>
+        <h3 class="dim-title">Governance &amp; Risk</h3>
+        <p class="dim-desc">Is there real accountability, or just a policy document?  We test whether AI governance structures are active — with genuine authority to pause, redirect, or shut down AI deployments when the evidence demands it.</p>
+      </div>
+
+      <div class="dim-card reveal">
+        <p class="dim-num">DIM 05</p>
+        <h3 class="dim-title">Capability &amp; Adoption</h3>
+        <p class="dim-desc">Can your organisation actually use what it's building?  We assess whether the workforce has the skills, confidence, and support to work effectively alongside AI — and whether adoption is being tracked honestly.</p>
+      </div>
+
+      <div class="dim-card reveal">
+        <p class="dim-num">DIM 06</p>
+        <h3 class="dim-title">Value &amp; Benefit Realisation</h3>
+        <p class="dim-desc">Is the value being measured, owned, and delivered?  We examine whether AI benefits are defined before deployment, tracked after launch, and reported to the board in a way that distinguishes genuine value from activity metrics.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- THE PROCESS -->
+  <section class="process-section" id="how-it-works">
+    <p class="section-label reveal">The Process</p>
+    <h2 class="section-title reveal">Structured. Evidenced. Board-Ready.</h2>
+    <p class="section-intro reveal">A five-step engagement that respects your team's time whilst still getting to the truth.  The output is a scored Authority Asset — designed to be placed in front of a board or audit committee without further translation.</p>
+    <div class="process-steps">
+
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <p class="step-title">AI Landscape Briefing</p>
+        <p class="step-desc">You complete a structured pre-engagement questionnaire covering AI use cases, governance structures, data assets, and strategic objectives.  We arrive informed.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <p class="step-title">Discovery Call</p>
+        <p class="step-desc">Scoping session with the commissioning stakeholder.  We agree access, boundaries, and what a successful Board Briefing looks like for your specific context.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <p class="step-title">Active Fieldwork</p>
+        <p class="step-desc">Structured interviews across technical, operational, and leadership teams.  Documentation review.  We go beneath the stated strategy to what is actually deployed and how it is being governed.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <p class="step-title">Authority Asset</p>
+        <p class="step-desc">A scored, evidenced PDF report across all six dimensions.  Written for board members and audit committees — not for the technical team.  Findings, risks, and recommended actions in plain language.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-num">05</div>
+        <p class="step-title">Board Debrief</p>
+        <p class="step-desc">A structured readout with the commissioning stakeholder and — where appropriate — the board or risk committee directly.  We stay in the room for the hard questions.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- WHO IS IT FOR -->
+  <section id="who">
+    <p class="section-label reveal">Who It's For</p>
+    <h2 class="section-title reveal">Three people who need this</h2>
+    <p class="section-intro reveal">The AI Health Check is designed for the leaders who are accountable for AI — but who are not building it.</p>
+    <div class="persona-grid">
+
+      <div class="persona-card reveal">
+        <p class="persona-role">The COO / CTO</p>
+        <h3>You need to know if the AI programme will actually deliver</h3>
+        <p>You've committed budget and leadership attention to AI.  The demos look promising.  But you need independent evidence that the governance, data, and capability foundations are solid enough to deliver at scale — before the board asks.</p>
+      </div>
+
+      <div class="persona-card reveal">
+        <p class="persona-role">The NED / Risk Committee Chair</p>
+        <h3>You need a view the internal team can't give you</h3>
+        <p>You're being asked to hold the organisation to account on AI risk.  But your information comes from the same people building the systems.  An independent Health Check gives you an evidence base that hasn't been curated for reassurance.</p>
+      </div>
+
+      <div class="persona-card reveal">
+        <p class="persona-role">The Chief Risk Officer</p>
+        <h3>You need a documented, defensible baseline</h3>
+        <p>Regulatory scrutiny of AI is increasing.  You need to demonstrate that your organisation has assessed its AI programme independently, identified the risks, and has a credible plan.  This is that plan's starting point.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <p class="section-label" style="justify-content:center;display:flex">Next Step</p>
+    <h2 class="reveal">Ready for an independent view?</h2>
+    <p class="reveal">A 45-minute Discovery Call is all it takes to scope the engagement.  Or download the Board Briefing Paper to see the questions we ask — and why they matter.</p>
+    <div class="final-cta-btns">
+      <a href="mailto:gp@enos.ltd.uk?subject=AI%20Health%20Check%20Enquiry" class="btn-primary">Book a Discovery Call</a>
+      <button class="btn-secondary" onclick="openModal()">↓ Get the Board Briefing Paper</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      <div>ENOS Limited · Company No. GB4240098 · VAT 775 5977 60</div>
+      <div style="margin-top:4px">gp@enos.ltd.uk · +44 (0) 7946 314 316</div>
+    </div>
+    <div class="footer-right">
+      <a href="../" class="footer-link">All Services</a>
+      <a href="../prog-health/" class="footer-link">Programme Health Check</a>
+      <a href="https://linkedin.com/in/geoffporritt/" target="_blank" class="footer-link">LinkedIn</a>
+    </div>
+  </footer>
+
+  <!-- ── LEAD CAPTURE MODAL ─────────────────────────────────── -->
+  <div id="lead-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-container">
+
+      <!-- FORM STATE -->
+      <div id="modal-form-state">
+        <div class="modal-header">
+          <h3 id="modal-title">Get the Board<br>Briefing Paper</h3>
+          <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+        </div>
+        <p class="modal-sub">Enter your details to get instant access to our Board Briefing Paper — the questions every board should be asking about AI deployment, written for non-technical leaders.</p>
+        <div class="modal-body">
+
+          <iframe id='hidden335987000000794001Frame' name='hidden335987000000794001Frame' style='display:none' class='iframe-container'></iframe>
+          <div class='wf-parent' id='BiginWebToRecordFormParent335987000000794001'>
+            <div class='wf-wrapper' id='BiginWebToRecordFormDiv335987000000794001'>
+              <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+              <form id='BiginWebToRecordForm335987000000794001' name='BiginWebToRecordForm335987000000794001' class='wf-form-component' data-ux-form-alignment='top' style='font-family:Arial;position:relative;font-size:15px;' method='POST' enctype='multipart/form-data' target='hidden335987000000794001Frame' onSubmit='javascript:document.charset="UTF-8"; return validateForm335987000000794001()' accept-charset='UTF-8'>
+                <input type='text' style='display:none;' name='xnQsjsdp' value='98f33e3e204cd6e68c1abd06f55b14dc787dc7ec4ad445b530047cb699663338'/>
+                <input type='hidden' name='zc_gad' id='zc_gad' value=''/>
+                <input type='text' style='display:none;' name='xmIwtLD' value='e171ea6b52612997ee5ae1432b55ec4afe4c0344ed2a1ba70e2ce9350257e707dc201ee2a9b25bd85818ec88ad186886'/>
+                <input type='text' style='display:none;' name='actionType' value='Q29udGFjdHM='/>
+                <input type='hidden' name='rmsg' id='rmsg' value='true'/>
+                <input type='text' style='display:none;' name='returnURL' value='null'/>
+                <input type='hidden' name='Lead Source' value='AI Health Check — Board Briefing Paper'/>
+                <div id='elementDiv335987000000794001' class='wf-form-wrapper'>
+                  <div class='wf-row'>
+                    <div class='wf-label'>First Name</div>
+                    <div class='wf-field wf-field-mandatory'>
+                      <div class='wf-field-inner'>
+                        <input name='First Name' maxlength='40' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)' placeholder='Your first name'/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='wf-row'>
+                    <div class='wf-label'>Last Name</div>
+                    <div class='wf-field wf-field-mandatory'>
+                      <div class='wf-field-inner'>
+                        <input name='Last Name' maxlength='80' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)' placeholder='Your last name'/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='wf-row'>
+                    <div class='wf-label'>Organisation</div>
+                    <div class='wf-field wf-field-mandatory'>
+                      <div class='wf-field-inner'>
+                        <input name='Accounts.Account Name' maxlength='200' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)' placeholder='The organisation you represent'/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='wf-row'>
+                    <div class='wf-label'>Work Email</div>
+                    <div class='wf-field wf-field-mandatory'>
+                      <div class='wf-field-inner'>
+                        <input fvalidate='true' ftype='email' name='Email' maxlength='100' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)' placeholder='your@organisation.com'/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='wf-row'>
+                    <div class='wf-label' style='display:none'></div>
+                    <div class='wf-field'>
+                      <div class='wf-field-inner flex-center-v'>
+                        <input class='wf-field-item wf-field-checkbox' type='checkbox' id='privacycheck335987000000794001' name='privacyTool' autocomplete='off' onclick='disablePrivacyError335987000000794001()'/>
+                        <label for='privacycheck335987000000794001' style='cursor:pointer;font-size:13px;color:rgba(255,255,255,0.6)'>I agree to the ENOS <a href="https://enos.ltd.uk/privacy" style="color:#2aa898">Privacy Policy</a> and consent to being contacted about ENOS services.</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='wform-btn-wrap' data-ux-pos='left'>
+                    <input id='formsubmit' type='submit' class='wf-btn' data-ux-btn-type='default' value='Get the Board Briefing Paper →'/>
+                  </div>
+                </div>
+                <div class='wf-spam-content-box'><div class='wf-spam-content-box-inner'><span class='wf-spam-content-note'>Note:</span> Do not submit passwords or confidential information through this form. <a href='https://www.zoho.eu/report-abuse' class='wf-spam-content-report-link' target='_blank' style='color:#2aa898'>Report Abuse</a></div></div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DOWNLOAD STATE -->
+      <div id="modal-download-state" style="display:none">
+        <div class="modal-header" style="justify-content:flex-end">
+          <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="download-state">
+            <div class="checkmark">✓</div>
+            <h3>Your Board Briefing Paper is ready</h3>
+            <p>Thank you.  Your details are registered.  Click below to download the ENOS AI Board Briefing Paper — June 2026.</p>
+            <a href="../assets/ai-board-pack.pdf" download="ENOS-AI-Board-Briefing-June-2026.pdf" class="btn-pdf-download">
+              ↓ Download Board Briefing Paper (PDF)
+            </a>
+            <p class="download-note">If the download doesn't start, <a href="../assets/ai-board-pack.pdf" target="_blank" style="color:var(--teal-light)">click here to open it</a>.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- ── END MODAL ─────────────────────────────────────────── -->
+
+  <!-- Bigin base CSS (shared) -->
+  <style>
+    :root, html { font-size: 10px; }
+    * { padding: 0; margin: 0; outline: 0; }
+    .flex-center-v { display: flex; align-items: center; }
+    .wf-form-component { padding: 30px 40px 60px; }
+    .wf-parent { padding: 30px 0; height: 100%; box-sizing: border-box; overflow: auto; }
+    .wf-wrapper * { box-sizing: border-box; }
+    .wf-wrapper { width: 100%; max-width: 700px; border-radius: 10px; margin: auto; border: none; background-color: #fff; color: #222; box-shadow: 0px 0px 2px 0 #00000033; }
+    .wf-header { font-size: 22px; padding-bottom: 35px; font-weight: bold; }
+    .wf-row { margin-bottom: 20px; }
+    .wf-label { padding: 7px 0; word-break: break-word; }
+    .wf-field:not(.multiple-fields-div) { text-align: left; word-break: break-word; border: 0; position: relative; }
+    .wf-field-inner { position: relative; display: flex; flex: 1; }
+    .wf-field-error-active.wf-field .wf-field-error { display: block; }
+    .wf-field-error-active.wf-field .wf-error-view-more { display: flex; }
+    .wf-field-error-active.wf-field .wf-field-input { border: 1px solid #FD6B6D; box-shadow: 0 0 1px 1px #F4A2A2; }
+    .wf-field-mandatory .wf-field-inner::before { content: ''; position: absolute; inset-inline-start: 0px; background-color: #ff6a6a; width: 3px; height: 100%; border-start-start-radius: 4px; border-end-start-radius: 4px; z-index: 2; top: 0; bottom: 0; }
+    .wf-field-input, .wf-field-dropdown { width: 100%; border: 1px solid #BDC8D3; border-radius: 4px; padding: 10px 15px; min-height: 38px; font-size: 15px; font-family: inherit; }
+    input, select { background-color: #fff; }
+    .wf-field-item { min-height: 38px; }
+    .wf-field-error { color: #FF5050; font-size: 12px; margin-top: 4px; display: none; }
+    .wf-error-parent-ele { display: flex; justify-content: end; }
+    .wf-field-help-text { color: #515159; font-size: 12px; margin-top: 5px; }
+    .wf-field-checkbox { cursor: pointer; border-radius: 3px; min-width: 14px; min-height: 20px; box-sizing: initial; accent-color: #1980d8; margin-inline-end: 10px; margin-bottom: auto; }
+    .wf-btn { padding: 10px 20px; border-radius: 4px; font-size: 15px; cursor: pointer; font-weight: bold; font-family: inherit; }
+    .wform-btn-wrap { display: flex; margin-top: 40px; align-items: center; justify-content: flex-end; flex: 1; }
+    .wform-poweredby-container { display: none; }
+    .wf-spam-content-box { border-top: 1px solid #F0F5F8; margin-top: 20px; padding-top: 20px; }
+    .wf-spam-content-box-inner { display: flex; align-items: center; justify-content: center; padding: 1rem; font-size: 14px; line-height: 1.4; background-color: #F9FBFC; border-radius: 4px; }
+    .wf-spam-content-note { font-weight: bold; padding-right: 5px; }
+    .wf-spam-content-report-link { text-decoration: none; color: #1980d8; padding-left: 3px; }
+    .dN { display: none !important; }
+    .opt-hide { display: none; }
+    .opt-show { display: block; }
+    .selected-options { max-height: 150px; overflow: auto; padding: 3px 5px 7px 5px; min-height: 38px; height: 38px; transition: 0.3s all; }
+    .selected-options.hide-opt-list { min-height: 0; height: 0; padding: 0; }
+    .dropdown { position: relative; width: 100%; height: 36px; }
+    .dropdown-input { width: 100%; border: none; outline: none; height: 30px; padding: 5px; border-radius: 4px; padding-left: 14px; }
+    .dropdown-menu { position: absolute; display: none; background-color: #fff; border: 1px solid #BDC8D3; border-radius: 0 0 5px 5px; max-height: 300px; overflow-y: auto; width: calc(100% + 2px); left: -1px; z-index: 3; top: 37px; }
+    .dropdown.open .dropdown-menu { display: block; }
+    .option { padding: 10px 14px; cursor: pointer; border-bottom: 1px solid #f0f5f8; }
+    .option:hover { background-color: #f5f8fa; }
+    .wf-form-component:not([data-ux-form-alignment='top']) .wf-row { display: flex; }
+    .wf-form-component:not([data-ux-form-alignment='top']) .wf-label { width: 30%; padding: 1.2rem 2rem 0; }
+    .wf-form-component:not([data-ux-form-alignment='top']) .wf-field { width: 70%; }
+    .wf-form-component[data-ux-form-alignment='top'] .wf-label { padding-top: 0; }
+    .multiple-fields-div { display: flex; flex-direction: column; }
+    .multiple-fields-div.flex-1-5 .field-1 { flex: 1; }
+    .multiple-fields-div.flex-1-5 .field-2 { flex: 5; }
+    .multiple-fields-div .wf-field-dropdown { border-radius: 4px 0px 0px 4px; border-right: 0; }
+    .multiple-fields-div .wf-field-item:not(.selected-options) { border-radius: 0px 4px 4px 0px; }
+    .selected-options.selected-options-field { display: none; }
+    .dropdown-with-search .dropdown.open .dropdown-menu { display: flex; flex-direction: column; }
+    .dropdown-with-search .dropdown-items-wrapper { flex-grow: 1; overflow-y: auto; }
+    .icon-with-text-dropdown .icon-text-dropdown { display: flex; align-items: center; }
+    @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
+    @media screen and (max-width: 768px) {
+      .wf-wrapper { width: calc(100% - 40px); border: 0; }
+      .wf-field input[type=text], .wf-field select, .wf-field textarea { width: 100% !important; }
+      .wf-label:empty { display: none; }
+    }
+  </style>
+
+  <script>
+    window.addEventListener('scroll', function() {
+      document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    function openModal() {
+      document.getElementById('lead-modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('lead-modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('lead-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    window.addEventListener('load', function() {
+      var biginForm = document.getElementById('BiginWebToRecordForm335987000000794001');
+      if (biginForm) {
+        biginForm.addEventListener('submit', function() {
+          setTimeout(function() {
+            document.getElementById('modal-form-state').style.display = 'none';
+            document.getElementById('modal-download-state').style.display = 'block';
+            var frame = document.getElementById('hidden335987000000794001Frame');
+            if (frame) frame.style.cssText += ';display:none!important';
+          }, 1500);
+        });
+      }
+    });
+
+    var reveals = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(function(el) { io.observe(el); });
+  </script>
+
+  <script>
+    var mndFields335987000000794001 = new Array('First\x20Name','Last\x20Name','Accounts.Account\x20Name','Email');
+    var fldLangVal335987000000794001 = new Array('First Name','Last Name','Organisation','Work Email');
+
+    function removeError(fieldObj) {
+      var parentElement = fieldObj.closest('.wf-field'),
+        childEle = parentElement.getElementsByClassName('wf-error-parent-ele')[0];
+      if (childEle) { parentElement.classList.remove('wf-field-error-active'); parentElement.removeChild(childEle); }
+    }
+    function setError(fieldObj, label) {
+      var parentElement = fieldObj.closest('.wf-field'),
+        childEle = parentElement.getElementsByClassName('wf-error-parent-ele')[0];
+      if (!childEle) {
+        var errorParentEle = document.createElement('DIV'), spanEle = document.createElement('SPAN');
+        spanEle.setAttribute('class', 'wf-field-error wf-field-error-long');
+        spanEle.innerHTML = label;
+        errorParentEle.classList.add('wf-error-parent-ele');
+        errorParentEle.appendChild(spanEle);
+        parentElement.append(errorParentEle);
+        parentElement.classList.add('wf-field-error-active');
+      }
+    }
+    function validateFields335987000000794001() {
+      var isReturn = true;
+      var form = document.forms['BiginWebToRecordForm335987000000794001'];
+      var validateFld = form.querySelectorAll('[fvalidate=true]');
+      for (var i = 0; i < validateFld.length; i++) {
+        if (validateFld[i].value !== '' && validateFld[i].getAttribute('ftype') === 'email') {
+          if (validateFld[i].value.match(/^([A-Za-z0-9-._%'+\/]+@[A-Za-z0-9.-]+\.[a-zA-Z]{2,22})$/) === null) {
+            setError(validateFld[i], 'Enter a valid email address'); isReturn = false;
+          }
+        }
+      }
+      return isReturn;
+    }
+    function privacyError335987000000794001() {
+      var privacyTool = document.getElementById('privacycheck335987000000794001');
+      if (privacyTool != undefined && !privacyTool.checked) { setError(privacyTool, 'Please accept the Privacy Policy to continue'); return false; }
+      return true;
+    }
+    function disablePrivacyError335987000000794001() {
+      removeError(document.getElementById('privacycheck335987000000794001'));
+    }
+    function checkMandatory335987000000794001() {
+      var isReturn = true;
+      for (var i = 0; i < mndFields335987000000794001.length; i++) {
+        var fieldObj = document.forms['BiginWebToRecordForm335987000000794001'][mndFields335987000000794001[i]];
+        if (fieldObj && ((fieldObj.value).replace(/^\s+|\s+$/g, '')).length === 0) {
+          setError(fieldObj, fldLangVal335987000000794001[i] + ' cannot be empty'); isReturn = false;
+        }
+      }
+      if (!privacyError335987000000794001()) { isReturn = false; }
+      if (!validateFields335987000000794001()) { isReturn = false; }
+      if (isReturn) { document.getElementById('formsubmit').disabled = true; }
+      return isReturn;
+    }
+    if (typeof validateForm335987000000794001 === 'undefined') {
+      window.validateForm335987000000794001 = checkMandatory335987000000794001;
+    }
+  </script>
+
+  <script id='wf_script' src='https://bigin.zoho.eu/crm/WebformScriptServlet?rid=e171ea6b52612997ee5ae1432b55ec4afe4c0344ed2a1ba70e2ce9350257e707dc201ee2a9b25bd85818ec88ad186886gid98f33e3e204cd6e68c1abd06f55b14dc787dc7ec4ad445b530047cb699663338' onload='if(typeof setupPhoneFldIP==="function")setupPhoneFldIP()'></script>
+
+</body>
+</html>
