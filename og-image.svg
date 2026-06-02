@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="glow" cx="90%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#274690" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#050a30" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      text { font-family: Georgia, 'Times New Roman', serif; }
+      .mono { font-family: 'Courier New', monospace; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#050a30"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.06" stroke="#ffffff" stroke-width="0.8">
+    <line x1="64"  y1="0" x2="64"  y2="630"/>
+    <line x1="128" y1="0" x2="128" y2="630"/>
+    <line x1="192" y1="0" x2="192" y2="630"/>
+    <line x1="256" y1="0" x2="256" y2="630"/>
+    <line x1="320" y1="0" x2="320" y2="630"/>
+    <line x1="384" y1="0" x2="384" y2="630"/>
+    <line x1="448" y1="0" x2="448" y2="630"/>
+    <line x1="512" y1="0" x2="512" y2="630"/>
+    <line x1="576" y1="0" x2="576" y2="630"/>
+    <line x1="640" y1="0" x2="640" y2="630"/>
+    <line x1="704" y1="0" x2="704" y2="630"/>
+    <line x1="768" y1="0" x2="768" y2="630"/>
+    <line x1="832" y1="0" x2="832" y2="630"/>
+    <line x1="896" y1="0" x2="896" y2="630"/>
+    <line x1="960" y1="0" x2="960" y2="630"/>
+    <line x1="1024" y1="0" x2="1024" y2="630"/>
+    <line x1="1088" y1="0" x2="1088" y2="630"/>
+    <line x1="1152" y1="0" x2="1152" y2="630"/>
+    <line x1="0" y1="63"  x2="1200" y2="63"/>
+    <line x1="0" y1="126" x2="1200" y2="126"/>
+    <line x1="0" y1="189" x2="1200" y2="189"/>
+    <line x1="0" y1="252" x2="1200" y2="252"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="378" x2="1200" y2="378"/>
+    <line x1="0" y1="441" x2="1200" y2="441"/>
+    <line x1="0" y1="504" x2="1200" y2="504"/>
+    <line x1="0" y1="567" x2="1200" y2="567"/>
+  </g>
+
+  <!-- Right-side glow -->
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Gear decoration top-right -->
+  <g transform="translate(1080,110)">
+    <!-- Teeth -->
+    <g stroke="#274690" stroke-width="5" stroke-linecap="round">
+      <line x1="0" y1="-130" x2="0" y2="-155"/>
+      <line x1="92" y1="-92" x2="110" y2="-110" transform="rotate(45)"/>
+      <line x1="130" y1="0" x2="155" y2="0" transform="rotate(90)"/>
+      <line x1="92" y1="92" x2="110" y2="110" transform="rotate(135)"/>
+      <line x1="0" y1="130" x2="0" y2="155" transform="rotate(180)"/>
+      <line x1="-92" y1="92" x2="-110" y2="110" transform="rotate(225)"/>
+      <line x1="-130" y1="0" x2="-155" y2="0" transform="rotate(270)"/>
+      <line x1="-92" y1="-92" x2="-110" y2="-110" transform="rotate(315)"/>
+    </g>
+    <circle r="130" fill="none" stroke="#274690" stroke-width="1.5"/>
+    <circle r="80"  fill="none" stroke="#274690" stroke-width="1" opacity="0.5"/>
+    <circle r="40"  fill="#080e40" stroke="#274690" stroke-width="1.5"/>
+    <text x="0" y="14" text-anchor="middle" font-size="38" font-weight="700" fill="#ffffff">E</text>
+  </g>
+
+  <!-- Left accent bar -->
+  <rect x="64" y="58" width="180" height="3" fill="#274690"/>
+
+  <!-- Label -->
+  <text x="64" y="44" class="mono" font-size="14" fill="#7a9fd4" letter-spacing="3">INDEPENDENT TRANSFORMATION PROGRAMME DIAGNOSTICS</text>
+
+  <!-- Company name -->
+  <text x="64" y="152" font-size="72" font-weight="700" fill="#ffffff">ENOS Limited</text>
+
+  <!-- Tagline -->
+  <text x="64" y="220" font-size="34" fill="#ffffff">The Critical Friend for COOs,</text>
+  <text x="64" y="264" font-size="34" font-style="italic" fill="#7a9fd4">PMO Leads &amp; NEDs.</text>
+
+  <!-- Rule -->
+  <rect x="64" y="296" width="44" height="2" fill="#274690"/>
+
+  <!-- Body copy -->
+  <text x="64" y="330" font-size="21" fill="rgba(200,210,240,0.9)">Independent diagnostic assessments for stalled transformations.</text>
+  <text x="64" y="362" font-size="21" fill="rgba(200,210,240,0.9)">30 years' experience · Financial services &amp; enterprise · UK</text>
+
+  <!-- Stats divider -->
+  <rect x="64" y="420" width="1072" height="1" fill="#274690" opacity="0.6"/>
+
+  <!-- Stats -->
+  <text x="64"  y="462" font-size="42" font-weight="700" fill="#ffffff">30</text>
+  <text x="64"  y="492" class="mono" font-size="15" fill="#7a9fd4">years' experience</text>
+
+  <text x="424" y="462" font-size="42" font-weight="700" fill="#ffffff">3.5m</text>
+  <text x="424" y="492" class="mono" font-size="15" fill="#7a9fd4">accounts migrated</text>
+
+  <text x="784" y="462" font-size="42" font-weight="700" fill="#ffffff">£100m+</text>
+  <text x="784" y="492" class="mono" font-size="15" fill="#7a9fd4">programme scale</text>
+
+  <!-- URL -->
+  <text x="1136" y="596" class="mono" font-size="16" fill="#7a9fd4" text-anchor="end">enos.ltd.uk</text>
+</svg>
