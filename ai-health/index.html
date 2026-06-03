@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>360° AI Health Check | ENOS Limited</title>
-  <meta name="description" content="An independent diagnostic of your organisation's AI strategy and deployment — across governance, data, ethics, capability, and value realisation. Is your AI programme marking its own homework?">
+  <meta name="description" content="An independent diagnostic of your organisation's AI strategy and deployment - across governance, data, ethics, capability, and value realisation. Is your AI programme marking its own homework?">
   <link rel="canonical" href="https://enos.ltd.uk/ai-health/">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="icon" type="image/png" href="../favicon.svg" sizes="any">
@@ -62,13 +62,14 @@
     }
     .nav-logo-text span { color: var(--blue-light); }
     .nav-right { display: flex; align-items: center; gap: 24px; }
-    .nav-back {
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
       color: var(--w70); text-decoration: none;
       font-size: 0.85rem; font-weight: 500;
       letter-spacing: 0.08em; text-transform: uppercase;
       transition: color 0.2s;
     }
-    .nav-back:hover { color: var(--white); }
+    .nav-links a:hover { color: var(--white); }
     .nav-cta {
       background: var(--blue); color: var(--white);
       padding: 10px 22px; border-radius: 2px;
@@ -81,15 +82,13 @@
     .nav-cta:hover { background: var(--blue-mid); transform: translateY(-1px); }
     @media(max-width:900px){
       nav { padding: 16px 24px; }
-      .nav-back { display: none; }
+      .nav-links { display: none; }
     }
 
     /* ── HERO ── */
     .hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
       position: relative; overflow: hidden;
-      padding: 140px 64px 100px;
+      padding: 140px 64px 80px;
     }
     .hero-bg {
       position: absolute; inset: 0;
@@ -353,8 +352,14 @@
       <span class="nav-logo-text">ENOS <span>Limited</span></span>
     </a>
     <div class="nav-right">
-      <a href="../" class="nav-back">← All Services</a>
-      <a href="mailto:gp@enos.ltd.uk?subject=AI%20Health%20Check%20Enquiry" class="nav-cta">Book a Discovery Call</a>
+      <ul class="nav-links">
+        <li><a href="#why-now">The Problem</a></li>
+        <li><a href="#dimensions">Diagnostic</a></li>
+        <li><a href="#how-it-works">Process</a></li>
+        <li><a href="#who">Who It's For</a></li>
+        <li><a href="../">Home</a></li>
+      </ul>
+      <a href="https://zcal.co/enosltd/discovery" class="nav-cta">Book a Discovery Call</a>
     </div>
   </nav>
 
@@ -363,11 +368,11 @@
     <div class="hero-bg"></div>
     <div class="hero-content">
       <p class="label-tag">360° AI Health Check</p>
-      <h1>Is your AI programme<br><em>marking its own homework?</em></h1>
-      <p class="hero-sub">An independent diagnostic across the six dimensions of responsible, effective AI deployment. We test whether your AI strategy is genuinely board-ready — or just strategically worded.</p>
+      <h1>Is your AI ready for<br><em>board scrutiny?</em></h1>
+      <p class="hero-sub">An independent diagnostic across the six dimensions of responsible, effective AI deployment.  We test whether your AI strategy is genuinely board-ready - or just strategically worded.</p>
       <div class="hero-ctas">
         <button class="btn-primary" onclick="openModal()">↓ Get the Board Briefing Paper</button>
-        <a href="mailto:gp@enos.ltd.uk?subject=AI%20Health%20Check%20Enquiry" class="btn-secondary">Book a Discovery Call</a>
+        <a href="https://zcal.co/enosltd/discovery" class="btn-secondary">Book a Discovery Call</a>
       </div>
     </div>
   </section>
@@ -375,8 +380,8 @@
   <!-- BOARD BRIEFING BANNER -->
   <div class="briefing-banner">
     <div class="briefing-banner-text">
-      <h3>The Board Briefing Paper — June 2026</h3>
-      <p>What every board needs to ask about AI deployment before the next audit cycle.  Written for non-technical leaders.</p>
+      <h3>The Board Briefing Paper - June 2026</h3>
+      <p>What every board needs to ask about AI deployment before the next audit cycle.</p>
     </div>
     <button class="btn-briefing-cta" onclick="openModal()">↓ Get the Board Paper</button>
   </div>
@@ -385,19 +390,19 @@
   <section id="why-now">
     <p class="section-label reveal">The Problem</p>
     <h2 class="section-title reveal">AI is moving faster than governance</h2>
-    <p class="section-intro reveal">Most organisations are deploying AI faster than they are governing it.  The people building it have the loudest voice.  The board is relying on the same team to assess the risk.  That is the definition of marking your own homework.</p>
+    <p class="section-intro reveal">The majority of organisations are deploying AI faster than they are governing it.  The people building it have the loudest voice.  The board is relying on the same team to assess the risk.  That is the definition of marking your own homework.</p>
     <div class="why-grid">
       <div class="why-card reveal">
         <h3>The board can't see what it doesn't know to ask</h3>
-        <p>AI failures are not usually technical failures.  They are governance failures — unclear ownership, untested assumptions, unmonitored outputs.  The questions that matter are rarely the ones being asked in the boardroom.</p>
+        <p>AI failures are not usually technical failures.  They are governance failures - unclear ownership, untested assumptions, unmonitored outputs.  The questions that matter are rarely the ones being asked in the boardroom.</p>
       </div>
       <div class="why-card reveal">
         <h3>Internal AI teams have an incentive to reassure</h3>
-        <p>The people building your AI capability are invested in its success.  That is not cynicism — it is human nature.  An external, independent diagnostic gives the board evidence it can trust, not evidence it has been given.</p>
+        <p>The people building your AI capability are invested in its success.  That is not cynicism - it is human nature.  An external, independent diagnostic gives the board evidence it can trust, not evidence it has been given.</p>
       </div>
       <div class="why-card reveal">
         <h3>Regulatory pressure is arriving fast</h3>
-        <p>The EU AI Act, UK AI governance frameworks, and sector-specific rules are shaping the compliance landscape at pace.  An independent Health Check gives you a documented baseline — and a defensible position.</p>
+        <p>The EU AI Act, UK AI governance frameworks, and sector-specific rules are shaping the compliance landscape at pace.  An independent Health Check gives you a documented baseline - and a defensible position.</p>
       </div>
       <div class="why-card reveal">
         <h3>Value realisation is still the exception</h3>
@@ -412,19 +417,19 @@
   <section id="dimensions">
     <p class="section-label reveal">The Diagnostic</p>
     <h2 class="section-title reveal">Six Dimensions of AI Health</h2>
-    <p class="section-intro reveal">The same diagnostic rigour as our Programme Health Check — applied to the specific challenges of AI strategy, deployment, and governance.</p>
+    <p class="section-intro reveal">The same diagnostic rigour as our Programme Health Check - applied to the specific challenges of AI strategy, deployment, and governance.</p>
     <div class="dim-grid">
 
       <div class="dim-card reveal">
         <p class="dim-num">DIM 01</p>
         <h3 class="dim-title">Strategy &amp; Intent</h3>
-        <p class="dim-desc">Is your AI strategy solving a real problem, or chasing a trend?  We test whether there is a coherent link between AI investment and organisational strategy — and whether the board has genuinely signed off on the direction.</p>
+        <p class="dim-desc">Is your AI strategy solving a real problem, or chasing a trend?  We test whether there is a coherent link between AI investment and organisational strategy - and whether the board has genuinely signed off on the direction.</p>
       </div>
 
       <div class="dim-card reveal">
         <p class="dim-num">DIM 02</p>
         <h3 class="dim-title">Data Foundation</h3>
-        <p class="dim-desc">AI is only as good as the data it runs on.  We assess data quality, lineage, accessibility, and the governance around how data is sourced, stored, and used — including third-party and training data.</p>
+        <p class="dim-desc">AI is only as good as the data it runs on.  We assess data quality, lineage, accessibility, and the governance around how data is sourced, stored, and used - including third-party and training data.</p>
       </div>
 
       <div class="dim-card reveal">
@@ -436,13 +441,13 @@
       <div class="dim-card reveal">
         <p class="dim-num">DIM 04</p>
         <h3 class="dim-title">Governance &amp; Risk</h3>
-        <p class="dim-desc">Is there real accountability, or just a policy document?  We test whether AI governance structures are active — with genuine authority to pause, redirect, or shut down AI deployments when the evidence demands it.</p>
+        <p class="dim-desc">Is there real accountability, or just a policy document?  We test whether AI governance structures are active - with genuine authority to pause, redirect, or shut down AI deployments when the evidence demands it.</p>
       </div>
 
       <div class="dim-card reveal">
         <p class="dim-num">DIM 05</p>
         <h3 class="dim-title">Capability &amp; Adoption</h3>
-        <p class="dim-desc">Can your organisation actually use what it's building?  We assess whether the workforce has the skills, confidence, and support to work effectively alongside AI — and whether adoption is being tracked honestly.</p>
+        <p class="dim-desc">Can your organisation actually use what it's building?  We assess whether the workforce has the skills, confidence, and support to work effectively alongside AI - and whether adoption is being tracked honestly.</p>
       </div>
 
       <div class="dim-card reveal">
@@ -460,7 +465,7 @@
   <section class="process-section" id="how-it-works">
     <p class="section-label reveal">The Process</p>
     <h2 class="section-title reveal">Structured. Evidenced. Board-Ready.</h2>
-    <p class="section-intro reveal">A five-step engagement that respects your team's time whilst still getting to the truth.  The output is a scored Authority Asset — designed to be placed in front of a board or audit committee without further translation.</p>
+    <p class="section-intro reveal">A five-step engagement that respects your team's time whilst still getting to the truth.  The output is a scored Authority Asset - designed to be placed in front of a board or audit committee without further translation.</p>
     <div class="process-steps">
 
       <div class="step reveal">
@@ -484,13 +489,13 @@
       <div class="step reveal">
         <div class="step-num">04</div>
         <p class="step-title">Authority Asset</p>
-        <p class="step-desc">A scored, evidenced PDF report across all six dimensions.  Written for board members and audit committees — not for the technical team.  Findings, risks, and recommended actions in plain language.</p>
+        <p class="step-desc">A scored, evidenced PDF report across all six dimensions.  Written for board members and audit committees - not for the technical team.  Findings, risks, and recommended actions in plain language.</p>
       </div>
 
       <div class="step reveal">
         <div class="step-num">05</div>
         <p class="step-title">Board Debrief</p>
-        <p class="step-desc">A structured readout with the commissioning stakeholder and — where appropriate — the board or risk committee directly.  We stay in the room for the hard questions.</p>
+        <p class="step-desc">A structured readout with the commissioning stakeholder and - where appropriate - the board or risk committee directly.  We stay in the room for the hard questions.</p>
       </div>
 
     </div>
@@ -502,13 +507,13 @@
   <section id="who">
     <p class="section-label reveal">Who It's For</p>
     <h2 class="section-title reveal">Three people who need this</h2>
-    <p class="section-intro reveal">The AI Health Check is designed for the leaders who are accountable for AI — but who are not building it.</p>
+    <p class="section-intro reveal">The AI Health Check is designed for the leaders who are accountable for AI - but who are not building it.</p>
     <div class="persona-grid">
 
       <div class="persona-card reveal">
         <p class="persona-role">The COO / CTO</p>
         <h3>You need to know if the AI programme will actually deliver</h3>
-        <p>You've committed budget and leadership attention to AI.  The demos look promising.  But you need independent evidence that the governance, data, and capability foundations are solid enough to deliver at scale — before the board asks.</p>
+        <p>You've committed budget and leadership attention to AI.  The demos look promising.  But you need independent evidence that the governance, data, and capability foundations are solid enough to deliver at scale - before the board asks.</p>
       </div>
 
       <div class="persona-card reveal">
@@ -530,9 +535,9 @@
   <section class="final-cta">
     <p class="section-label" style="justify-content:center;display:flex">Next Step</p>
     <h2 class="reveal">Ready for an independent view?</h2>
-    <p class="reveal">A 45-minute Discovery Call is all it takes to scope the engagement.  Or download the Board Briefing Paper to see the questions we ask — and why they matter.</p>
+    <p class="reveal">A 45-minute Discovery Call is all it takes to scope the engagement.  Or download the Board Briefing Paper to see the questions we ask - and why they matter.</p>
     <div class="final-cta-btns">
-      <a href="mailto:gp@enos.ltd.uk?subject=AI%20Health%20Check%20Enquiry" class="btn-primary">Book a Discovery Call</a>
+      <a href="https://zcal.co/enosltd/discovery" class="btn-primary">Book a Discovery Call</a>
       <button class="btn-secondary" onclick="openModal()">↓ Get the Board Briefing Paper</button>
     </div>
   </section>
@@ -560,7 +565,7 @@
           <h3 id="modal-title">Get the Board<br>Briefing Paper</h3>
           <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
         </div>
-        <p class="modal-sub">Enter your details to get instant access to our Board Briefing Paper — the questions every board should be asking about AI deployment, written for non-technical leaders.</p>
+        <p class="modal-sub">Enter your details to get instant access to our Board Briefing Paper - the questions every board should be asking about AI deployment before the next audit cycle.</p>
         <div class="modal-body">
 
           <iframe id='hidden335987000000794001Frame' name='hidden335987000000794001Frame' style='display:none' class='iframe-container'></iframe>
@@ -574,7 +579,7 @@
                 <input type='text' style='display:none;' name='actionType' value='Q29udGFjdHM='/>
                 <input type='hidden' name='rmsg' id='rmsg' value='true'/>
                 <input type='text' style='display:none;' name='returnURL' value='null'/>
-                <input type='hidden' name='Lead Source' value='AI Health Check — Board Briefing Paper'/>
+                <input type='hidden' name='Lead Source' value='AI Health Check - Board Briefing Paper'/>
                 <div id='elementDiv335987000000794001' class='wf-form-wrapper'>
                   <div class='wf-row'>
                     <div class='wf-label'>First Name</div>
@@ -638,7 +643,7 @@
           <div class="download-state">
             <div class="checkmark">✓</div>
             <h3>Your Board Briefing Paper is ready</h3>
-            <p>Thank you.  Your details are registered.  Click below to download the ENOS AI Board Briefing Paper — June 2026.</p>
+            <p>Thank you.  Your details are registered.  Click below to download the ENOS AI Board Briefing Paper - June 2026.</p>
             <a href="../assets/ai-board-pack.pdf" download="ENOS-AI-Board-Briefing-June-2026.pdf" class="btn-pdf-download">
               ↓ Download Board Briefing Paper (PDF)
             </a>
@@ -651,7 +656,7 @@
   </div>
   <!-- ── END MODAL ─────────────────────────────────────────── -->
 
-  <!-- Bigin base CSS (scoped to .wf-parent — DO NOT add global rules here) -->
+  <!-- Bigin base CSS (scoped to .wf-parent - DO NOT add global rules here) -->
   <style>
     .wf-parent .flex-center-v { display: flex; align-items: center; }
     .wf-form-component { padding: 30px 40px 60px; }
