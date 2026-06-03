@@ -86,10 +86,8 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
       position: relative; overflow: hidden;
-      padding: 140px 64px 100px;
+      padding: 140px 64px 40px;
     }
     .hero-bg {
       position: absolute; inset: 0;
@@ -171,41 +169,70 @@
       color: var(--white); line-height: 1;
     }
     .stat-label {
-      font-size: 0.78rem; color: var(--w40);
+      font-size: 0.78rem; color: var(--white);
       text-transform: uppercase; letter-spacing: 0.1em;
       margin-top: 4px;
     }
 
-    /* ── BLIND SPOT TAGLINE ── */
-    .blind-spot {
-      padding: 80px 64px;
-      text-align: center;
-      background: var(--navy);
-      border-top: 1px solid var(--w15);
-      border-bottom: 1px solid var(--w15);
+    /* ── PERSONAS + CANVAS REVEAL ── */
+    .personas-sec {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--w08);
+      border-bottom: 1px solid var(--w08);
     }
-    .blind-spot h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4.5vw, 3.4rem);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      line-height: 1.15;
-      margin: 0;
+    .personas-mask-wrap {
+      position: relative;
+      overflow: hidden;
     }
-    .blind-spot h2 em {
-      font-style: italic;
-      color: var(--blue-light);
+    .personas-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
     }
-    .blind-spot-sub {
+    @media(max-width:900px){ .personas-grid { grid-template-columns: 1fr; } }
+    .persona-card {
+      background: var(--w08); padding: 44px 36px;
+      position: relative; transition: background 0.3s;
+    }
+    .persona-card:hover { background: rgba(39,70,144,0.22); }
+    .persona-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: var(--blue);
+    }
+    .persona-role {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      color: var(--w40);
-      text-transform: uppercase;
-      margin-top: 18px;
+      font-size: 0.75rem; letter-spacing: 0.16em;
+      color: #7a9fd4; text-transform: uppercase; margin-bottom: 8px;
+    }
+    .persona-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem; font-weight: 700; margin-bottom: 18px;
+    }
+    .persona-pain {
+      font-size: 1rem; color: rgba(255,255,255,0.85);
+      line-height: 1.8; margin-bottom: 22px;
+    }
+    .persona-quote {
+      font-size: 0.95rem; font-weight: 500;
+      padding: 16px 18px;
+      background: var(--w08);
+      border-left: 3px solid var(--blue);
+      line-height: 1.65; color: var(--white);
+    }
+    .personas-cover-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 4;
+      cursor: crosshair;
+    }
+    /* On touch-only devices the cover is hidden so personas are always visible */
+    @media (hover: none) {
+      .personas-cover-canvas { display: none; }
     }
     @media(max-width:768px){
-      .blind-spot { padding: 56px 24px; }
+      .persona-card { padding: 32px 24px; }
     }
 
     /* ── LEAD CAPTURE BANNER ── */
@@ -549,16 +576,14 @@
       </svg>
       <span class="nav-logo-text">ENOS <span>Limited</span></span>
     </a>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="#diagnostic">Diagnostic</a></li>
-        <li><a href="#how-it-works">Process</a></li>
-        <li><a href="#case-studies">Case Studies</a></li>
-        <li><a href="#testimonials">Recommendations</a></li>
-        <li><a href="../">Home</a></li>
-      </ul>
-      <a href="https://zcal.co/enosltd/discovery" class="nav-cta">Book a Discovery Call</a>
-    </div>
+    <ul class="nav-links">
+      <li><a href="#diagnostic">Diagnostic</a></li>
+      <li><a href="#how-it-works">Process</a></li>
+      <li><a href="#case-studies">Case Studies</a></li>
+      <li><a href="#testimonials">Recommendations</a></li>
+      <li><a href="../">Home</a></li>
+    </ul>
+    <a href="https://zcal.co/enosltd/discovery" class="nav-cta">Book a Discovery Call</a>
   </nav>
 
   <!-- HERO -->
@@ -589,10 +614,37 @@
     </div>
   </section>
 
-  <!-- BLIND SPOT TAGLINE -->
-  <section class="blind-spot reveal">
-    <h2>Where is <em>your</em> blind spot?</h2>
-    <p class="blind-spot-sub">The one your team can't see from where they're standing</p>
+  <!-- PERSONAS + CANVAS REVEAL -->
+  <section class="personas-sec" id="who-we-help">
+    <div class="personas-mask-wrap" id="personasMaskWrap">
+      <div class="personas-grid">
+
+        <div class="persona-card reveal">
+          <div class="persona-role">The COO</div>
+          <div class="persona-name">David</div>
+          <p class="persona-pain">Your transformation portfolio carries significant commercial risk.  You need the facts - fast.  Not another reassuring status update from the team doing the work.</p>
+          <div class="persona-quote">"I need to know if this programme will actually deliver - or if I'm funding failure."</div>
+        </div>
+
+        <div class="persona-card reveal">
+          <div class="persona-role">The PMO Lead</div>
+          <div class="persona-name">Sarah</div>
+          <p class="persona-pain">You're too close to the work to see it clearly.  You need a trusted partner who can identify the hidden risks buried in team dynamics, governance gaps, and adoption failure.</p>
+          <div class="persona-quote">"I need an external eye that sees what we can't from the inside."</div>
+        </div>
+
+        <div class="persona-card reveal">
+          <div class="persona-role">The NED / Risk Committee Chair</div>
+          <div class="persona-name">Richard</div>
+          <p class="persona-pain">You have oversight responsibility for a major transformation programme but you're working entirely from the executive team's own reporting.  You know you should be providing independent challenge - but you can't see behind the numbers.</p>
+          <div class="persona-quote">"I'm supposed to hold the board to account on this.  But how do I do that when I'm only seeing what they choose to show me?"</div>
+        </div>
+
+      </div>
+
+      <!-- Canvas cover: dark overlay + headline text; mouse-move punches a hole revealing personas -->
+      <canvas id="personasCoverCanvas" class="personas-cover-canvas"></canvas>
+    </div>
   </section>
 
   <!-- LEAD CAPTURE BANNER -->
@@ -1045,6 +1097,158 @@
       });
     }, { threshold: 0.1 });
     reveals.forEach(function(el) { io.observe(el); });
+
+    /* ── PERSONA CANVAS REVEAL ────────────────────────────────────
+       Draws a dark overlay + centred text onto a <canvas>, then uses
+       Canvas 2D destination-out compositing to punch a soft circular
+       hole at the cursor position, revealing the persona cards below.
+       More reliable than CSS/SVG masking across all browsers.
+    ────────────────────────────────────────────────────────────── */
+    (function () {
+      var wrap   = document.getElementById('personasMaskWrap');
+      var canvas = document.getElementById('personasCoverCanvas');
+      if (!wrap || !canvas) return;
+      var ctx = canvas.getContext('2d');
+
+      var currentR = 0, targetR = 0;
+      var currentX = 0, targetX = 0;
+      var currentY = 0, targetY = 0;
+      var raf = null;
+      var RADIUS = 550;  /* px - reveal circle size          */
+      var EASE   = 0.10; /* lerp factor - lower = slower     */
+      var dpr    = window.devicePixelRatio || 1;
+
+      function lerp(a, b, t) { return a + (b - a) * t; }
+
+      function resize() {
+        var w = wrap.offsetWidth;
+        var h = wrap.offsetHeight;
+        canvas.width  = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width  = w + 'px';
+        canvas.style.height = h + 'px';
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+      }
+
+      function draw(cx, cy, revealR) {
+        var w = wrap.offsetWidth;
+        var h = wrap.offsetHeight;
+
+        ctx.clearRect(0, 0, w, h);
+
+        /* 1. Dark background */
+        ctx.fillStyle = '#080e40';
+        ctx.fillRect(0, 0, w, h);
+
+        /* 2. Centred cover text (drawn before hole so it gets punched out too) */
+        var midX = w / 2;
+        var midY = h / 2;
+
+        /* Decorative side-lines + eyebrow */
+        ctx.strokeStyle = '#7a9fd4';
+        ctx.lineWidth   = 1;
+        var ew = 120;
+        ctx.beginPath(); ctx.moveTo(midX - ew - 16, midY - 74); ctx.lineTo(midX - ew + 4, midY - 74); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(midX + ew - 4,  midY - 74); ctx.lineTo(midX + ew + 16, midY - 74); ctx.stroke();
+
+        ctx.fillStyle    = '#7a9fd4';
+        ctx.font         = '400 11px "JetBrains Mono", monospace';
+        ctx.textAlign    = 'center';
+        ctx.textBaseline = 'middle';
+        try { ctx.letterSpacing = '2.8px'; } catch(e) {}
+        ctx.fillText('WHO WE HELP', midX, midY - 74);
+
+        /* Heading line 1 */
+        try { ctx.letterSpacing = '0px'; } catch(e) {}
+        ctx.fillStyle = '#ffffff';
+        ctx.font      = '700 ' + Math.round(Math.min(w * 0.055, 48)) + 'px "Playfair Display", serif';
+        ctx.fillText('Where is', midX, midY - 14);
+
+        /* Heading line 2: italic "your" in blue + "blind spot?" in white */
+        var fs = Math.round(Math.min(w * 0.055, 48));
+        ctx.font = 'italic 700 ' + fs + 'px "Playfair Display", serif';
+        var yourW = ctx.measureText('your').width;
+        ctx.font = '700 ' + fs + 'px "Playfair Display", serif';
+        var restW = ctx.measureText(' blind spot?').width;
+        var lineX = midX - (yourW + restW) / 2;
+        var lineY = midY + fs * 1.25;
+
+        ctx.font      = 'italic 700 ' + fs + 'px "Playfair Display", serif';
+        ctx.fillStyle = '#7a9fd4';
+        ctx.textAlign = 'left';
+        ctx.fillText('your', lineX, lineY);
+
+        ctx.font      = '700 ' + fs + 'px "Playfair Display", serif';
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText(' blind spot?', lineX + yourW, lineY);
+
+        /* Sub-label */
+        ctx.textAlign = 'center';
+        ctx.fillStyle = 'rgba(255,255,255,0.45)';
+        ctx.font      = '400 11px "JetBrains Mono", monospace';
+        try { ctx.letterSpacing = '2px'; } catch(e) {}
+        ctx.fillText('MOVE YOUR CURSOR TO REVEAL', midX, lineY + fs * 1.4);
+
+        /* 3. Punch circular hole through background + text */
+        if (revealR > 1) {
+          ctx.globalCompositeOperation = 'destination-out';
+
+          /* Solid inner disc (0 to 72% of radius) */
+          var inner = revealR * 0.72;
+          ctx.beginPath();
+          ctx.arc(cx, cy, inner, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0,0,0,1)';
+          ctx.fill();
+
+          /* Feathered ring (72% to 100%) */
+          var edgeGrad = ctx.createRadialGradient(cx, cy, inner, cx, cy, revealR);
+          edgeGrad.addColorStop(0, 'rgba(0,0,0,1)');
+          edgeGrad.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.beginPath();
+          ctx.arc(cx, cy, revealR, 0, Math.PI * 2);
+          ctx.fillStyle = edgeGrad;
+          ctx.fill();
+
+          ctx.globalCompositeOperation = 'source-over';
+        }
+      }
+
+      function update() {
+        currentR = lerp(currentR, targetR, EASE);
+        currentX = lerp(currentX, targetX, EASE);
+        currentY = lerp(currentY, targetY, EASE);
+        draw(currentX, currentY, currentR);
+        var done = Math.abs(currentR - targetR) < 0.4
+                && Math.abs(currentX - targetX) < 0.4
+                && Math.abs(currentY - targetY) < 0.4;
+        if (done) { draw(targetX, targetY, targetR); raf = null; }
+        else       { raf = requestAnimationFrame(update); }
+      }
+
+      function startAnim() { if (!raf) raf = requestAnimationFrame(update); }
+
+      wrap.addEventListener('mousemove', function (e) {
+        var rect = wrap.getBoundingClientRect();
+        targetX = e.clientX - rect.left;
+        targetY = e.clientY - rect.top;
+        if (targetR === 0) { currentX = targetX; currentY = targetY; }
+        targetR = RADIUS;
+        startAnim();
+      });
+
+      wrap.addEventListener('mouseleave', function () {
+        targetR = 0;
+        startAnim();
+      });
+
+      window.addEventListener('resize', function () { resize(); draw(currentX, currentY, currentR); });
+
+      /* Wait for web fonts before first draw so text renders in Playfair Display */
+      function init() { resize(); draw(0, 0, 0); }
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(init); }
+      else { window.addEventListener('load', init); }
+    }());
   </script>
 
   <!-- Bigin validation scripts (from Option 1 source) -->
