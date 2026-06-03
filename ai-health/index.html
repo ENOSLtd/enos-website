@@ -158,8 +158,8 @@
     .briefing-banner {
       background: linear-gradient(135deg, var(--teal) 0%, #0e5a51 100%);
       padding: 28px 64px;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 24px; flex-wrap: wrap;
+      display: flex; align-items: center; justify-content: flex-start;
+      gap: 28px; flex-wrap: wrap;
     }
     .briefing-banner-text h3 {
       font-family: 'Outfit', sans-serif;
@@ -351,16 +351,14 @@
       </svg>
       <span class="nav-logo-text">ENOS <span>Limited</span></span>
     </a>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="#why-now">The Problem</a></li>
-        <li><a href="#dimensions">Diagnostic</a></li>
-        <li><a href="#how-it-works">Process</a></li>
-        <li><a href="#who">Who It's For</a></li>
-        <li><a href="../">Home</a></li>
-      </ul>
-      <a href="https://zcal.co/enosltd/discovery" class="nav-cta">Book a Discovery Call</a>
-    </div>
+    <ul class="nav-links">
+      <li><a href="#why-now">The Problem</a></li>
+      <li><a href="#dimensions">Diagnostic</a></li>
+      <li><a href="#how-it-works">Process</a></li>
+      <li><a href="#who">Who It's For</a></li>
+      <li><a href="../">Home</a></li>
+    </ul>
+    <a href="https://zcal.co/enosltd/discovery" class="nav-cta">Book a Discovery Call</a>
   </nav>
 
   <!-- HERO -->
@@ -370,20 +368,16 @@
       <p class="label-tag">360° AI Health Check</p>
       <h1>Is your AI ready for<br><em>board scrutiny?</em></h1>
       <p class="hero-sub">An independent diagnostic across the six dimensions of responsible, effective AI deployment.  We test whether your AI strategy is genuinely board-ready - or just strategically worded.</p>
-      <div class="hero-ctas">
-        <button class="btn-primary" onclick="openModal()">↓ Get the Board Briefing Paper</button>
-        <a href="https://zcal.co/enosltd/discovery" class="btn-secondary">Book a Discovery Call</a>
-      </div>
     </div>
   </section>
 
   <!-- BOARD BRIEFING BANNER -->
   <div class="briefing-banner">
+    <button class="btn-briefing-cta" onclick="openModal()">↓ Get the Board Briefing Paper</button>
     <div class="briefing-banner-text">
       <h3>The Board Briefing Paper - June 2026</h3>
       <p>What every board needs to ask about AI deployment before the next audit cycle.</p>
     </div>
-    <button class="btn-briefing-cta" onclick="openModal()">↓ Get the Board Paper</button>
   </div>
 
   <!-- WHY THIS MATTERS NOW -->
