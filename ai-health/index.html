@@ -574,6 +574,14 @@
                 <input type='hidden' name='rmsg' id='rmsg' value='true'/>
                 <input type='text' style='display:none;' name='returnURL' value='null'/>
                 <input type='hidden' name='Lead Source' value='AI Health Check - Board Briefing Paper'/>
+                <!-- Cookie-free ad-click + UTM fields. Populated by the capture script below. -->
+                <input type='hidden' name='gclid' id='gclid' value=''/>
+                <input type='hidden' name='msclkid' id='msclkid' value=''/>
+                <input type='hidden' name='utm_source' id='utm_source' value=''/>
+                <input type='hidden' name='utm_medium' id='utm_medium' value=''/>
+                <input type='hidden' name='utm_campaign' id='utm_campaign' value=''/>
+                <input type='hidden' name='utm_term' id='utm_term' value=''/>
+                <input type='hidden' name='utm_content' id='utm_content' value=''/>
                 <div id='elementDiv335987000000794001' class='wf-form-wrapper'>
                   <div class='wf-row'>
                     <div class='wf-label'>First Name</div>
@@ -825,6 +833,31 @@
   </script>
 
   <script id='wf_script' src='https://bigin.zoho.eu/crm/WebformScriptServlet?rid=e171ea6b52612997ee5ae1432b55ec4afe4c0344ed2a1ba70e2ce9350257e707dc201ee2a9b25bd85818ec88ad186886gid98f33e3e204cd6e68c1abd06f55b14dc787dc7ec4ad445b530047cb699663338' onload='if(typeof setupPhoneFldIP==="function")setupPhoneFldIP()'></script>
+
+  <script>
+  (function () {
+    // Cookie-free ad-click + UTM capture for offline conversion import.
+    // Reads the landing URL only. No cookies, no storage, no consent needed.
+    var params = new URLSearchParams(window.location.search);
+    var fields = {
+      gclid:        params.get('gclid')        || '',
+      msclkid:      params.get('msclkid')      || '',
+      utm_source:   params.get('utm_source')   || '',
+      utm_medium:   params.get('utm_medium')   || '',
+      utm_campaign: params.get('utm_campaign') || '',
+      utm_term:     params.get('utm_term')     || '',
+      utm_content:  params.get('utm_content')  || ''
+    };
+    function fill() {
+      Object.keys(fields).forEach(function (name) {
+        var el = document.querySelector('[name="' + name + '"], #' + name);
+        if (el && fields[name]) el.value = fields[name];
+      });
+    }
+    if (document.readyState !== 'loading') fill();
+    else document.addEventListener('DOMContentLoaded', fill);
+  })();
+  </script>
 
 </body>
 </html>
