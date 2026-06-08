@@ -546,6 +546,7 @@
       <a href="../" class="footer-link">All Services</a>
       <a href="../prog-health/" class="footer-link">Programme Health Check</a>
       <a href="https://linkedin.com/in/geoffporritt/" target="_blank" class="footer-link">LinkedIn</a>
+      <a href="../privacy" class="footer-link">Privacy Policy</a>
     </div>
   </footer>
 
@@ -573,7 +574,7 @@
                 <input type='text' style='display:none;' name='actionType' value='Q29udGFjdHM='/>
                 <input type='hidden' name='rmsg' id='rmsg' value='true'/>
                 <input type='text' style='display:none;' name='returnURL' value='null'/>
-                <input type='hidden' name='Lead Source' value='AI Health Check - Board Briefing Paper'/>
+                <input type='hidden' name='Lead Source' id='lead_source_field' value='AI Health Check - Board Briefing Paper'/>
                 <!-- Cookie-free ad-click + UTM fields. Populated by the capture script below. -->
                 <input type='hidden' name='gclid' id='gclid' value=''/>
                 <input type='hidden' name='msclkid' id='msclkid' value=''/>
@@ -582,6 +583,8 @@
                 <input type='hidden' name='utm_campaign' id='utm_campaign' value=''/>
                 <input type='hidden' name='utm_term' id='utm_term' value=''/>
                 <input type='hidden' name='utm_content' id='utm_content' value=''/>
+                <!-- Ad attribution tracking — written by UTM capture script. Maps to Bigin Department field. -->
+                <input type='hidden' name='Department' id='department_tracking' value=''/>
                 <div id='elementDiv335987000000794001' class='wf-form-wrapper'>
                   <div class='wf-row'>
                     <div class='wf-label'>First Name</div>
@@ -848,15 +851,52 @@
       utm_term:     params.get('utm_term')     || '',
       utm_content:  params.get('utm_content')  || ''
     };
+
+    // Build Department string - omit pairs where the value is empty.
+    function buildDepartment(f) {
+      var parts = [];
+      if (f.gclid)        parts.push('gclid='    + f.gclid);
+      if (f.msclkid)      parts.push('msclkid='  + f.msclkid);
+      if (f.utm_source || f.utm_medium)
+                          parts.push('src='      + (f.utm_source || '') + '/' + (f.utm_medium || ''));
+      if (f.utm_campaign) parts.push('campaign=' + f.utm_campaign);
+      return parts.join('; ');
+    }
+
+    // Map utm_source to a human-readable Lead Source channel name.
+    function resolveLeadSource(src) {
+      if (!src) return null;
+      var s = src.toLowerCase();
+      if (s === 'google') return 'Advert - Google';
+      if (s === 'bing')   return 'Advert - Microsoft';
+      return src; // pass through unknown sources as-is
+    }
+
     function fill() {
+      // Populate individual UTM/click-ID hidden fields.
       Object.keys(fields).forEach(function (name) {
         var el = document.querySelector('[name="' + name + '"], #' + name);
         if (el && fields[name]) el.value = fields[name];
       });
+
+      // Populate Department with the concatenated attribution string.
+      var dept = buildDepartment(fields);
+      if (dept) {
+        var deptEl = document.getElementById('department_tracking');
+        if (deptEl) deptEl.value = dept;
+      }
+
+      // Override Lead Source when a recognised channel is present.
+      var channel = resolveLeadSource(fields.utm_source);
+      if (channel) {
+        var lsEl = document.getElementById('lead_source_field');
+        if (lsEl) lsEl.value = channel;
+      }
     }
+
     if (document.readyState !== 'loading') fill();
     else document.addEventListener('DOMContentLoaded', fill);
-  })();
+  }());
   </script>
 
 </body>
