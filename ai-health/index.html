@@ -322,9 +322,6 @@
     .wf-field-help-text { color: var(--w40) !important; }
     .wf-parent { overflow: visible !important; }
     .wform-btn-wrap { margin-top: 28px !important; }
-    #phPhone .content-display-area { color: var(--white) !important; }
-    #phPhone .dropdown { color: var(--white) !important; }
-    .multiple-fields-div .wf-field-inner { align-items: stretch; }
     .dropdown-menu { background: var(--navy-light) !important; border-color: var(--w15) !important; }
     .option:hover { background: var(--w08) !important; }
     .dropdown-input { background: var(--w08) !important; color: var(--white) !important; border-color: var(--w15) !important; }
@@ -624,28 +621,6 @@
                     </div>
                   </div>
                   <div class='wf-row'>
-                    <div class='wf-label'>Phone</div>
-                    <div class='wf-field ux-pick-mixed multiple-fields-div flex-1-5'>
-                      <div class='wf-field-inner'>
-                        <div id='phPhone' class='multiselect wf-field-dropdown field-1 dropdown-with-search icon-with-text-dropdown single-select-drp' onclick='removeError(this); showDropDown335987000000794001(this)' isPhone='true' findIP='true'>
-                          <div class='selected-options hide-opt-list wf-field-item selected-options-field' style='display:none;'></div>
-                          <div class='dropdown flex-center-v dropdown-contents'>
-                            <input type='text' class='dropdown-input input-not-active wf-field-item wf-field-input' style='display:none;'/>
-                            <span class='mR10 f22 content-display-area'></span>
-                            <ul class='dropdown-menu'></ul>
-                          </div>
-                        </div>
-                        <div class='field-2'>
-                          <div class=''>
-                            <input maxlength='50' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)'/>
-                            <input ftype='dialcode' name='Phone' maxlength='50' type='text' style='display:none;'/>
-                          </div>
-                        </div>
-                      </div>
-                      <div class='wf-field-help-text'>Best phone number to contact you on</div>
-                    </div>
-                  </div>
-                  <div class='wf-row'>
                     <div class='wf-label'></div>
                     <div class='wf-field'>
                       <div class='wf-field-inner flex-center-v'>
@@ -925,7 +900,6 @@
     window.validateForm335987000000794001 = checkMandatory335987000000794001;
   </script>
 
-  <script id='wf_script' src='https://bigin.zoho.eu/crm/WebformScriptServlet?rid=ce6be509f94a50a7ce5f343a1b1935682bd6dec85657f1dc0c0f9a36a8bd6302a0be550a23fe12ba7deacbd50daa697cgid61163d1eb765c6afbd663f913f8522c29682da54efdbc18bd85bf6de4bba2d1e&findip=true' onload='setupPhoneFldIP()'></script>
 
   <script>
   (function () {
