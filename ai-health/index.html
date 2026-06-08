@@ -568,13 +568,12 @@
             <div class='wf-wrapper' id='BiginWebToRecordFormDiv335987000000794001'>
               <meta name='viewport' content='width=device-width, initial-scale=1.0'>
               <form id='BiginWebToRecordForm335987000000794001' name='BiginWebToRecordForm335987000000794001' class='wf-form-component' data-ux-form-alignment='top' style='font-family:Arial;position:relative;font-size:15px;' method='POST' enctype='multipart/form-data' target='hidden335987000000794001Frame' onSubmit='javascript:document.charset="UTF-8"; return validateForm335987000000794001()' accept-charset='UTF-8'>
-                <input type='text' style='display:none;' name='xnQsjsdp' value='98f33e3e204cd6e68c1abd06f55b14dc787dc7ec4ad445b530047cb699663338'/>
+                <input type='text' style='display:none;' name='xnQsjsdp' value='61163d1eb765c6afbd663f913f8522c29682da54efdbc18bd85bf6de4bba2d1e'/>
                 <input type='hidden' name='zc_gad' id='zc_gad' value=''/>
-                <input type='text' style='display:none;' name='xmIwtLD' value='e171ea6b52612997ee5ae1432b55ec4afe4c0344ed2a1ba70e2ce9350257e707dc201ee2a9b25bd85818ec88ad186886'/>
+                <input type='text' style='display:none;' name='xmIwtLD' value='ce6be509f94a50a7ce5f343a1b1935682bd6dec85657f1dc0c0f9a36a8bd6302a0be550a23fe12ba7deacbd50daa697c'/>
                 <input type='text' style='display:none;' name='actionType' value='Q29udGFjdHM='/>
                 <input type='hidden' name='rmsg' id='rmsg' value='true'/>
                 <input type='text' style='display:none;' name='returnURL' value='null'/>
-                <input type='hidden' name='Lead Source' id='lead_source_field' value='AI Health Check - Board Briefing Paper'/>
                 <!-- Cookie-free ad-click + UTM fields. Populated by the capture script below. -->
                 <input type='hidden' name='gclid' id='gclid' value=''/>
                 <input type='hidden' name='msclkid' id='msclkid' value=''/>
@@ -583,55 +582,113 @@
                 <input type='hidden' name='utm_campaign' id='utm_campaign' value=''/>
                 <input type='hidden' name='utm_term' id='utm_term' value=''/>
                 <input type='hidden' name='utm_content' id='utm_content' value=''/>
-                <!-- Ad attribution tracking — written by UTM capture script. Maps to Bigin Department field. -->
-                <input type='hidden' name='Department' id='department_tracking' value=''/>
                 <div id='elementDiv335987000000794001' class='wf-form-wrapper'>
                   <div class='wf-row'>
                     <div class='wf-label'>First Name</div>
                     <div class='wf-field wf-field-mandatory'>
                       <div class='wf-field-inner'>
-                        <input name='First Name' maxlength='40' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)' placeholder='Your first name'/>
+                        <input name='First Name' maxlength='40' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)'/>
                       </div>
+                      <div class='wf-field-help-text'>Your first name</div>
                     </div>
                   </div>
                   <div class='wf-row'>
                     <div class='wf-label'>Last Name</div>
                     <div class='wf-field wf-field-mandatory'>
                       <div class='wf-field-inner'>
-                        <input name='Last Name' maxlength='80' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)' placeholder='Your last name'/>
+                        <input name='Last Name' maxlength='80' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)'/>
                       </div>
+                      <div class='wf-field-help-text'>Your last name</div>
                     </div>
                   </div>
                   <div class='wf-row'>
-                    <div class='wf-label'>Organisation</div>
+                    <div class='wf-label'>Organisation Name</div>
                     <div class='wf-field wf-field-mandatory'>
                       <div class='wf-field-inner'>
-                        <input name='Accounts.Account Name' maxlength='200' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)' placeholder='The organisation you represent'/>
+                        <input name='Accounts.Account Name' maxlength='200' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)'/>
                       </div>
+                      <div class='wf-field-help-text'>The organisation you represent</div>
                     </div>
                   </div>
                   <div class='wf-row'>
-                    <div class='wf-label'>Work Email</div>
+                    <div class='wf-label'>Email</div>
                     <div class='wf-field wf-field-mandatory'>
                       <div class='wf-field-inner'>
-                        <input fvalidate='true' ftype='email' name='Email' maxlength='100' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)' placeholder='your@organisation.com'/>
+                        <input fvalidate='true' ftype='email' name='Email' maxlength='100' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)'/>
                       </div>
+                      <div class='wf-field-help-text'>Best email address to contact you at</div>
                     </div>
                   </div>
                   <div class='wf-row'>
-                    <div class='wf-label' style='display:none'></div>
+                    <div class='wf-label'>Phone</div>
+                    <div class='wf-field ux-pick-mixed multiple-fields-div flex-1-5'>
+                      <div class='wf-field-inner'>
+                        <div id='phPhone' class='multiselect wf-field-dropdown field-1 dropdown-with-search icon-with-text-dropdown single-select-drp' onclick='removeError(this); showDropDown335987000000794001(this)' isPhone='true' findIP='true'>
+                          <div class='selected-options hide-opt-list wf-field-item selected-options-field' style='display:none;'></div>
+                          <div class='dropdown flex-center-v dropdown-contents'>
+                            <input type='text' class='dropdown-input input-not-active wf-field-item wf-field-input' style='display:none;'/>
+                            <span class='mR10 f22 content-display-area'></span>
+                            <ul class='dropdown-menu'></ul>
+                          </div>
+                        </div>
+                        <div class='field-2'>
+                          <div class=''>
+                            <input maxlength='50' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)'/>
+                            <input ftype='dialcode' name='Phone' maxlength='50' type='text' style='display:none;'/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class='wf-field-help-text'>Best phone number to contact you on</div>
+                    </div>
+                  </div>
+                  <div class='wf-row'>
+                    <div class='wf-label'></div>
                     <div class='wf-field'>
                       <div class='wf-field-inner flex-center-v'>
                         <input class='wf-field-item wf-field-checkbox' type='checkbox' id='privacycheck335987000000794001' name='privacyTool' autocomplete='off' onclick='disablePrivacyError335987000000794001()'/>
-                        <label for='privacycheck335987000000794001' style='cursor:pointer;font-size:13px;color:rgba(255,255,255,0.6)'>I agree to the ENOS <a href="https://enos.ltd.uk/privacy" style="color:#2aa898">Privacy Policy</a> and consent to being contacted about ENOS services.</label>
+                        <label for='privacycheck335987000000794001' style='cursor:pointer;font-size:13px;color:rgba(0,0,0,0.7)'>I agree to the ENOS <a href="https://enos.ltd.uk/privacy" target="_blank" style="color:#1980d8">Privacy Policy</a> and consent to being contacted about ENOS services.</label>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Source capture section: hidden from visitors, populated by UTM script -->
+                  <div class='wf-sec-wrap'>
+                    <div class='wf-sec-head'><div class='wf-sec-title'>Source capture</div></div>
+                    <div class='wf-row'>
+                      <div class='wf-label'>Lead Source</div>
+                      <div class='wf-field'>
+                        <div class='wf-field-inner dropdown-contents'>
+                          <select name='Lead Source' class='wf-field-item wf-field-dropdown' data-wform-field='select' onchange='removeError(this);'>
+                            <option value='-None-'>-None-</option>
+                            <option value='Advert - Google'>Advert - Google</option>
+                            <option value='Advert - Microsoft'>Advert - Microsoft</option>
+                            <option value='Cold Call'>Cold Call</option>
+                            <option value='Employee Referral'>Employee Referral</option>
+                            <option value='External Referral'>External Referral</option>
+                            <option value='Online Store'>Online Store</option>
+                            <option value='Partner'>Partner</option>
+                            <option value='Public Relations'>Public Relations</option>
+                            <option value='Sales Email Alias'>Sales Email Alias</option>
+                            <option value='Web Download'>Web Download</option>
+                            <option value='Web Research'>Web Research</option>
+                            <option value='Chat'>Chat</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='wf-row'>
+                      <div class='wf-label'>Department</div>
+                      <div class='wf-field'>
+                        <div class='wf-field-inner'>
+                          <input name='Department' maxlength='50' type='text' value='' class='wf-field-item wf-field-input' oninput='removeError(this)'/>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div class='wform-btn-wrap' data-ux-pos='left'>
-                    <input id='formsubmit' type='submit' class='wf-btn' data-ux-btn-type='default' value='Get the Board Briefing Paper →'/>
+                    <input id='formsubmit' type='submit' class='wf-btn' data-ux-btn-type='default' value='Get the Board Briefing Paper &rarr;'/>
                   </div>
                 </div>
-                <div class='wf-spam-content-box'><div class='wf-spam-content-box-inner'><span class='wf-spam-content-note'>Note:</span> Do not submit passwords or confidential information through this form. <a href='https://www.zoho.eu/report-abuse' class='wf-spam-content-report-link' target='_blank' style='color:#2aa898'>Report Abuse</a></div></div>
+                <div class='wf-spam-content-box'><div class='wf-spam-content-box-inner'><span class='wf-spam-content-note'>Note:</span> Do not submit passwords or confidential information through this form. <a href='https://www.zoho.eu/report-abuse' class='wf-spam-content-report-link' target='_blank' style='color:#1980d8'>Report Abuse</a></div></div>
               </form>
             </div>
           </div>
@@ -683,6 +740,8 @@
     .wf-field-error { color: #FF5050; font-size: 12px; margin-top: 4px; display: none; }
     .wf-error-parent-ele { display: flex; justify-content: end; }
     .wf-field-help-text { color: #515159; font-size: 12px; margin-top: 5px; }
+    .wf-sec-wrap { display: none !important; }
+    .wf-header { display: none !important; }
     .wf-field-checkbox { cursor: pointer; border-radius: 3px; min-width: 14px; min-height: 20px; box-sizing: initial; accent-color: #1980d8; margin-inline-end: 10px; margin-bottom: auto; }
     .wf-btn { padding: 10px 20px; border-radius: 4px; font-size: 15px; cursor: pointer; font-weight: bold; font-family: inherit; }
     .wform-btn-wrap { display: flex; margin-top: 40px; align-items: center; justify-content: flex-end; flex: 1; }
@@ -775,8 +834,12 @@
   </script>
 
   <script>
-    var mndFields335987000000794001 = new Array('First\x20Name','Last\x20Name','Accounts.Account\x20Name','Email');
-    var fldLangVal335987000000794001 = new Array('First Name','Last Name','Organisation','Work Email');
+    var mndFields335987000000794001 = new Array('First Name','Last Name','Accounts.Account Name','Email');
+    var fldLangVal335987000000794001 = new Array('First Name','Last Name','Organisation Name','Email');
+    var wfInnerWidth = window.innerWidth;
+    if (wfInnerWidth <= 768) {
+      document.forms['BiginWebToRecordForm335987000000794001'].setAttribute('data-ux-form-alignment', 'top');
+    }
 
     function removeError(fieldObj) {
       var parentElement = fieldObj.closest('.wf-field'),
@@ -801,46 +864,67 @@
       var form = document.forms['BiginWebToRecordForm335987000000794001'];
       var validateFld = form.querySelectorAll('[fvalidate=true]');
       for (var i = 0; i < validateFld.length; i++) {
-        if (validateFld[i].value !== '' && validateFld[i].getAttribute('ftype') === 'email') {
-          if (validateFld[i].value.match(/^([A-Za-z0-9-._%'+\/]+@[A-Za-z0-9.-]+\.[a-zA-Z]{2,22})$/) === null) {
-            setError(validateFld[i], 'Enter a valid email address'); isReturn = false;
+        var validateFldVal = validateFld[i].value;
+        var fType = validateFld[i].getAttribute('ftype');
+        if (validateFldVal !== '') {
+          if (fType === 'email') {
+            if (validateFldVal.match(/^([A-Za-z0-9-._%'+/]+@[A-Za-z0-9.-]+.[a-zA-Z]{2,22})$/) === null) {
+              setError(validateFld[i], 'Enter valid ' + fType); isReturn = false;
+            }
           }
         }
       }
       return isReturn;
     }
+
     function privacyError335987000000794001() {
-      var privacyTool = document.getElementById('privacycheck335987000000794001');
-      if (privacyTool != undefined && !privacyTool.checked) { setError(privacyTool, 'Please accept the Privacy Policy to continue'); return false; }
+      var cb = document.getElementById('privacycheck335987000000794001');
+      if (cb && !cb.checked) {
+        var parent = cb.closest('.wf-field');
+        if (parent) parent.classList.add('wf-privacy-check-error');
+        return false;
+      }
       return true;
     }
+
     function disablePrivacyError335987000000794001() {
-      removeError(document.getElementById('privacycheck335987000000794001'));
+      var cb = document.getElementById('privacycheck335987000000794001');
+      if (cb) {
+        var parent = cb.closest('.wf-field');
+        if (parent) parent.classList.remove('wf-privacy-check-error');
+      }
     }
+
+    function validatePhone335987000000794001() {
+      return true;
+    }
+
     function checkMandatory335987000000794001() {
-      var isReturn = true;
-      for (var i = 0; i < mndFields335987000000794001.length; i++) {
-        var fieldObj = document.forms['BiginWebToRecordForm335987000000794001'][mndFields335987000000794001[i]];
-        if (fieldObj && ((fieldObj.value).replace(/^\s+|\s+$/g, '')).length === 0) {
-          setError(fieldObj, fldLangVal335987000000794001[i] + ' cannot be empty'); isReturn = false;
+      var form = document.forms['BiginWebToRecordForm335987000000794001'];
+      var mndFld = mndFields335987000000794001;
+      var fldLang = fldLangVal335987000000794001;
+      for (var i = 0; i < mndFld.length; i++) {
+        var field = form.querySelector('[name="' + mndFld[i] + '"]');
+        if (!field) field = form.querySelector('[fieldname="' + mndFld[i] + '"]');
+        if (field && field.value.trim() === '') {
+          setError(field, fldLang[i] + ' cannot be empty');
+          field.focus();
+          return false;
         }
       }
-      if (!privacyError335987000000794001()) { isReturn = false; }
-      if (!validateFields335987000000794001()) { isReturn = false; }
-      if (isReturn) { document.getElementById('formsubmit').disabled = true; }
-      return isReturn;
+      if (!validateFields335987000000794001()) { return false; }
+      if (!validatePhone335987000000794001()) { return false; }
+      if (!privacyError335987000000794001()) { return false; }
+      return true;
     }
-    if (typeof validateForm335987000000794001 === 'undefined') {
-      window.validateForm335987000000794001 = checkMandatory335987000000794001;
-    }
+
+    window.validateForm335987000000794001 = checkMandatory335987000000794001;
   </script>
 
-  <script id='wf_script' src='https://bigin.zoho.eu/crm/WebformScriptServlet?rid=e171ea6b52612997ee5ae1432b55ec4afe4c0344ed2a1ba70e2ce9350257e707dc201ee2a9b25bd85818ec88ad186886gid98f33e3e204cd6e68c1abd06f55b14dc787dc7ec4ad445b530047cb699663338' onload='if(typeof setupPhoneFldIP==="function")setupPhoneFldIP()'></script>
+  <script id='wf_script' src='https://bigin.zoho.eu/crm/WebformScriptServlet?rid=ce6be509f94a50a7ce5f343a1b1935682bd6dec85657f1dc0c0f9a36a8bd6302a0be550a23fe12ba7deacbd50daa697cgid61163d1eb765c6afbd663f913f8522c29682da54efdbc18bd85bf6de4bba2d1e&findip=true' onload='setupPhoneFldIP()'></script>
 
   <script>
   (function () {
-    // Cookie-free ad-click + UTM capture for offline conversion import.
-    // Reads the landing URL only. No cookies, no storage, no consent needed.
     var params = new URLSearchParams(window.location.search);
     var fields = {
       gclid:        params.get('gclid')        || '',
@@ -869,11 +953,10 @@
       var s = src.toLowerCase();
       if (s === 'google') return 'Advert - Google';
       if (s === 'bing')   return 'Advert - Microsoft';
-      return src; // pass through unknown sources as-is
+      return src;
     }
 
     function fill() {
-      // Populate individual UTM/click-ID hidden fields.
       Object.keys(fields).forEach(function (name) {
         var el = document.querySelector('[name="' + name + '"], #' + name);
         if (el && fields[name]) el.value = fields[name];
@@ -882,14 +965,14 @@
       // Populate Department with the concatenated attribution string.
       var dept = buildDepartment(fields);
       if (dept) {
-        var deptEl = document.getElementById('department_tracking');
+        var deptEl = document.querySelector('[name="Department"]');
         if (deptEl) deptEl.value = dept;
       }
 
-      // Override Lead Source when a recognised channel is present.
+      // Override Lead Source select when a recognised channel is present.
       var channel = resolveLeadSource(fields.utm_source);
       if (channel) {
-        var lsEl = document.getElementById('lead_source_field');
+        var lsEl = document.querySelector('[name="Lead Source"]');
         if (lsEl) lsEl.value = channel;
       }
     }
