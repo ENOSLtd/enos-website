@@ -569,9 +569,9 @@
             <div class='wf-wrapper' id='BiginWebToRecordFormDiv335987000000794001'>
               <meta name='viewport' content='width=device-width, initial-scale=1.0'>
               <form id='BiginWebToRecordForm335987000000794001' name='BiginWebToRecordForm335987000000794001' class='wf-form-component' data-ux-form-alignment='top' style='font-family:Arial;position:relative;font-size:15px;' method='POST' enctype='multipart/form-data' target='hidden335987000000794001Frame' onSubmit='javascript:document.charset="UTF-8"; return validateForm335987000000794001()' accept-charset='UTF-8'>
-                <input type='text' style='display:none;' name='xnQsjsdp' value='61163d1eb765c6afbd663f913f8522c29682da54efdbc18bd85bf6de4bba2d1e'/>
+                <input type='text' style='display:none;' name='xnQsjsdp' value='d201c9963f9a3694d93887e8592e436e551ce473d649296ea3811b44127bf451'/>
                 <input type='hidden' name='zc_gad' id='zc_gad' value=''/>
-                <input type='text' style='display:none;' name='xmIwtLD' value='ce6be509f94a50a7ce5f343a1b1935682bd6dec85657f1dc0c0f9a36a8bd6302a0be550a23fe12ba7deacbd50daa697c'/>
+                <input type='text' style='display:none;' name='xmIwtLD' value='8432c01419807f482c8e45b2fe85d03644a0bd574a456e28e398612301927c9ffa5ebcc3902596bfd10f5662085ec35e'/>
                 <input type='text' style='display:none;' name='actionType' value='Q29udGFjdHM='/>
                 <input type='hidden' name='rmsg' id='rmsg' value='true'/>
                 <input type='text' style='display:none;' name='returnURL' value='null'/>
@@ -823,19 +823,35 @@
     function removeError(fieldObj) {
       var parentElement = fieldObj.closest('.wf-field'),
         childEle = parentElement.getElementsByClassName('wf-error-parent-ele')[0];
-      if (childEle) { parentElement.classList.remove('wf-field-error-active'); parentElement.removeChild(childEle); }
+      if (childEle) {
+        parentElement.classList.remove('wf-field-error-active');
+        parentElement.removeChild(childEle);
+      }
     }
     function setError(fieldObj, label) {
       var parentElement = fieldObj.closest('.wf-field'),
         childEle = parentElement.getElementsByClassName('wf-error-parent-ele')[0];
       if (!childEle) {
-        var errorParentEle = document.createElement('DIV'), spanEle = document.createElement('SPAN');
+        var errorParentEle = document.createElement('DIV'),
+          spanEle = document.createElement('SPAN'),
+          viewMoreEle = document.createElement('SPAN');
         spanEle.setAttribute('class', 'wf-field-error wf-field-error-long');
         spanEle.innerHTML = label;
         errorParentEle.classList.add('wf-error-parent-ele');
         errorParentEle.appendChild(spanEle);
         parentElement.append(errorParentEle);
         parentElement.classList.add('wf-field-error-active');
+        if (spanEle.scrollWidth > parentElement.offsetWidth) {
+          viewMoreEle.innerHTML = 'View More';
+          viewMoreEle.classList.add('wf-error-view-more');
+          errorParentEle.append(viewMoreEle);
+          viewMoreEle.addEventListener('click', function () {
+            errorParentEle.removeChild(viewMoreEle);
+            spanEle.classList.remove('wf-field-error-long');
+          });
+        } else {
+          spanEle.classList.remove('wf-field-error-long');
+        }
       }
     }
     function validateFields335987000000794001() {
@@ -845,60 +861,66 @@
       for (var i = 0; i < validateFld.length; i++) {
         var validateFldVal = validateFld[i].value;
         var fType = validateFld[i].getAttribute('ftype');
-        if (validateFldVal !== '') {
-          if (fType === 'email') {
-            if (validateFldVal.match(/^([A-Za-z0-9-._%'+/]+@[A-Za-z0-9.-]+.[a-zA-Z]{2,22})$/) === null) {
-              setError(validateFld[i], 'Enter valid ' + fType); isReturn = false;
-            }
+        if (validateFldVal !== '' || (validateFldVal === '' && fType.indexOf('date') !== -1)) {
+          var wfLabel = validateFld[i].parentElement.parentElement.parentElement.getElementsByClassName('wf-label')[0];
+          var fLabel = wfLabel ? wfLabel.innerHTML : '';
+          switch (validateFld[i].getAttribute('ftype')) {
+            case 'email':
+              if (validateFldVal.match(/^([A-Za-z0-9-._%'+\/]+@[A-Za-z0-9.-]+.[a-zA-Z]{2,22})$/) === null) {
+                setError(validateFld[i], 'Enter valid ' + fLabel);
+                isReturn = false;
+              }
+              break;
           }
         }
       }
       return isReturn;
     }
-
     function privacyError335987000000794001() {
-      var cb = document.getElementById('privacycheck335987000000794001');
-      if (cb && !cb.checked) {
-        var parent = cb.closest('.wf-field');
-        if (parent) parent.classList.add('wf-privacy-check-error');
+      var privacyTool = document.getElementById('privacycheck335987000000794001');
+      if (privacyTool != undefined && !privacyTool.checked) {
+        setError(privacyTool, 'Please accept Privacy Policy');
         return false;
       }
       return true;
     }
-
     function disablePrivacyError335987000000794001() {
-      var cb = document.getElementById('privacycheck335987000000794001');
-      if (cb) {
-        var parent = cb.closest('.wf-field');
-        if (parent) parent.classList.remove('wf-privacy-check-error');
-      }
+      var privacyTool = document.getElementById('privacycheck335987000000794001');
+      removeError(privacyTool);
     }
-
-    function validatePhone335987000000794001() {
-      return true;
-    }
-
     function checkMandatory335987000000794001() {
-      var form = document.forms['BiginWebToRecordForm335987000000794001'];
-      var mndFld = mndFields335987000000794001;
-      var fldLang = fldLangVal335987000000794001;
-      for (var i = 0; i < mndFld.length; i++) {
-        var field = form.querySelector('[name="' + mndFld[i] + '"]');
-        if (!field) field = form.querySelector('[fieldname="' + mndFld[i] + '"]');
-        if (field && field.value.trim() === '') {
-          setError(field, fldLang[i] + ' cannot be empty');
-          field.focus();
-          return false;
+      var isReturn = true;
+      var isNotCaptcha = false;
+      for (var i = 0; i < mndFields335987000000794001.length; i++) {
+        var fieldObj = document.forms['BiginWebToRecordForm335987000000794001'][mndFields335987000000794001[i]];
+        if (fieldObj) {
+          if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length == 0) {
+            setError(fieldObj, fldLangVal335987000000794001[i] + ' cannot be empty');
+            isReturn = false;
+          }
         }
       }
-      if (!validateFields335987000000794001()) { return false; }
-      if (!validatePhone335987000000794001()) { return false; }
-      if (!privacyError335987000000794001()) { return false; }
-      return true;
+      if (!privacyError335987000000794001()) { isReturn = false; }
+      isNotCaptcha = true;
+      if (!validateFields335987000000794001()) { isReturn = false; }
+      if (!isReturn) {
+        var errEle = document.getElementsByClassName('wf-field-error');
+        if (errEle && errEle.length > 0) {
+          var inputEle = errEle[0].closest('.wf-field').getElementsByTagName('input');
+          if (inputEle && inputEle.length == 0) {
+            inputEle = errEle[0].closest('.wf-field').getElementsByTagName('select');
+          }
+          if (inputEle && inputEle.length > 0) { inputEle[0].focus(); }
+        }
+      } else if (isNotCaptcha) {
+        document.getElementById('formsubmit').disabled = true;
+      }
+      return isReturn;
     }
-
     window.validateForm335987000000794001 = checkMandatory335987000000794001;
   </script>
+
+  <script id='wf_script' src='https://bigin.zoho.eu/crm/WebformScriptServlet?rid=8432c01419807f482c8e45b2fe85d03644a0bd574a456e28e398612301927c9ffa5ebcc3902596bfd10f5662085ec35egidd201c9963f9a3694d93887e8592e436e551ce473d649296ea3811b44127bf451'></script>
 
 
   <script>
@@ -962,3 +984,4 @@
 
 </body>
 </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
