@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script>(function(){var t=localStorage.getItem('enosTheme');if(t==='light')document.documentElement.setAttribute('data-theme','light');}());</script>
+  <script>(function(){var t=localStorage.getItem('enosTheme'),s=window.matchMedia('(prefers-color-scheme:light)').matches;if(t==='light'||(t===null&&s))document.documentElement.setAttribute('data-theme','light');}());</script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -205,6 +205,7 @@
     .footer-legal a:hover { color: var(--white); }
 
     /* THEME TOGGLE */
+    .nav-brand { display: flex; align-items: center; gap: 16px; }
     .theme-toggle {
       background: transparent; border: 1px solid var(--w15); border-radius: 2px;
       color: var(--w70); cursor: pointer; width: 34px; height: 34px;
@@ -270,7 +271,8 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="index.html" class="nav-logo">
+  <div class="nav-brand">
+    <a href="index.html" class="nav-logo">
     <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M40 4 L44 14 L36 14 Z M67 13 L64 23 L58 17 Z M76 40 L66 44 L66 36 Z M67 67 L57 64 L63 58 Z M40 76 L36 66 L44 66 Z M13 67 L16 57 L22 63 Z M4 40 L14 36 L14 44 Z M13 13 L23 16 L17 22 Z" fill="#274690" opacity="0.9"/>
       <circle cx="40" cy="40" r="30" fill="#050a30" stroke="#274690" stroke-width="1.5"/>
@@ -279,6 +281,11 @@
     </svg>
     <span class="nav-logo-text">ENOS <span>Limited</span></span>
   </a>
+  <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+  </div>
   <ul class="nav-links">
     <li><a href="index.html#who-we-help">Who We Help</a></li>
     <li><a href="index.html#methodology">Methodology</a></li>
@@ -287,10 +294,6 @@
     <li><a href="ned.html">Board Advisory</a></li>
     <li><a href="index.html#about">About</a></li>
   </ul>
-  <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">
-    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-  </button>
   <a href="index.html#contact" class="nav-cta">Book Discovery Call</a>
   <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -563,77 +566,4 @@
     <p>Whether your programme is already in trouble or you want a senior hand on the wheel from day one — reach out. No sales pitch, no obligation. Just a direct conversation about whether ENOS is the right fit.</p>
     <div class="cta-btns">
       <a href="mailto:gp@enos.ltd.uk" class="btn-primary">Email Geoff Directly</a>
-      <a href="index.html#contact" class="btn-ghost">Back to Main Site →</a>
-    </div>
-    <div class="cta-contact">
-      +44 (0) 7946 314 316 · <a href="mailto:gp@enos.ltd.uk">gp@enos.ltd.uk</a> · <a href="https://www.linkedin.com/in/geoffporritt" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- FOOTER -->
-<footer>
-  <div>
-    <div class="footer-brand">ENOS Limited</div>
-    <div class="footer-sub">The Critical Friend</div>
-  </div>
-  <ul class="footer-nav">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="consultancy.html">Consultancy</a></li>
-    <li><a href="ned.html">Board Advisory</a></li>
-    <li><a href="gc-index.html">GC Index</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
-  <div class="footer-legal">
-    ©2026 ENOS Limited<br>
-    Company Reg. GB4240098 · VAT 775 5977 60<br>
-    <a href="privacy.html">Privacy Policy</a>
-  </div>
-</footer>
-
-
-<script>
-  // Nav scroll shrink
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.style.padding = window.scrollY > 50 ? '12px 64px' : '20px 64px';
-  }, { passive: true });
-
-  // Hamburger
-  const hamburger = document.getElementById('navHamburger');
-  const mobileNav = document.getElementById('mobileNav');
-  hamburger.addEventListener('click', () => {
-    const open = hamburger.classList.toggle('open');
-    mobileNav.classList.toggle('open', open);
-    hamburger.setAttribute('aria-expanded', open);
-  });
-  mobileNav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      mobileNav.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  // Scroll reveal
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-  (function(){
-    var html=document.documentElement;
-    var btn=document.getElementById('themeToggle');
-    if(btn){btn.addEventListener('click',function(){
-      var t=html.getAttribute('data-theme')==='light'?'dark':'light';
-      if(t==='light'){html.setAttribute('data-theme','light');btn.setAttribute('aria-label','Switch to dark theme');}
-      else{html.removeAttribute('data-theme');btn.setAttribute('aria-label','Switch to light theme');}
-      localStorage.setItem('enosTheme',t);
-    });
-    if(html.getAttribute('data-theme')==='light'){btn.setAttribute('aria-label','Switch to dark theme');}
-    }
-  }());
-</script>
-</body>
-</html>
+      <a href=
