@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script>(function(){var t=localStorage.getItem('enosTheme');if(t==='light')document.documentElement.setAttribute('data-theme','light');}());</script>
+  <script>(function(){var t=localStorage.getItem('enosTheme'),s=window.matchMedia('(prefers-color-scheme:light)').matches;if(t==='light'||(t===null&&s))document.documentElement.setAttribute('data-theme','light');}());</script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -322,6 +322,7 @@
     @media(max-width:768px){ footer { padding: 32px 24px; flex-direction: column; } }
 
     /* THEME TOGGLE */
+    .nav-brand { display: flex; align-items: center; gap: 16px; }
     .theme-toggle {
       background: transparent; border: 1px solid var(--w15); border-radius: 2px;
       color: var(--w70); cursor: pointer; width: 34px; height: 34px;
@@ -347,23 +348,25 @@
 
   <!-- NAV -->
   <nav id="main-nav">
-    <a href="/" class="nav-logo">
+    <div class="nav-brand">
+      <a href="/" class="nav-logo">
       <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="19" cy="19" r="18" stroke="#274690" stroke-width="1.5"/>
         <path d="M10 14h18M10 19h12M10 24h18" stroke="#4a6fc0" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
       <span class="nav-logo-text">ENOS <span>Limited</span></span>
     </a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    </div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#recommendations">Recommendations</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
     <a href="https://zcal.co/enosltd/discovery" class="nav-cta">Book a Discovery Call</a>
   </nav>
 
@@ -511,66 +514,4 @@
       <div>
         <p class="section-label reveal">Get in Touch</p>
         <h2 class="reveal">The first conversation is always free.</h2>
-        <p class="reveal">A 45-minute Discovery Call to understand your programme, your concerns, and whether an independent diagnostic would be the right next step.  No commitment.  No sales pitch.</p>
-        <a href="https://zcal.co/enosltd/discovery" class="btn-primary reveal">Book a Discovery Call</a>
-      </div>
-      <div class="contact-details reveal">
-        <div class="contact-item">
-          <span class="contact-label">Email</span>
-          <span class="contact-value"><a href="mailto:gp@enos.ltd.uk">gp@enos.ltd.uk</a></span>
-        </div>
-        <div class="contact-item">
-          <span class="contact-label">Phone</span>
-          <span class="contact-value"><a href="tel:+447946314316">+44 (0) 7946 314 316</a></span>
-        </div>
-        <div class="contact-item">
-          <span class="contact-label">LinkedIn</span>
-          <span class="contact-value"><a href="https://linkedin.com/in/geoffporritt/" target="_blank">linkedin.com/in/geoffporritt</a></span>
-        </div>
-        <div class="contact-item">
-          <span class="contact-label">Company</span>
-          <span class="contact-value">ENOS Limited<br>GB4240098 · VAT 775 5977 60</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-left">
-      <div>© 2025 ENOS Limited · Company No. GB4240098 · VAT 775 5977 60</div>
-    </div>
-    <div class="footer-right">
-      <a href="prog-health/" class="footer-link">Programme Health Check</a>
-      <a href="ai-health/" class="footer-link">AI Health Check</a>
-      <a href="https://linkedin.com/in/geoffporritt/" target="_blank" class="footer-link">LinkedIn</a>
-    </div>
-  </footer>
-
-  <script>
-    window.addEventListener('scroll', function() {
-      document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
-    });
-
-    var reveals = document.querySelectorAll('.reveal');
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    reveals.forEach(function(el) { io.observe(el); });
-
-    (function(){
-      var html=document.documentElement;
-      var btn=document.getElementById('themeToggle');
-      if(btn){btn.addEventListener('click',function(){
-        var t=html.getAttribute('data-theme')==='light'?'dark':'light';
-        if(t==='light'){html.setAttribute('data-theme','light');btn.setAttribute('aria-label','Switch to dark theme');}
-        else{html.removeAttribute('data-theme');btn.setAttribute('aria-label','Switch to light theme');}
-        localStorage.setItem('enosTheme',t);
-      });
-      if(html.getAttribute('data-theme')==='light'){btn.setAttribute('aria-label','Switch to dark theme');}
-      }
-    }());
-  </script>
-
-</body>
-</html>
+        <p class="reveal">A 45-minute Discovery Call to understand your programme, your
