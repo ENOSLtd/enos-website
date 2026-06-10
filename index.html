@@ -22,6 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>(function(){var t=localStorage.getItem('enosTheme');if(t==='light')document.documentElement.setAttribute('data-theme','light');}());</script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -41,6 +42,22 @@
       --w15:  rgba(255,255,255,0.15);
       --w08:  rgba(255,255,255,0.08);
       --w04:  rgba(255,255,255,0.04);
+      --accent:     #7a9fd4;
+      --nav-bg:     rgba(5,10,48,0.92);
+    }
+
+    html[data-theme="light"] {
+      --navy:       #f8f9fb;
+      --navy-mid:   #f0f2f7;
+      --navy-light: #e8ecf5;
+      --white:      #050a30;
+      --w70:  rgba(5,10,48,0.72);
+      --w40:  rgba(5,10,48,0.45);
+      --w15:  rgba(5,10,48,0.12);
+      --w08:  rgba(5,10,48,0.06);
+      --w04:  rgba(5,10,48,0.03);
+      --accent:     #274690;
+      --nav-bg:     rgba(248,249,251,0.95);
     }
 
     html { scroll-behavior: smooth; }
@@ -58,7 +75,7 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 20px 64px;
-      background: rgba(5,10,48,0.92);
+      background: var(--nav-bg);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--w15);
       transition: padding 0.3s;
@@ -81,7 +98,7 @@
     }
     .nav-links a:hover { color: var(--white); }
     .nav-cta {
-      background: var(--blue); color: var(--white);
+      background: var(--blue); color: #ffffff;
       padding: 10px 22px; border-radius: 2px;
       font-size: 0.85rem; font-weight: 600;
       letter-spacing: 0.08em; text-transform: uppercase;
@@ -119,13 +136,13 @@
     .label-tag {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem; letter-spacing: 0.18em;
-      color: #7a9fd4; text-transform: uppercase;
+      color: var(--accent); text-transform: uppercase;
       display: flex; align-items: center; gap: 12px;
       margin-bottom: 26px;
     }
     .label-tag::before {
       content: ''; display: block;
-      width: 32px; height: 1px; background: #7a9fd4;
+      width: 32px; height: 1px; background: var(--accent);
     }
     .hero h1 {
       font-size: clamp(2.6rem, 5.5vw, 4rem);
@@ -140,7 +157,7 @@
     .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--blue); color: var(--white);
+      background: var(--blue); color: #ffffff;
       padding: 14px 28px; border-radius: 2px;
       font-size: 0.9rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
       text-decoration: none; border: 1px solid var(--blue-mid);
@@ -173,7 +190,7 @@
     .section-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem; letter-spacing: 0.18em;
-      color: #7a9fd4; text-transform: uppercase; margin-bottom: 16px;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 16px;
     }
     .section-label.teal { color: var(--teal-light); }
     .section-title { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; margin-bottom: 20px; }
@@ -304,6 +321,20 @@
     .footer-link:hover { color: var(--white); }
     @media(max-width:768px){ footer { padding: 32px 24px; flex-direction: column; } }
 
+    /* THEME TOGGLE */
+    .theme-toggle {
+      background: transparent; border: 1px solid var(--w15); border-radius: 2px;
+      color: var(--w70); cursor: pointer; width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; padding: 0; transition: border-color 0.2s, color 0.2s;
+    }
+    .theme-toggle:hover { border-color: var(--white); color: var(--white); }
+    .theme-toggle svg { width: 16px; height: 16px; }
+    .icon-sun { display: none; }
+    .icon-moon { display: block; }
+    html[data-theme="light"] .icon-sun { display: block; }
+    html[data-theme="light"] .icon-moon { display: none; }
+
     /* Reveal */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s, transform 0.5s; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -329,6 +360,10 @@
       <li><a href="#recommendations">Recommendations</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
     <a href="https://zcal.co/enosltd/discovery" class="nav-cta">Book a Discovery Call</a>
   </nav>
 
@@ -522,6 +557,19 @@
       entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     reveals.forEach(function(el) { io.observe(el); });
+
+    (function(){
+      var html=document.documentElement;
+      var btn=document.getElementById('themeToggle');
+      if(btn){btn.addEventListener('click',function(){
+        var t=html.getAttribute('data-theme')==='light'?'dark':'light';
+        if(t==='light'){html.setAttribute('data-theme','light');btn.setAttribute('aria-label','Switch to dark theme');}
+        else{html.removeAttribute('data-theme');btn.setAttribute('aria-label','Switch to light theme');}
+        localStorage.setItem('enosTheme',t);
+      });
+      if(html.getAttribute('data-theme')==='light'){btn.setAttribute('aria-label','Switch to dark theme');}
+      }
+    }());
   </script>
 
 </body>
