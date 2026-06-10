@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+  <script>(function(){var t=localStorage.getItem('enosTheme');if(t==='light')document.documentElement.setAttribute('data-theme','light');}());</script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -30,6 +30,19 @@
       --w15:  rgba(255,255,255,0.15);
       --w08:  rgba(255,255,255,0.08);
       --w04:  rgba(255,255,255,0.04);
+      --nav-bg: rgba(5,10,48,0.92);
+    }
+    html[data-theme="light"] {
+      --navy:       #f8f9fb;
+      --navy-mid:   #f0f2f7;
+      --navy-light: #e8ecf5;
+      --white:      #050a30;
+      --w70:  rgba(5,10,48,0.72);
+      --w40:  rgba(5,10,48,0.45);
+      --w15:  rgba(5,10,48,0.12);
+      --w08:  rgba(5,10,48,0.06);
+      --w04:  rgba(5,10,48,0.03);
+      --nav-bg: rgba(248,249,251,0.95);
     }
 
     html { scroll-behavior: smooth; }
@@ -47,7 +60,7 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 20px 64px;
-      background: rgba(5,10,48,0.92);
+      background: var(--nav-bg);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--w15);
       transition: padding 0.3s;
@@ -71,7 +84,7 @@
     }
     .nav-links a:hover { color: var(--white); }
     .nav-cta {
-      background: var(--blue); color: var(--white);
+      background: var(--blue); color: #ffffff;
       padding: 10px 22px; border-radius: 2px;
       font-size: 0.85rem; font-weight: 600;
       letter-spacing: 0.08em; text-transform: uppercase;
@@ -133,7 +146,7 @@
     .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 56px; }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--blue); color: var(--white);
+      background: var(--blue); color: #ffffff;
       padding: 14px 28px; border-radius: 2px;
       font-size: 0.9rem; font-weight: 600;
       letter-spacing: 0.06em; text-transform: uppercase;
@@ -164,12 +177,12 @@
     .briefing-banner-text h3 {
       font-family: 'Outfit', sans-serif;
       font-size: 1.05rem; font-weight: 600;
-      color: var(--white); margin-bottom: 4px;
+      color: #ffffff; margin-bottom: 4px;
     }
     .briefing-banner-text p { font-size: 0.9rem; color: rgba(255,255,255,0.75); }
     .btn-briefing-cta {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--white); color: var(--teal);
+      background: #ffffff; color: var(--teal);
       padding: 12px 24px; border-radius: 2px;
       font-size: 0.85rem; font-weight: 700;
       letter-spacing: 0.06em; text-transform: uppercase;
@@ -316,7 +329,7 @@
     .wf-label { color: var(--w70) !important; font-size: 0.85rem !important; padding: 7px 0 !important; }
     .wf-field-input, .wf-field-dropdown { background: var(--w08) !important; border: 1px solid var(--w15) !important; color: var(--white) !important; border-radius: 2px !important; }
     .wf-field-mandatory .wf-field-inner::before { background-color: var(--teal-light) !important; }
-    .wf-btn { background: var(--blue) !important; color: var(--white) !important; border: 1px solid var(--blue-mid) !important; border-radius: 2px !important; font-family: 'Outfit', sans-serif !important; font-weight: 600 !important; letter-spacing: 0.06em !important; text-transform: uppercase !important; padding: 12px 28px !important; font-size: 0.85rem !important; }
+    .wf-btn { background: var(--blue) !important; color: #ffffff !important; border: 1px solid var(--blue-mid) !important; border-radius: 2px !important; font-family: 'Outfit', sans-serif !important; font-weight: 600 !important; letter-spacing: 0.06em !important; text-transform: uppercase !important; padding: 12px 28px !important; font-size: 0.85rem !important; }
     .wf-btn:disabled { opacity: 0.5 !important; }
     .wf-spam-content-box { display: none !important; }
     .wf-field-help-text { color: var(--w40) !important; }
@@ -332,9 +345,23 @@
     .download-state .checkmark { width: 64px; height: 64px; background: rgba(26,122,110,0.2); border: 2px solid var(--teal-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 1.8rem; }
     .download-state h3 { font-size: 1.6rem; margin-bottom: 12px; }
     .download-state p { color: var(--w70); font-size: 0.95rem; margin-bottom: 32px; line-height: 1.6; }
-    .btn-pdf-download { display: inline-flex; align-items: center; gap: 10px; background: var(--blue); color: var(--white); padding: 16px 32px; border-radius: 2px; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--blue-mid); transition: background 0.2s; }
+    .btn-pdf-download { display: inline-flex; align-items: center; gap: 10px; background: var(--blue); color: #ffffff; padding: 16px 32px; border-radius: 2px; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--blue-mid); transition: background 0.2s; }
     .btn-pdf-download:hover { background: var(--blue-mid); }
     .download-note { font-size: 0.78rem; color: var(--w40); margin-top: 16px; }
+
+    /* THEME TOGGLE */
+    .theme-toggle {
+      background: transparent; border: 1px solid var(--w15); border-radius: 2px;
+      color: var(--w70); cursor: pointer; width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; padding: 0; transition: border-color 0.2s, color 0.2s;
+    }
+    .theme-toggle:hover { border-color: var(--white); color: var(--white); }
+    .theme-toggle svg { width: 16px; height: 16px; }
+    .icon-sun { display: none; }
+    .icon-moon { display: block; }
+    html[data-theme="light"] .icon-sun { display: block; }
+    html[data-theme="light"] .icon-moon { display: none; }
 
     /* Reveal */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s, transform 0.5s; }
@@ -359,6 +386,10 @@
       <li><a href="#who">Who It's For</a></li>
       <li><a href="../">Home</a></li>
     </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
     <a href="https://zcal.co/enosltd/discovery" class="nav-cta">Book a Discovery Call</a>
   </nav>
 
@@ -810,6 +841,26 @@
       entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     reveals.forEach(function(el) { io.observe(el); });
+
+    (function() {
+      var btn = document.getElementById('themeToggle');
+      function applyTheme(theme) {
+        if (theme === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+          btn.setAttribute('aria-label', 'Switch to dark theme');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+          btn.setAttribute('aria-label', 'Switch to light theme');
+        }
+      }
+      btn.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-theme');
+        var next = current === 'light' ? 'dark' : 'light';
+        localStorage.setItem('enosTheme', next);
+        applyTheme(next);
+      });
+      applyTheme(localStorage.getItem('enosTheme') || 'dark');
+    }());
   </script>
 
   <script>
