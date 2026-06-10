@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script>(function(){var t=localStorage.getItem('enosTheme');if(t==='light')document.documentElement.setAttribute('data-theme','light');}());</script>
+  <script>(function(){var t=localStorage.getItem('enosTheme'),s=window.matchMedia('(prefers-color-scheme:light)').matches;if(t==='light'||(t===null&&s))document.documentElement.setAttribute('data-theme','light');}());</script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -576,6 +576,7 @@
     .download-note { font-size: 0.78rem; color: var(--w40); margin-top: 16px; }
 
     /* THEME TOGGLE */
+    .nav-brand { display: flex; align-items: center; gap: 16px; }
     .theme-toggle {
       background: transparent; border: 1px solid var(--w15); border-radius: 2px;
       color: var(--w70); cursor: pointer; width: 34px; height: 34px;
@@ -598,13 +599,19 @@
 
   <!-- NAV -->
   <nav id="main-nav">
-    <a href="../" class="nav-logo">
+    <div class="nav-brand">
+      <a href="../" class="nav-logo">
       <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="19" cy="19" r="18" stroke="#274690" stroke-width="1.5"/>
         <path d="M10 14h18M10 19h12M10 24h18" stroke="#4a6fc0" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
       <span class="nav-logo-text">ENOS <span>Limited</span></span>
     </a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    </div>
     <ul class="nav-links">
       <li><a href="#diagnostic">Diagnostic</a></li>
       <li><a href="#how-it-works">Process</a></li>
@@ -612,10 +619,6 @@
       <li><a href="#testimonials">Recommendations</a></li>
       <li><a href="../">Home</a></li>
     </ul>
-    <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
     <a href="https://zcal.co/enosltd/discovery" class="nav-cta">Book a Discovery Call</a>
   </nav>
 
@@ -1150,7 +1153,7 @@
         localStorage.setItem('enosTheme', next);
         applyTheme(next);
       });
-      applyTheme(localStorage.getItem('enosTheme') || 'dark');
+      applyTheme(localStorage.getItem('enosTheme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
     }());
 
     /* ── PERSONA CANVAS REVEAL ────────────────────────────────────
@@ -1334,67 +1337,4 @@
       }
     }
     function validateFields335987000000794001() {
-      var isReturn = true;
-      var form = document.forms['BiginWebToRecordForm335987000000794001'];
-      var validateFld = form.querySelectorAll('[fvalidate=true]');
-      for (var i = 0; i < validateFld.length; i++) {
-        var validateFldVal = validateFld[i].value;
-        var fType = validateFld[i].getAttribute('ftype');
-        if (validateFldVal !== '') {
-          if (fType === 'email') {
-            if (validateFldVal.match(/^([A-Za-z0-9-._%'+\/]+@[A-Za-z0-9.-]+\.[a-zA-Z]{2,22})$/) === null) {
-              setError(validateFld[i], 'Enter a valid email address');
-              isReturn = false;
-            }
-          }
-        }
-      }
-      return isReturn;
-    }
-    function privacyError335987000000794001() {
-      var privacyTool = document.getElementById('privacycheck335987000000794001');
-      if (privacyTool != undefined && !privacyTool.checked) {
-        setError(privacyTool, 'Please accept the Privacy Policy to continue');
-        return false;
-      }
-      return true;
-    }
-    function disablePrivacyError335987000000794001() {
-      var privacyTool = document.getElementById('privacycheck335987000000794001');
-      removeError(privacyTool);
-    }
-    function checkMandatory335987000000794001() {
-      var isReturn = true;
-      for (var i = 0; i < mndFields335987000000794001.length; i++) {
-        var fieldObj = document.forms['BiginWebToRecordForm335987000000794001'][mndFields335987000000794001[i]];
-        if (fieldObj) {
-          if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length === 0) {
-            setError(fieldObj, fldLangVal335987000000794001[i] + ' cannot be empty');
-            isReturn = false;
-          }
-        }
-      }
-      if (!privacyError335987000000794001()) { isReturn = false; }
-      if (!validateFields335987000000794001()) { isReturn = false; }
-      if (!isReturn) {
-        var errEle = document.getElementsByClassName('wf-field-error');
-        if (errEle && errEle.length > 0) {
-          var inputEle = errEle[0].closest('.wf-field').getElementsByTagName('input');
-          if (inputEle && inputEle.length > 0) { inputEle[0].focus(); }
-        }
-      } else {
-        document.getElementById('formsubmit').disabled = true;
-      }
-      return isReturn;
-    }
-    // The external Bigin script provides validateForm335987000000794001;
-    // we provide a local fallback in case it doesn't load
-    if (typeof validateForm335987000000794001 === 'undefined') {
-      window.validateForm335987000000794001 = checkMandatory335987000000794001;
-    }
-  </script>
-
-  <script id='wf_script' src='https://bigin.zoho.eu/crm/WebformScriptServlet?rid=e171ea6b52612997ee5ae1432b55ec4afe4c0344ed2a1ba70e2ce9350257e707dc201ee2a9b25bd85818ec88ad186886gid98f33e3e204cd6e68c1abd06f55b14dc787dc7ec4ad445b530047cb699663338' onload='if(typeof setupPhoneFldIP==="function")setupPhoneFldIP()'></script>
-
-</body>
-</html>
+      var isRe
