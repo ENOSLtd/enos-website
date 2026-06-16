@@ -381,20 +381,6 @@
         <a href="#services" class="btn-primary">Explore Our Services</a>
         <a href="https://zcal.co/enosltd/discovery" class="btn-secondary">Book a Discovery Call</a>
       </div>
-      <div class="hero-stats">
-        <div>
-          <div class="stat-num">30<span style="font-size:1.2rem">yrs</span></div>
-          <div class="stat-label">Delivering complex change</div>
-        </div>
-        <div>
-          <div class="stat-num">3.5m</div>
-          <div class="stat-label">Customer accounts migrated</div>
-        </div>
-        <div>
-          <div class="stat-num">£100m+</div>
-          <div class="stat-label">Programme scale managed</div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -528,4 +514,79 @@
       <div>
         <p class="section-label reveal">Get in Touch</p>
         <h2 class="reveal">The first conversation is always free.</h2>
-        <p class="reveal">A 45-minute Discovery Call to understand your programme, your
+        <p class="reveal">A 45-minute Discovery Call to understand your programme, your situation, and whether ENOS is the right fit.  No selling, no pressure.  Just an honest conversation about what you're facing and what independent eyes might see.</p>
+        <a href="https://zcal.co/enosltd/discovery" class="btn-primary reveal" style="margin-top:8px">Book a Discovery Call</a>
+      </div>
+            <div class="contact-details reveal">
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <span class="contact-value"><a href="mailto:gp@enos.ltd.uk">gp@enos.ltd.uk</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Phone</span>
+          <span class="contact-value"><a href="tel:+447946314316">+44 (0) 7946 314 316</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value"><a href="https://linkedin.com/in/geoffporritt/" target="_blank" rel="noopener">linkedin.com/in/geoffporritt/</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Reg.</span>
+          <span class="contact-value">GB4240098 &middot; VAT 775 5977 60</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      &copy; 2025 ENOS Limited &middot; Registered in England &amp; Wales &middot; GB4240098
+    </div>
+    <nav class="footer-right">
+      <a href="#about" class="footer-link">About</a>
+      <a href="#services" class="footer-link">Services</a>
+      <a href="#recommendations" class="footer-link">Recommendations</a>
+      <a href="privacy.html" class="footer-link">Privacy</a>
+    </nav>
+  </footer>
+
+  <script>
+    // NAV SCROLL
+    var mainNav = document.getElementById('main-nav');
+    window.addEventListener('scroll', function () {
+      mainNav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // SCROLL REVEAL
+    var revealObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { revealObs.observe(el); });
+
+    // THEME TOGGLE
+    var toggleBtn = document.getElementById('themeToggle');
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('enosTheme', theme);
+      toggleBtn.setAttribute('aria-label',
+        theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+    }
+    applyTheme(
+      localStorage.getItem('enosTheme') ||
+      (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+    );
+    toggleBtn.addEventListener('click', function () {
+      applyTheme(
+        document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+      );
+    });
+  </script>
+
+</body>
+</html>
