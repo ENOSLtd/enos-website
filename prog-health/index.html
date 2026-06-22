@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>360° Programme &amp; Project Health Check | ENOS Limited</title>
-  <meta name="description" content="An independent diagnostic of your transformation programme across six critical dimensions. Find out what's really going on - before it's too late.">
+  <meta name="description" content="Independent assurance for your transformation programme - an evidenced diagnostic across six critical dimensions that puts a line of sight behind your own reporting and goes straight to your board.">
   <link rel="canonical" href="https://enos.ltd.uk/prog-health/">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="icon" type="image/png" href="../favicon.svg" sizes="any">
@@ -141,7 +141,7 @@
     .hero h1 em { font-style: italic; color: var(--blue-light); }
     .hero-sub {
       font-size: 1.15rem; color: var(--w70); font-weight: 300;
-      max-width: 540px; margin-bottom: 44px;
+      max-width: 660px; margin-bottom: 44px;
       line-height: 1.75;
     }
     .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 56px; }
@@ -249,6 +249,44 @@
     @media(max-width:768px){
       .persona-card { padding: 32px 24px; }
     }
+
+    /* ── WHY INDEPENDENT ASSURANCE ── */
+    .assurance-section { background: var(--navy-mid); border-top: 1px solid var(--w08); }
+    .assurance-lead {
+      font-size: 1.15rem; color: var(--white); font-weight: 300;
+      max-width: 720px; line-height: 1.8; margin-bottom: 48px;
+    }
+    .assurance-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      margin-bottom: 32px;
+    }
+    @media(max-width:900px){ .assurance-grid { grid-template-columns: 1fr; } }
+    .assurance-card {
+      background: var(--w04); border: 1px solid var(--w15);
+      border-top: 3px solid var(--blue);
+      padding: 34px 30px; transition: border-color 0.2s, background 0.2s;
+    }
+    .assurance-card:hover { background: var(--w08); }
+    .assurance-card-q {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-weight: 700; color: var(--white);
+      margin-bottom: 14px;
+    }
+    .assurance-card-body { font-size: 0.92rem; color: var(--w70); line-height: 1.78; }
+    .assurance-close {
+      background: var(--blue); border: 1px solid var(--blue-mid);
+      padding: 44px 44px; margin-bottom: 44px;
+    }
+    .assurance-close .close-lede {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem; font-weight: 700;
+      color: #ffffff; line-height: 1.3; margin-bottom: 16px;
+      max-width: 780px;
+    }
+    .assurance-close p:not(.close-lede) {
+      color: #ffffff; font-size: 1.02rem; line-height: 1.85; max-width: 780px;
+    }
+    @media(max-width:768px){ .assurance-close { padding: 32px 26px; } }
 
     /* ── LEAD CAPTURE BANNER ── */
     .lead-banner {
@@ -627,8 +665,8 @@
     <div class="hero-bg"></div>
     <div class="hero-content">
       <p class="label-tag">360° Programme &amp; Project Health Check</p>
-      <h1>Is your transformation<br><em>marking its own homework?</em></h1>
-      <p class="hero-sub">An independent diagnostic across six critical dimensions of your programme. We find what internal teams are too close - or too pressured - to see, then give you the evidence to act.</p>
+      <h1>Independent assurance<br><em>when you can't afford to get it wrong.</em></h1>
+      <p class="hero-sub">You run it, you report on it, and the board takes your word - but nothing independent stands behind that word.  Even a well-run programme has blind spots its own team is too close to see: in governance, in team dynamics, in whether the business will actually adopt what you build.  &ldquo;Green&rdquo; tells you nothing until the day it isn't.  Waiting for trouble to surface in the RAG report isn't assurance; it's hope.  The strongest programme directors don't wait - they put an independent line of sight behind their own reporting, on their own terms, whilst there's still room to act.</p>
       <div class="hero-ctas">
         <button class="btn-primary" onclick="openModal()">↓ Download Sample Report</button>
         <a href="https://zcal.co/enosltd/discovery" class="btn-secondary">Book a Discovery Call</a>
@@ -656,17 +694,17 @@
       <div class="personas-grid">
 
         <div class="persona-card reveal">
-          <div class="persona-role">The COO</div>
-          <div class="persona-name">David</div>
-          <p class="persona-pain">Your transformation portfolio carries significant commercial risk.  You need the facts - fast.  Not another reassuring status update from the team doing the work.</p>
-          <div class="persona-quote">"I need to know if this programme will actually deliver - or if I'm funding failure."</div>
-        </div>
-
-        <div class="persona-card reveal">
-          <div class="persona-role">The PMO Lead</div>
+          <div class="persona-role">The PMO Lead / Director</div>
           <div class="persona-name">Sarah</div>
           <p class="persona-pain">You're too close to the work to see it clearly.  You need a trusted partner who can identify the hidden risks buried in team dynamics, governance gaps, and adoption failure.</p>
           <div class="persona-quote">"I need an external eye that sees what we can't from the inside."</div>
+        </div>
+
+        <div class="persona-card reveal">
+          <div class="persona-role">The Business Sponsor</div>
+          <div class="persona-name">David</div>
+          <p class="persona-pain">Your transformation portfolio carries significant commercial risk.  You need the facts - fast.  Not another reassuring status update from the team doing the work.</p>
+          <div class="persona-quote">"I need to know if this programme will actually deliver - or if I'm funding failure."</div>
         </div>
 
         <div class="persona-card reveal">
@@ -691,6 +729,43 @@
     </div>
     <button class="btn-download-cta" onclick="openModal()">↓ Get the Sample Report</button>
   </div>
+
+  <!-- WHY INDEPENDENT ASSURANCE -->
+  <section class="assurance-section" id="why-independent">
+    <p class="section-label reveal">Why independent assurance</p>
+    <h2 class="section-title reveal">Independence is the one thing your alternatives can't give you.</h2>
+    <p class="assurance-lead reveal">When you want to know the real state of your programme, you have four options.  Three of them are the people and tools already inside your blind spot.  Only one has no stake in the answer.</p>
+
+    <div class="assurance-grid">
+
+      <div class="assurance-card reveal">
+        <p class="assurance-card-q">Your own PMO?</p>
+        <p class="assurance-card-body">However good your team is, they can't be independent of a programme they run.  That's the definition of marking your own homework - and it's the one judgement a board discounts.</p>
+      </div>
+
+      <div class="assurance-card reveal">
+        <p class="assurance-card-q">AI tools?</p>
+        <p class="assurance-card-body">AI reads the documents you already have.  It never gets in the room, never reads the silence in a governance forum, never interviews the person who won't put their concern in writing - and it will never put its name to a judgement a board will act on.</p>
+      </div>
+
+      <div class="assurance-card reveal">
+        <p class="assurance-card-q">A Big 4 firm?</p>
+        <p class="assurance-card-body">The large consultancies arrive with a delivery arm to protect and a follow-on engagement to sell.  Independence is hard to trust from a firm that wants the implementation contract next.</p>
+      </div>
+
+    </div>
+
+    <div class="assurance-close reveal">
+      <p class="close-lede">ENOS holds no delivery contract on your programme and never will.</p>
+      <p>One senior operator who has personally run £100m+ transformation programmes for 30+ years, with no stake in the outcome except being right.  Five steps, fast turnaround, fixed price - and a scored, evidenced report built to go straight in front of your board without translation.  Assurance you can stand behind, because someone independent already did.</p>
+    </div>
+
+    <div class="hero-ctas reveal" style="margin-bottom:0">
+      <a href="https://zcal.co/enosltd/discovery" class="btn-primary">Book a Discovery Call</a>
+    </div>
+  </section>
+
+  <hr class="divider">
 
   <!-- THE DIAGNOSTIC -->
   <section id="diagnostic">
@@ -849,8 +924,8 @@
   <!-- FINAL CTA -->
   <section class="final-cta">
     <p class="section-label" style="justify-content:center;display:flex">Next Step</p>
-    <h2 class="reveal">Ready to find out what's really going on?</h2>
-    <p class="reveal">A Discovery Call takes 45 minutes. You'll leave with a clear picture of scope, process, and what an independent Health Check would surface in your programme.</p>
+    <h2 class="reveal">Put an independent line of sight behind your programme.</h2>
+    <p class="reveal">A Discovery Call takes 45 minutes.  You'll leave with a clear picture of scope, process, and exactly what an independent Health Check would put in front of your board - on your terms, whilst there's still room to act.</p>
     <div class="final-cta-btns">
       <a href="https://zcal.co/enosltd/discovery" class="btn-primary">Book a Discovery Call</a>
       <button class="btn-secondary" onclick="openModal()">↓ Download Sample Report First</button>
@@ -1217,29 +1292,19 @@
         try { ctx.letterSpacing = '2.8px'; } catch(e) {}
         ctx.fillText('WHO WE HELP', midX, midY - 74);
 
-        /* Heading line 1 */
+        /* Heading line 1 (white) */
         try { ctx.letterSpacing = '0px'; } catch(e) {}
-        ctx.fillStyle = '#ffffff';
-        ctx.font      = '700 ' + Math.round(Math.min(w * 0.055, 48)) + 'px "Playfair Display", serif';
-        ctx.fillText('Where is', midX, midY - 14);
-
-        /* Heading line 2: italic "your" in blue + "blind spot?" in white */
         var fs = Math.round(Math.min(w * 0.055, 48));
-        ctx.font = 'italic 700 ' + fs + 'px "Playfair Display", serif';
-        var yourW = ctx.measureText('your').width;
-        ctx.font = '700 ' + fs + 'px "Playfair Display", serif';
-        var restW = ctx.measureText(' blind spot?').width;
-        var lineX = midX - (yourW + restW) / 2;
-        var lineY = midY + fs * 1.25;
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#ffffff';
+        ctx.font      = '700 ' + fs + 'px "Playfair Display", serif';
+        ctx.fillText("Make sure you're getting", midX, midY - 14);
 
+        /* Heading line 2: italic "the full picture." in blue */
+        var lineY = midY + fs * 1.25;
         ctx.font      = 'italic 700 ' + fs + 'px "Playfair Display", serif';
         ctx.fillStyle = '#7a9fd4';
-        ctx.textAlign = 'left';
-        ctx.fillText('your', lineX, lineY);
-
-        ctx.font      = '700 ' + fs + 'px "Playfair Display", serif';
-        ctx.fillStyle = '#ffffff';
-        ctx.fillText(' blind spot?', lineX + yourW, lineY);
+        ctx.fillText('the full picture.', midX, lineY);
 
         /* Sub-label */
         ctx.textAlign = 'center';
