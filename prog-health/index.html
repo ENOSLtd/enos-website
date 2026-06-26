@@ -614,6 +614,26 @@
     .btn-pdf-download:hover { background: var(--blue-mid); }
     .download-note { font-size: 0.78rem; color: var(--w40); margin-top: 16px; }
 
+    /* Sample chooser - two direct-download cards (no lead form) */
+    .sample-choices { display: flex; flex-direction: column; gap: 16px; }
+    .sample-card {
+      border: 1px solid var(--w15);
+      border-radius: 3px;
+      padding: 22px 24px;
+      background: var(--w04);
+      transition: border-color 0.2s;
+    }
+    .sample-card:hover { border-color: var(--w40); }
+    .sample-card-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px;
+    }
+    .sample-card h4 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; line-height: 1.25; }
+    .sample-card p { font-size: 0.88rem; color: var(--w70); line-height: 1.55; margin-bottom: 18px; }
+    .sample-card .btn-pdf-download { padding: 12px 24px; font-size: 0.82rem; }
+    .sample-foot { font-size: 0.78rem; color: var(--w40); margin-top: 22px; text-align: center; line-height: 1.6; }
+
     /* THEME TOGGLE */
     .nav-brand { display: flex; align-items: center; gap: 16px; }
     .theme-toggle {
@@ -727,7 +747,7 @@
   <div class="lead-banner">
     <div class="lead-banner-text">
       <h3>See the ENOS 360° Project/Programme Health Check in action</h3>
-      <p>Download our anonymised sample report - the Authority Asset we deliver as part of every engagement.</p>
+      <p>Download our two anonymised sample reports - the Authority Asset we deliver on every engagement.  No sign-up needed.</p>
     </div>
     <button class="btn-download-cta" onclick="openModal()">↓ Get the Sample Report</button>
   </div>
@@ -952,7 +972,45 @@
   <div id="lead-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-container">
 
-      <!-- FORM STATE -->
+      <!-- SAMPLE CHOOSER (two direct downloads, no lead form) -->
+      <div id="modal-sample-state">
+        <div class="modal-header">
+          <h3 id="modal-title">Choose your sample<br>360&deg; Health Check</h3>
+          <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+        </div>
+        <p class="modal-sub">Two anonymised Authority Assets - the scored deck we deliver on every engagement.  Both organisations are fictional.  Take the one that fits where you are, or take both.</p>
+        <div class="modal-body">
+          <div class="sample-choices">
+
+            <div class="sample-card">
+              <div class="sample-card-tag">Independent assurance &middot; pre-launch</div>
+              <h4>Programme Meridian &middot; Northwind Water</h4>
+              <p>A well-run smart-metering programme at the gate-to-build decision, with the board about to release the build budget.  Independent assurance that surfaces three quiet gaps before they cost anything.  A flag, not a fault line.</p>
+              <a href="../assets/360_Health_Check_Sample_Northwind_Water.pdf" download="ENOS-360-Sample-Northwind-Water.pdf" class="btn-pdf-download">&darr; Download the assurance sample (PDF)</a>
+            </div>
+
+            <div class="sample-card">
+              <div class="sample-card-tag">Programme rescue &middot; mid-delivery</div>
+              <h4>Programme Helix &middot; YourOrg PLC</h4>
+              <p>A regulated core-platform modernisation, mid-delivery and in trouble, with a board review four weeks out and no one holding the full picture.  An evidence-based diagnostic that puts the real state on the table.</p>
+              <a href="../assets/360-sample.pdf" download="ENOS-360-Sample-YourOrg-PLC.pdf" class="btn-pdf-download">&darr; Download the rescue sample (PDF)</a>
+            </div>
+
+          </div>
+          <p class="sample-foot">No sign-up needed - both downloads are open.  Licensed CC BY-NC-ND 4.0: share with full attribution; no alteration or commercial use.</p>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           DORMANT - BIGIN LEAD-CAPTURE FORM.  Re-enable with a future
+           lead magnet.  TO RESTORE: (1) delete the #modal-sample-state
+           block above; (2) uncomment the block below and restore its
+           inner comment markers ([[ and ]] were the original HTML comment delimiters); (3)
+           uncomment the iframe success-gate JS marked DORMANT in the
+           scripts section.  The scoped Bigin CSS has been left in place.
+      -------------------------------------------------------------
+
+      [[ FORM STATE ]]
       <div id="modal-form-state">
         <div class="modal-header">
           <h3 id="modal-title">Download the Sample<br>360° Health Check</h3>
@@ -961,9 +1019,9 @@
         <p class="modal-sub">Enter your details to get instant access to our anonymised sample Authority Asset - the scored PDF report we deliver as part of every Health Check engagement.</p>
         <div class="modal-body">
 
-          <!-- ────────────────────────────────────────────── -->
-          <!-- BIGIN CONTACT FORM - Option 1 (Source embed)  -->
-          <!-- ────────────────────────────────────────────── -->
+          [[ ────────────────────────────────────────────── ]]
+          [[ BIGIN CONTACT FORM - Option 1 (Source embed)  ]]
+          [[ ────────────────────────────────────────────── ]]
           <iframe id='hidden335987000000794001Frame' name='hidden335987000000794001Frame' style='display:none' class='iframe-container'></iframe>
           <div class='wf-parent' id='BiginWebToRecordFormParent335987000000794001'>
             <div class='wf-wrapper' id='BiginWebToRecordFormDiv335987000000794001'>
@@ -1026,12 +1084,12 @@
               </form>
             </div>
           </div>
-          <!-- ────────────────────────────────────────────── -->
+          [[ ────────────────────────────────────────────── ]]
 
         </div>
       </div>
 
-      <!-- DOWNLOAD STATE (shown after form submit) -->
+      [[ DOWNLOAD STATE (shown after form submit) ]]
       <div id="modal-download-state" style="display:none">
         <div class="modal-header" style="justify-content:flex-end">
           <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
@@ -1049,6 +1107,10 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+      ============================================================ -->
     </div>
   </div>
   <!-- ── END MODAL ─────────────────────────────────────────── -->
@@ -1172,6 +1234,7 @@
       if (e.key === 'Escape') closeModal();
     });
 
+    /* DORMANT - Bigin iframe success-gate.  Re-enable with the lead form.
     // Show the download state only after Bigin confirms a successful POST.
     // The hidden iframe receives the response; its load event fires ONLY when
     // validation passed and the POST went through. This is the cleanest gate:
@@ -1200,6 +1263,8 @@
         }, 300);
       });
     });
+
+    */
 
     // Scroll reveal
     var reveals = document.querySelectorAll('.reveal');
@@ -1382,26 +1447,4 @@
     var fldLangVal335987000000794001 = new Array('First Name','Last Name','Organisation','Work Email');
 
     function removeError(fieldObj) {
-      var parentElement = fieldObj.closest('.wf-field'),
-        childEle = parentElement.getElementsByClassName('wf-error-parent-ele')[0];
-      if (childEle) {
-        parentElement.classList.remove('wf-field-error-active');
-        parentElement.removeChild(childEle);
-      }
-    }
-    function setError(fieldObj, label) {
-      var parentElement = fieldObj.closest('.wf-field'),
-        childEle = parentElement.getElementsByClassName('wf-error-parent-ele')[0];
-      if (!childEle) {
-        var errorParentEle = document.createElement('DIV'),
-          spanEle = document.createElement('SPAN');
-        spanEle.setAttribute('class', 'wf-field-error wf-field-error-long');
-        spanEle.innerHTML = label;
-        errorParentEle.classList.add('wf-error-parent-ele');
-        errorParentEle.appendChild(spanEle);
-        parentElement.append(errorParentEle);
-        parentElement.classList.add('wf-field-error-active');
-      }
-    }
-    function validateFields335987000000794001() {
-      var isRe
+      var parentElement = fiel
